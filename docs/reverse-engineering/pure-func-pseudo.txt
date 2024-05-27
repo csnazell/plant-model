@@ -1,0 +1,198 @@
+#                                                                              #
+# pure-func-pseudo.txt                                                         #
+#                                                                              #
+# A "pure" functional pseudo-code "sketch" of model implementation             #
+#                                                                              #
+# "Pure" in this context means we're relying on functions providing a          #
+# consistent set of parameters & typing rather than utilising parameterisation.# 
+# So for example all phenology simulation implementations would have the same  #
+# inputs & outputs to their function. Extension / modification of a function   #
+# would work around this by the state & output parameters being dictionaries   #
+# or an equivalent that would allow the code to stash arbitrary implementation #
+# specific items.                                                              #
+#                                                                              #
+# Currently naming is that the dynamics is referred to as a "simulation" and   #
+# the more generic wrapper around it is a "model". This may change.            #
+#                                                                              #
+# Actual implementation would be broken into appropriate files / modules but   #
+# are condensed here for sake of brevity.                                      #
+#                                                                              #
+
+#
+# example code use -------------------------------------------------------------
+#
+
+floweingGenotype = ??
+
+light = lightModel()
+
+plantParameters = load("parameter.mat")
+
+# construct phenology model using base PIF_CO_FT
+
+phenology = phenologyModel(
+                simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype, light),
+                plantParameters,
+                floweringThresholdGenotype
+                )
+
+plant     = plantModel(..., phenology, ...)
+
+# construct phenology model with hypocotyl length calculation
+
+hypodotylParameters = load("Hypocotyl_parameters_P2011")
+
+phenology = phenologyModel(
+                simulationPhenology_PIF_CO_FT_HypocotylLength( 
+                    clockModelId, floweringGenotype, light, hypocotylParameters
+                        ),
+                plantParameters,
+                floweringThresholdGenotype
+                )
+
+plant     = plantModel(..., phenology, ...)
+
+# construct a simulation with no-op phenology model
+
+plant     = plantModel(..., phenologyModel(), ...)
+
+#
+# functions --------------------------------------------------------------------
+#
+
+#
+# clock
+#
+
+func loadClockParameters(modelId, genotype, set) -> [parameter]
+    - load parameters from file identified by model flag 
+    - fillet according to genotype
+    - ??: unless there's something intrinsic in the use of this vector
+          it's probably a good idea to bump this to a struct which 
+          will map to a Julia type
+
+#
+# framework simulation
+#
+
+func plantModel(..., phenologyModel, ...)
+    - TBD
+
+#
+# phenology
+#
+
+# PIF_CO_FT
+
+func loadPifCoFtParameters(genotype) -> struct(parameters)
+    - load parameters from file into struct
+    - NB: adjustment for temperature in MATLAB code moved into simulation
+    -     improves performance (not constantly reloading data)
+
+func dynamics_PIF_CO_FT(t, y, P, u, c, lightModel) -> dydt
+    - as per matlab but light model passed in
+
+func simulationPhenology_PIF_CO_FT
+        ( 
+         clockModelId,
+         floweringGenotype,
+         floweringSet,          # optional defaults to 1
+         lightModel
+        ) -> simulation
+    - select clock parameter (clockModelId, floweringGenotype, floweringSet)
+    - select clock adapter   (clockModelId)
+                             # referred to as dynamics wrapper in MATLAB)
+    - select simulation parameters (floweringGenotype)
+    - construct simulation func of form:
+      NB: the idea is that every phenology simulation will have this form
+          extension of function behaviour can be achieved by nesting 
+          (see func simulationPhenology_PIF_CO_FT_HypocotylLength below)
+
+
+        func simulation
+                (
+                 clockOutput,
+                 simulationState,
+                 temperature,
+                 lightConditions       
+                ) -> dailyFTArea, simulationState, output
+            - captures clock & simulation parameters from constructor
+            - captures clock adapter from constructor
+            - tweak simulation parameters for temperature
+            - as per MATLAB: simulate_PIF_CO_FT_model without selection logic
+              NB: sunrise & sunset are only used to construct lightConditions struct
+                  it's cleaner to bump this construction to calling function
+            - return dailyFTArea, simulationState, output
+
+    - return simulation
+
+# PIF_CO_FT + Hypocotyl Length parameters
+
+func simulationPhenology_PIF_CO_FT_HypocotylLength
+        ( 
+         clockModelId,
+         floweringGenotype,
+         floweringSet,
+         lightModel,
+         hypocotylParameters
+        ) -> simulation
+    - baseFunc = simulationPhenology_PIF_CO_FT(
+                    clockModelId, floweringGenotype, floweringSet, lightModel
+                        )
+    - construct extended simulation with hypocotyl functionality
+
+        func simulation
+                (
+                 clockOutput,
+                 simulationState,
+                 temperature,
+                 lightConditions       
+                ) -> dailyFTArea, simulationState, output
+            - dailyFTArea, simulationState, output = 
+                baseFunc(clockOuput, simulationState, temperature, lightConditions)
+            - output.hypocotylLength = 
+                calculation using output.T, output.Y + hypocotylParameters
+            - return dailyFTArea, simulationState, output
+
+# Phenology model constructor
+# - creates a function embodying configured model parameters
+
+func phenologyModel(
+                    simulation,
+                    parameters,
+                    floweringThresholdGenotype,
+                   ) -> model
+
+        if no arguments supplied:
+
+            func model(timepoint, temperature, modelState) -> dailyThrm, modelState, modelOutput
+                - return 0, none, none
+
+        else:
+
+            - tweak parameters according to floweringThresholdGenotype
+
+            func model
+                    (
+                     timepoint,
+                     clockOutput
+                     temperature,
+                     sunrise,
+                     sunset,
+                     modelState,
+                    ) -> dailyThrm, modelState, modelOutput
+                    - captures simulation from constuctor
+                    - captures parameters from constructor
+                    - calculate lightConditions
+                    - dailyFTArea, simulationState, simulationOutput
+                        = simulation(clockOutput, modelState, temperature, lightConditions)
+                    - dailyThrm calculation as per MATLAB
+                    - modelState = simulationState      
+                    # optionally modelState could encapsulate simulationState
+                    #  e.g. modelState.simulation = simulationState
+                    - modelOutput = simulationOutput
+                    # optionally modelOutput could encapsulate simulationOutput
+                    #  e.g. modelOutput.simulation = simulationOutput
+                    - return dailytThrm, modelState, modelOutput
+
+

@@ -1,0 +1,1205 @@
+<mxfile host="Electron" modified="2024-05-26T12:21:52.249Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.2.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="r2gjoyxuS9Z1133IVi_w" version="24.2.5" type="device">
+  <diagram name="Page-1" id="4OQYP99l9z3jyoUwlahB">
+    <mxGraphModel dx="1434" dy="6716" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-1" value="Entry Points (1 / 4)" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;fontSize=16;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="22" y="-4660" width="1620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OyYC3gW6zoi97B_NGa3Y-14" target="muT-5egwIXRGlScPoila-3" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="OyYC3gW6zoi97B_NGa3Y-14" value="entrain_clock_model" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="641" y="3760" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OyYC3gW6zoi97B_NGa3Y-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OyYC3gW6zoi97B_NGa3Y-62" target="OyYC3gW6zoi97B_NGa3Y-14" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="OyYC3gW6zoi97B_NGa3Y-62" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="3780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OyYC3gW6zoi97B_NGa3Y-62" target="muT-5egwIXRGlScPoila-12" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="3780" />
+              <mxPoint x="400" y="3900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OyYC3gW6zoi97B_NGa3Y-62" target="muT-5egwIXRGlScPoila-44" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="3780" />
+              <mxPoint x="400" y="5115" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-48" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OyYC3gW6zoi97B_NGa3Y-62" target="muT-5egwIXRGlScPoila-46" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="3780" />
+              <mxPoint x="400" y="5265" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="OyYC3gW6zoi97B_NGa3Y-62" target="muT-5egwIXRGlScPoila-49" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="400" y="3780" />
+              <mxPoint x="400" y="5395" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OyYC3gW6zoi97B_NGa3Y-62" value="simulate_FM_simp" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="121" y="3760" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="OyYC3gW6zoi97B_NGa3Y-74" value="???" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="961" y="5888" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-19" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="421" y="3950" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-13" value="" style="group" parent="QBO8LM26LkIvInR4Ni3u-19" vertex="1" connectable="0">
+          <mxGeometry width="40" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-11" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="QBO8LM26LkIvInR4Ni3u-13" vertex="1">
+          <mxGeometry y="10" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-12" value="" style="triangle;whiteSpace=wrap;html=1;" parent="QBO8LM26LkIvInR4Ni3u-13" vertex="1">
+          <mxGeometry x="20" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-14" value="for each day in 1:n &amp;amp;&amp;amp; plant not flowered" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="QBO8LM26LkIvInR4Ni3u-19" vertex="1">
+          <mxGeometry x="50" y="10" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-79" target="muT-5egwIXRGlScPoila-56" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="6140" />
+              <mxPoint x="320" y="6220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-79" target="QBO8LM26LkIvInR4Ni3u-87" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="401" y="6460" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="6140" />
+              <mxPoint x="320" y="6420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-79" target="muT-5egwIXRGlScPoila-110" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="6140" />
+              <mxPoint x="320" y="7610" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-126" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-79" target="muT-5egwIXRGlScPoila-125" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="6140" />
+              <mxPoint x="320" y="8060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-79" value="phen(ology)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="6120" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-81" target="muT-5egwIXRGlScPoila-87" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-81" value="PIF_CO_FT_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1441" y="7080" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="muT-5egwIXRGlScPoila-62" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="6570" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="muT-5egwIXRGlScPoila-66" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="6760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="muT-5egwIXRGlScPoila-80" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="6880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="QBO8LM26LkIvInR4Ni3u-88" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="7000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="muT-5egwIXRGlScPoila-89" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="7100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-105" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="muT-5egwIXRGlScPoila-97" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="7220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="muT-5egwIXRGlScPoila-98" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="7350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-107" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="QBO8LM26LkIvInR4Ni3u-87" target="muT-5egwIXRGlScPoila-103" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="640" y="6420" />
+              <mxPoint x="640" y="7480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-87" value="simulate_PIF_CO_FT_model" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="399" y="6400" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-88" value="load_PIF_CO_FT_parameters.m" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="6980" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-89" value="load_P2011_parameters&lt;div&gt;(flowering_genotype)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6510" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="QBO8LM26LkIvInR4Ni3u-93" value="@ otherwise" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6570" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-6" value="Phenology" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;fontSize=16;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="17" y="5870" width="1620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-8" value="Model Core" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;fontSize=16;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="22" y="3530" width="1620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-9" value="Entry Points (2 / 4)" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;fontSize=16;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="17" y="-2320" width="1620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-44" value="entry point" style="shape=stencil(tZTdjsIgEIWfhtsNFPV+w+p7YB23RIQGWF3f3mmhG0lt1582aZrMOfSb0wxAuPCVrIEUtCL8ixQFoxTfWJ9TvUq19DWUIYon6ZTcaoiOD84e4Kx2ITGUqcCp0Lh8TegnrmkeLkprDEKUNT5zbnyESWXwW/obYan9Jatq5B8hgEsho0qKzePYj+U8YDZT3hzbpZ8873TgPDGba3CTgdnrWC5QGdrcXGxlefh29sfs7oapZXNwekZnH+0J/jkO93+zA2hlbgBs8T5ilSOWE8T4u3eegbyEKLX1MLI3UO9NpFUHxsjF3joYme9eaR3vyJGugwva1r0OrRqv7la4Ag==);whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="42" y="-5680" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-45" value="module / function&lt;div&gt;reference&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=2" parent="1" vertex="1">
+          <mxGeometry x="43" y="-5560" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-46" value="module / function" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="43" y="-5620" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-47" value="Functional Structure of Plant Model" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;fontSize=16;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="22" y="-5830" width="1620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-48" value="Entry point&lt;div&gt;— module / function that calls rest of functions&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="242" y="-5680" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-49" value="&lt;div&gt;module / function&lt;/div&gt;&lt;div&gt;— functional component of model, may call other functions&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="244" y="-5620" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-50" value="&lt;div&gt;reference&lt;/div&gt;&lt;div&gt;— placeholder / reference for module / function unpacked elsewhere in document&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="242" y="-5560" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-51" value="KEY" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="42" y="-5760" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Ty6IROzU_QYSebtPtgUp-52" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" parent="1" source="Ty6IROzU_QYSebtPtgUp-51" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="562" y="-5520" as="sourcePoint" />
+            <mxPoint x="682" y="-5720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4a5HJ_PiY7Q3HRACDhDU-1" value="Entry Points (3 / 4)" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;fontSize=16;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="17" y="20" width="1620" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VrkYAhf0nrjdSNUKd9j7-1" value="cps:&lt;div&gt;tweaks parameters if temperature @ 27 °C&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF3333;" parent="1" vertex="1">
+          <mxGeometry x="941" y="6980" width="239" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-1" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; clock_parameters &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; clock_dynamics&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; sunrise[1]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&lt;font color=&quot;#ff3333&quot;&gt;&amp;gt; sunset[1]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;/* = sunrise[1]  + options.entrain */&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&lt;font color=&quot;#ff3333&quot;&gt;&amp;gt; y0&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x35]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;/* = options.y0 */ &lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="641" y="3680" width="379" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-2" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; clock_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="642" y="3800" width="198" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-3" value="run_clock_model_for_a_day" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="1081" y="3760" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-5" value="cps:&lt;div&gt;(effectively) code duplication&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF3333;" parent="1" vertex="1">
+          <mxGeometry x="1290" y="3760" width="200" height="40" as="geometry" />
+        </mxCell>
+        <UserObject label="&amp;gt; hour&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* timepoints */&lt;br&gt;&amp;gt; T&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* temperature @ each timepoint */&lt;br&gt;&amp;gt; sunrise &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* hour of … @ each timepoint */&lt;br&gt;&amp;gt; sunset&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* hour of … @ each timepoint */&lt;br&gt;&amp;gt; clock_parameters &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x120]&amp;nbsp; &amp;nbsp;/* ??? */&lt;br&gt;&amp;gt; clock_dynamics&amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;func&lt;br&gt;&amp;gt; clock_dynamics_model_i&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* flag: clock dynamics model */&lt;br&gt;&amp;gt; p&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 85x1]&amp;nbsp; &amp;nbsp; &amp;nbsp;/* undifferentiated parameters */&lt;br&gt;&amp;gt; run_phenology_model&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* flag: use PIFCO phenology module */&lt;br&gt;&amp;gt; options&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* dict: additional parameters {string:value} */" link="- hour&#x9;&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | hour / timestep 1 - 24 x 251 days &#xa;- T&#x9;&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | temperature (°C) @ each timestep&#xa;- sunrise&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | ??? (= rise * weather(:,3) where: rise = 0 &amp; weather(:,3) = weather.mat @ column 3 contents = [6024x1 /*each @ 1*/])&#xa;- sunset&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | ??? (= set * weather(:,4) where: set = Phot(i /*loop index*/) @ 0 /* photo period */ &amp; weather(:,4) = weather.mat @ column 4 contents = [6024x1 /*each @ 1*/])&#xa;- clock_parameters&#x9;&#x9;= [double] @ 1 x 120  | ???&#xa;- clock_dynamics &#x9;&#x9;= func: F2014_Dynamics_COP1 | function implementing clock dynamics&#xa;- clock_dynamics_model_i&#x9;= [double] @ 1 x 1    | flag indicating which clock dynamics model to use&#xa;- p&#x9;&#x9;&#x9;&#x9;= [double] @ 85 x 1   | undifferentiated parameters from parameter.mat&#xa;- run_phenology_model&#x9;&#x9;= [double] @ 1 x 1    | flag indicating whether to use PIFCO phenology module or not&#xa;- options" id="muT-5egwIXRGlScPoila-6">
+          <mxCell style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+            <mxGeometry x="120" y="3610" width="500" height="150" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="muT-5egwIXRGlScPoila-7" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* subset of simdata */&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; simdata&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/*  simulation data */ &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="120" y="3800" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-9" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; clock_parameters &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; clock_dynamics&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; sunrise&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; sunset&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&lt;font color=&quot;#ff3333&quot;&gt;&amp;gt; y0&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* entrained  y0 */&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1081" y="3680" width="239" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-10" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; clock_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1081" y="3800" width="199" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-12" value="interp1q(clock_output.T,clock_output.Y,24)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="630" y="3880" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-13" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; clock_state_0&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x35]&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="630" y="3920" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-15" value="run_clock_model_for_a_day" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="640" y="4180" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-17" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; clock_parameters &lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; clock_dynamics&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; sunrise[t]&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; sunset[t]&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; clock_state_0&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="640" y="4100" width="239" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-18" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; clock_output&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="640" y="4220" width="118" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-19" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-19" value="t = (day - 1) * 24 + 1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="633" y="4020" width="157" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-21" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-21" value="interp1q(clock_output.T,clock_output.Y,24)" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="630" y="4280" width="270" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-22" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; clock_state_0&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="630" y="4320" width="118" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-15" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-25" value="&amp;gt; T&lt;div&gt;&amp;gt; t&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;/div&gt;&lt;div&gt;&amp;gt; sunrise[t]&lt;/div&gt;&lt;div&gt;&amp;gt; sunset[t]&lt;/div&gt;&lt;div&gt;&amp;gt; flowering_thresh_geno&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* &lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;col accession for phenology model threshold */&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;gt; clock_dynamics_model_i&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;/div&gt;&lt;div&gt;&amp;gt; clock_output&lt;/div&gt;&lt;div&gt;&amp;gt; FT_module_state&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x18]&lt;/div&gt;&lt;div&gt;&amp;gt; p&lt;/div&gt;&lt;div&gt;&amp;gt; options.genotype&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[string]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* vector: genotype flags */&lt;/div&gt;&lt;div&gt;&amp;gt; options.hypocotyl_parameters&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* a1, a2, a3 */&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="640" y="4380" width="600" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-26" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-26" value="phen(ology)" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=0" parent="1" vertex="1">
+          <mxGeometry x="640" y="4550" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-28" value="&amp;lt; DayPhenThrm&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;div&gt;&amp;lt; FT_module_state&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 18x1]&lt;/div&gt;&lt;div&gt;&amp;lt; PIF_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="640.5" y="4590" width="219.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-29" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-29" value="flowering_threshold_test" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="641" y="4840" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-32" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;lt; t&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* timepoint */&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="633" y="4060" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-33" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-33" value="CumPhenThrm = CumPhenThrm + DayPhenThrm" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="629" y="4680" width="311" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-34" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;lt; CumPhenThrm&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;double&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;/* cumulative phenology thrm */&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;align=left;" parent="1" vertex="1">
+          <mxGeometry x="629" y="4720" width="341" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-35" value="&lt;div class=&quot;rtcContent&quot;&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre; background-color: initial;&quot;&gt;&amp;gt; CumPhenThrm&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; flowering_thresh_geno&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;lineNode&quot;&gt;&lt;span style=&quot;white-space: pre&quot;&gt;&lt;span&gt;&amp;gt; p&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="640.5" y="4790" width="239" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-36" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;lt; has_flowered&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;double (bool)&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;/* flag: has flowered */&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;align=left;" parent="1" vertex="1">
+          <mxGeometry x="640" y="4879" width="250" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-37" target="QBO8LM26LkIvInR4Ni3u-11" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-37" value="CumPhenThrmAll[t] = CumPhenThrm" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="629" y="4940" width="251" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-38" value="&lt;span style=&quot;white-space: pre;&quot;&gt;&amp;lt; CumPhenThrmAll[t]&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[&lt;span style=&quot;white-space: pre;&quot;&gt;double: nx1]&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;/* cumulative phenology thrm tracker */&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;align=left;" parent="1" vertex="1">
+          <mxGeometry x="629" y="4980" width="341" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-44" value="simdata.metadata.hour&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] = hour&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.metadata.T&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;[double: 6024x1] = T&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.metadata.sunrise&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;[double: 6024x1] = sunrise&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.metadata.sunset&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] = sunset&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.metadata.photoperiod&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] = sunset - sunrise&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.metadata.clock_parameters &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 1x120]&amp;nbsp; &amp;nbsp;= clock_parameters&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.metadata.p&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 85x1]&amp;nbsp; &amp;nbsp; &amp;nbsp;= p&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.metadata.run_phenology_model&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (bool)&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;= run_phenology_model&lt;/span&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="630" y="5050" width="520" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-46" value="simdata.clock_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&#x9;&#x9;&#x9;&lt;/span&gt;&lt;/span&gt;struct&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;= clock_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;/* last value */&amp;nbsp;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.PIF_output&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&#x9;&#x9;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;struct&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;= PIF_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* last value */&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.Fl&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;=&amp;nbsp;day - 1&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.Hyp&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;= PIF_output.Hyp_length&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;simdata.CumPhenThrm&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&#x9; &lt;/span&gt; &lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;[double: 90x1]&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;= CumPhenThrmAll&lt;/span&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="631" y="5220" width="540" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-49" value="output &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[???] &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;= [simdata.clock(_output),&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;simdata.PIF(_output),&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;simdata.Hyp,&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;sim_data.Fl]&lt;br&gt;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="629" y="5350" width="540" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-51" value="cps:&lt;div&gt;if run_phenology_model not (true):&lt;/div&gt;&lt;div&gt;- not called&amp;nbsp;&lt;/div&gt;&lt;div&gt;- DayPenThrm = 0&amp;nbsp;&lt;/div&gt;&lt;div&gt;- &amp;amp; others unset&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF3333;" parent="1" vertex="1">
+          <mxGeometry x="922" y="4550" width="318" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-54" value="&amp;gt; T&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 6024x1]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* Temperature at time points */&lt;div&gt;&amp;gt; t&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* timepoint */&lt;/div&gt;&lt;div&gt;&amp;gt; sunrise&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* sunrise @ hours */&lt;/div&gt;&lt;div&gt;&amp;gt; sunset&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* sunset @ hours */&lt;/div&gt;&lt;div&gt;&amp;gt; geno&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* &lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;genotype index */&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;gt; clock_dynamics_model_i&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* flag: clock dynamics model */&lt;/div&gt;&lt;div&gt;&amp;gt; clock_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* clock model generated time series for parameters */&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;gt; FT_module_state&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 18x1]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* state vector of FT model (conc. model components @ initial time point */&lt;/div&gt;&lt;div&gt;&amp;gt; p&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 85x1]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* undifferentiated parameters */&lt;/div&gt;&lt;div&gt;&amp;gt; flowering_genotype&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[string]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* vector: genotype flags */&lt;/div&gt;&lt;div&gt;&amp;gt; hypocotyl_parameters&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* a1, a2, a3 */&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="80" y="5950" width="720" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-55" value="&amp;lt; DayPhenThrm&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;div&gt;&amp;lt; FT_module_state&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 18x1]&lt;/div&gt;&lt;div&gt;&amp;lt; PIF_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="80" y="6160" width="219.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-56" value="&lt;div&gt;set-up constants based on p&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="391" y="6200" width="209" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-59" value="&lt;div&gt;&amp;gt; sunrise&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* sunrise @ hours */&lt;/div&gt;&lt;div&gt;&amp;gt; sunset&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* sunset @ hours */&lt;/div&gt;&lt;div&gt;&amp;gt; clock_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* clock model generated time series for parameters */&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;gt; clock_dynamics_model_i&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;double (int)&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;/* flag: clock dynamics model */&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;gt; FT_module_state&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;[double: 1x18]&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial; white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;/* state vector of FT model (conc. model components @ initial time point */&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;gt; temperatures&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 6024x1]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* Temperature at time points */&lt;/div&gt;&lt;div&gt;&amp;gt; flowering_genotype&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[string]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* vector: genotype flags */&lt;/div&gt;&lt;div&gt;&amp;gt; hp&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* =&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;hypocotyl_parameters:&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;a1, a2, a3 */&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="400" y="6280" width="720" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-60" value="&amp;lt; dailyFTarea&lt;div&gt;&amp;lt; FT_module_state&lt;/div&gt;&lt;div&gt;&amp;lt; PIF_output&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="400" y="6440" width="250" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="muT-5egwIXRGlScPoila-62" target="QBO8LM26LkIvInR4Ni3u-89" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-69" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="muT-5egwIXRGlScPoila-62" target="muT-5egwIXRGlScPoila-64" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-62" value="&lt;div&gt;select clock parameters&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="710" y="6550" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-64" value="load_F2014_parameters&lt;div&gt;(flowering_genotype)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6590" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-65" value="wrap_P2011_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6700" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="muT-5egwIXRGlScPoila-66" target="muT-5egwIXRGlScPoila-65" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="muT-5egwIXRGlScPoila-66" target="muT-5egwIXRGlScPoila-67" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-66" value="&lt;div&gt;select clock model dynamics wrapper&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="710" y="6740" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-67" value="wrap_F2014_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6780" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-70" value="@ clock_dynamics_model_i &amp;lt; 3" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6490" width="201" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-72" value="&amp;lt; clock_parameters&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x120]" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="710" y="6590" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-73" value="&amp;lt; T&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 217x1]&lt;div&gt;&amp;lt; Y&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 217x18]&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="720" y="7120" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-76" value="@ clock_dynamics_model_i &amp;lt; 3" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6680" width="201" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-77" value="@ otherwise" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="1039" y="6760" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-80" value="&lt;div&gt;u = func_dynamics_wrapper(&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;clock_output.T,clock_output.Y,clock_parameters)&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="711" y="6860" width="410" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-83" value="&gt; flowering_genotype&#x9;[string]&#x9;&#x9;&#x9;/* vector: genotype flags */&#xa;&gt; temperature&#x9;&#x9;&#x9;[double: 6024x1]&#x9;/* Temperature at time points */" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="720" y="6940" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-84" value="&amp;lt; u&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="711" y="6900" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-85" value="&amp;lt; func_dynamics_wrapper" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="710" y="6780" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-87" value="light_conditions" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1752" y="7080" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="muT-5egwIXRGlScPoila-89" target="QBO8LM26LkIvInR4Ni3u-81" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-89" value="&lt;div&gt;ode15s( (t,y) → PIF_CO_FT_Dynamics(t, y, parameters.PIF_CO_FT, u, c), [0 c.period], FT_module_state)&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="711" y="7080" width="610" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-91" value="&amp;lt; dydt&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: ?x?]" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1440" y="7120" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-93" value="&amp;gt; t&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&amp;nbsp; &amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* time */&lt;br&gt;&amp;gt; y &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* values */&lt;div&gt;&amp;gt; P&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* parameters.PIF_CO_FT */&lt;/div&gt;&lt;div&gt;&amp;gt; c&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* light conditions inputs */&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="1440" y="7010" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-94" value="&amp;lt; parameters.PIF_CO_FT" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="720" y="7020" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-95" value="&lt;div&gt;&amp;gt; c&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* light conditions inputs */&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1752" y="7060" width="240" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-96" value="&amp;lt; L&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;/* multiplier light condition */" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1752" y="7120" width="248" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-97" value="&lt;div&gt;FT_module_state = Y(end. : )&#39;&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="710" y="7200" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-98" value="&lt;div&gt;dailyFTArea = trapz(T,Y(:,15));&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="710" y="7330" width="210" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-99" value="&amp;lt; FT_module_state [double: 18x1]" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="720" y="7240" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-100" value="&amp;gt; Y&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 217x18]" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="722" y="7180" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-101" value="&amp;gt; T&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 217x1]&lt;div&gt;&amp;gt; Y&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 217x18]&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="720" y="7290" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-102" value="&amp;lt; dailyFTArea&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="720" y="7370" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-103" value="&lt;div&gt;PIF_output.T&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;[double: 217x1]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;= T&lt;/div&gt;&lt;div&gt;PIF_output.Y&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;[double: 217x18]&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;= Y&lt;/div&gt;&lt;div&gt;PIF_output.FTarea&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;double&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;= dailyFTArea&lt;/span&gt;&lt;/div&gt;&lt;div&gt;PIF_output.Hyp_length&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;= (calculation)&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="710" y="7440" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-104" value="&amp;lt; PIF_output&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="722" y="7520" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-108" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="380" y="7580" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-109" value="" style="group" parent="muT-5egwIXRGlScPoila-108" vertex="1" connectable="0">
+          <mxGeometry width="40" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-110" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="muT-5egwIXRGlScPoila-109" vertex="1">
+          <mxGeometry y="10" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-111" value="" style="triangle;whiteSpace=wrap;html=1;" parent="muT-5egwIXRGlScPoila-109" vertex="1">
+          <mxGeometry x="20" width="10" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-112" value="for each hour in day" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="muT-5egwIXRGlScPoila-108" vertex="1">
+          <mxGeometry x="50" y="10" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-119" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-114" target="muT-5egwIXRGlScPoila-110" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-114" value="&lt;div&gt;Phot[hour] = calculate photoperiod component&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="441" y="7640" width="319" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-115" target="muT-5egwIXRGlScPoila-110" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-115" value="&lt;div&gt;Ve[hour] = calculate vernalisation effectiveness&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="441" y="7720" width="319" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-116" value="cps:&lt;div&gt;uses temperature[hour]&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF3333;" parent="1" vertex="1">
+          <mxGeometry x="770.5" y="7720" width="239" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-121" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-117" target="muT-5egwIXRGlScPoila-110" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-117" value="&lt;div&gt;Vh[hour] = cumulative vernalisation hours&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="441" y="7800" width="319" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-122" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-118" target="muT-5egwIXRGlScPoila-110" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-118" value="&lt;div&gt;Vern[hour] = cumulative fraction&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="442" y="7880" width="318" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="muT-5egwIXRGlScPoila-123" target="muT-5egwIXRGlScPoila-110" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-123" value="&lt;div&gt;mptu[hour] = Vern[hour] * Phot[hour] * Thrm[hour]&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="440" y="7960" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="muT-5egwIXRGlScPoila-125" value="&lt;div&gt;DayPhenThem = sum(mptu)&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="391" y="8040" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-2" value="&lt;div&gt;Chunk of code / logic&amp;nbsp;&lt;/div&gt;&lt;div&gt;— logical chunk of code&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="242" y="-5480" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-3" value="code chunk" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="42" y="-5480" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-37" value="???" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="35" y="140" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-129" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-57" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-130" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-58" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-131" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-118" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-132" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-94" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-133" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-99" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-134" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-113" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-135" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-50" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="840" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-136" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-124" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="1300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-137" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-38" target="eHs-UAjiz0eJx8ajhgTh-125" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="314" y="120" />
+              <mxPoint x="314" y="1380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-38" value="fit_model_to_hypocotyl_data" style="shape=stencil(tZTdjsIgEIWfhtsNFPV+w+p7YB23RIQGWF3f3mmhG0lt1582aZrMOfSb0wxAuPCVrIEUtCL8ixQFoxTfWJ9TvUq19DWUIYon6ZTcaoiOD84e4Kx2ITGUqcCp0Lh8TegnrmkeLkprDEKUNT5zbnyESWXwW/obYan9Jatq5B8hgEsho0qKzePYj+U8YDZT3hzbpZ8873TgPDGba3CTgdnrWC5QGdrcXGxlefh29sfs7oapZXNwekZnH+0J/jkO93+zA2hlbgBs8T5ilSOWE8T4u3eegbyEKLX1MLI3UO9NpFUHxsjF3joYme9eaR3vyJGugwva1r0OrRqv7la4Ag==);whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="35" y="100" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-39" value="&lt;div&gt;&lt;div&gt;cps:&lt;/div&gt;&lt;/div&gt;&lt;div&gt;if&amp;nbsp;clock_dynamics_model_i neither?&lt;/div&gt;&lt;div&gt;- should align with simulate_PIF_CO_FT?&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF3333;" parent="1" vertex="1">
+          <mxGeometry x="914" y="360" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-46" value="simulate the Framework Model v2" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="392" y="1190" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-126" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-48" target="eHs-UAjiz0eJx8ajhgTh-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-48" value="simulate_FM_simp" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=2" parent="1" vertex="1">
+          <mxGeometry x="392" y="1150" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-49" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="329" y="810" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-50" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="eHs-UAjiz0eJx8ajhgTh-49" vertex="1">
+          <mxGeometry y="10" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-51" value="" style="triangle;whiteSpace=wrap;html=1;" parent="eHs-UAjiz0eJx8ajhgTh-49" vertex="1">
+          <mxGeometry x="25" width="12.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-52" value="for photoperiod in [0, 8, 16]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="393" y="820" width="196" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-57" value="init default options" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="345" y="160" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-58" value="init light conditions" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="344" y="220" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-63" value="???" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="45" y="-4549" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-226" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-64" target="eHs-UAjiz0eJx8ajhgTh-83" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="-4569" />
+              <mxPoint x="320" y="-4489" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-227" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-64" target="eHs-UAjiz0eJx8ajhgTh-84" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="-4569" />
+              <mxPoint x="320" y="-4430" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-228" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-64" target="eHs-UAjiz0eJx8ajhgTh-76" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="-4569" />
+              <mxPoint x="320" y="-4350" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-64" value="clock_comparison_between_models" style="shape=stencil(tZTdjsIgEIWfhtsNFPV+w+p7YB23RIQGWF3f3mmhG0lt1582aZrMOfSb0wxAuPCVrIEUtCL8ixQFoxTfWJ9TvUq19DWUIYon6ZTcaoiOD84e4Kx2ITGUqcCp0Lh8TegnrmkeLkprDEKUNT5zbnyESWXwW/obYan9Jatq5B8hgEsho0qKzePYj+U8YDZT3hzbpZ8873TgPDGba3CTgdnrWC5QGdrcXGxlefh29sfs7oapZXNwekZnH+0J/jkO93+zA2hlbgBs8T5ilSOWE8T4u3eegbyEKLX1MLI3UO9NpFUHxsjF3joYme9eaR3vyJGugwva1r0OrRqv7la4Ag==);whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="45" y="-4589" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-75" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="334.5" y="-4380" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-76" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="eHs-UAjiz0eJx8ajhgTh-75" vertex="1">
+          <mxGeometry y="10" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-77" value="" style="triangle;whiteSpace=wrap;html=1;" parent="eHs-UAjiz0eJx8ajhgTh-75" vertex="1">
+          <mxGeometry x="25" width="12.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-78" value="for photoperiod in [12, 24, 0, 18]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="398.5" y="-4370" width="196" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-79" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="378" y="-4300" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-80" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="eHs-UAjiz0eJx8ajhgTh-79" vertex="1">
+          <mxGeometry y="10" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-81" value="" style="triangle;whiteSpace=wrap;html=1;" parent="eHs-UAjiz0eJx8ajhgTh-79" vertex="1">
+          <mxGeometry x="25" width="12.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-82" value="for genotype in [ [&#39;wt&#39;], [&#39;YHB&#39;], [&#39;elf3&#39;],[&#39;elf3&#39;,&#39;YHB&#39;] ]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="442" y="-4290" width="285" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-83" value="default options" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="-4509" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-84" value="initialise light conditions" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="350" y="-4450" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-85" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="417" y="-4160" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-86" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="eHs-UAjiz0eJx8ajhgTh-85" vertex="1">
+          <mxGeometry y="10" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-87" value="" style="triangle;whiteSpace=wrap;html=1;" parent="eHs-UAjiz0eJx8ajhgTh-85" vertex="1">
+          <mxGeometry x="25" width="12.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-88" value="for clock_dynamics_model_i, clock_dynamics_model in&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;enumerate(&#39;P2011_Red&#39;, &#39;P2011_COP1&#39;, &#39;F2014_Red&#39;, &#39;F2014_COP1&#39;)&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="481" y="-4150" width="424" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-90" value="load_P2011_parameters({&#39;wt&#39;})" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="673.5" y="320" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-91" value="@ clock_dynamics_model_i == 4" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="673.5" y="380" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-94" target="eHs-UAjiz0eJx8ajhgTh-90" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-94" target="eHs-UAjiz0eJx8ajhgTh-95" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-94" value="&lt;div&gt;select clock parameters&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="344.5" y="360" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-95" value="load_F2014_parameters({&#39;wt&#39;})" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="673.5" y="400" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-96" value="wrap_P2011_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="673" y="480" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-97" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-99" target="eHs-UAjiz0eJx8ajhgTh-96" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-98" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-99" target="eHs-UAjiz0eJx8ajhgTh-100" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-99" value="&lt;div&gt;select clock model dynamics&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="344" y="520" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-100" value="wrap_F2014_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="673" y="560" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-101" value="@ clock_dynamics_model_i == 2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="673.5" y="300" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-102" value="&amp;lt; clock_parameters&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x120]" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="344.5" y="400" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-107" value="&amp;lt; clock_dynamics" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="344" y="560" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-108" value="@ clock_dynamics_model_i == 2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="672.75" y="460" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-109" value="@ clock_dynamics_model_i == 4" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="672.75" y="540" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-110" value="wrap_P2011_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="673.75" y="640" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-113" target="eHs-UAjiz0eJx8ajhgTh-110" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-112" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-113" target="eHs-UAjiz0eJx8ajhgTh-114" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-113" value="&lt;div&gt;select initial conditions for clock&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="344.75" y="680" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-114" value="wrap_F2014_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="673.75" y="720" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-115" value="&amp;lt; options.y0" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="344.75" y="720" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-116" value="@ clock_dynamics_model_i == 2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="673.5" y="620" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-117" value="@ clock_dynamics_model_i == 4" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="673.5" y="700" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-118" value="init model parameters" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="345" y="280" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-120" target="eHs-UAjiz0eJx8ajhgTh-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-120" value="update options" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="384" y="880" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-127" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-121" target="eHs-UAjiz0eJx8ajhgTh-50" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-121" value="update env" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="385" y="940" width="159" height="40" as="geometry" />
+        </mxCell>
+        <UserObject label="&amp;gt; hour&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* timepoints */&lt;br&gt;&amp;gt; T&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* temperature @ each timepoint */&lt;br&gt;&amp;gt; sunrise &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* hour of … @ each timepoint */&lt;br&gt;&amp;gt; sunset&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* hour of … @ each timepoint */&lt;br&gt;&amp;gt; clock_parameters &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x120]&amp;nbsp; &amp;nbsp;/* ??? */&lt;br&gt;&amp;gt; clock_dynamics&amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;func&lt;br&gt;&amp;gt; clock_dynamics_model_i&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* flag: clock dynamics model */&lt;br&gt;&amp;gt; p&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 85x1]&amp;nbsp; &amp;nbsp; &amp;nbsp;/* undifferentiated parameters */&lt;br&gt;&amp;gt; run_phenology_model&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* flag: use PIFCO phenology module */&lt;br&gt;&amp;gt; options&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* dict: additional parameters {string:value} */" link="- hour&#x9;&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | hour / timestep 1 - 24 x 251 days &#xa;- T&#x9;&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | temperature (°C) @ each timestep&#xa;- sunrise&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | ??? (= rise * weather(:,3) where: rise = 0 &amp; weather(:,3) = weather.mat @ column 3 contents = [6024x1 /*each @ 1*/])&#xa;- sunset&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | ??? (= set * weather(:,4) where: set = Phot(i /*loop index*/) @ 0 /* photo period */ &amp; weather(:,4) = weather.mat @ column 4 contents = [6024x1 /*each @ 1*/])&#xa;- clock_parameters&#x9;&#x9;= [double] @ 1 x 120  | ???&#xa;- clock_dynamics &#x9;&#x9;= func: F2014_Dynamics_COP1 | function implementing clock dynamics&#xa;- clock_dynamics_model_i&#x9;= [double] @ 1 x 1    | flag indicating which clock dynamics model to use&#xa;- p&#x9;&#x9;&#x9;&#x9;= [double] @ 85 x 1   | undifferentiated parameters from parameter.mat&#xa;- run_phenology_model&#x9;&#x9;= [double] @ 1 x 1    | flag indicating whether to use PIFCO phenology module or not&#xa;- options" id="eHs-UAjiz0eJx8ajhgTh-122">
+          <mxCell style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+            <mxGeometry x="392" y="1000" width="500" height="150" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-124" value="costfunction" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="354" y="1280" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-125" value="plot" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="352.5" y="1360" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-138" value="???" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="37" y="-2180" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-139" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-157" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-2140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-140" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-158" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-2080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-183" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-2000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-142" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-163" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-1940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-168" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-1780" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-144" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-178" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-1620" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-145" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-154" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-1480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-189" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-980" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-147" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-148" target="eHs-UAjiz0eJx8ajhgTh-190" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="316" y="-2200" />
+              <mxPoint x="316" y="-900" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-148" value="fit_model_to_flowering_data" style="shape=stencil(tZTdjsIgEIWfhtsNFPV+w+p7YB23RIQGWF3f3mmhG0lt1582aZrMOfSb0wxAuPCVrIEUtCL8ixQFoxTfWJ9TvUq19DWUIYon6ZTcaoiOD84e4Kx2ITGUqcCp0Lh8TegnrmkeLkprDEKUNT5zbnyESWXwW/obYan9Jatq5B8hgEsho0qKzePYj+U8YDZT3hzbpZ8873TgPDGba3CTgdnrWC5QGdrcXGxlefh29sfs7oapZXNwekZnH+0J/jkO93+zA2hlbgBs8T5ilSOWE8T4u3eegbyEKLX1MLI3UO9NpFUHxsjF3joYme9eaR3vyJGugwva1r0OrRqv7la4Ag==);whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="37" y="-2220" width="260" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-149" value="&lt;div&gt;&lt;div&gt;cps:&lt;/div&gt;&lt;/div&gt;&lt;div&gt;if&amp;nbsp;clock_dynamics_model_i neither?&lt;/div&gt;&lt;div&gt;- should align with simulate_PIF_CO_FT?&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF3333;" parent="1" vertex="1">
+          <mxGeometry x="916" y="-1960" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-150" value="simulate the Framework Model v2" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="394" y="-1130" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-151" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-152" target="eHs-UAjiz0eJx8ajhgTh-154" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-152" value="simulate_FM_simp" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=2" parent="1" vertex="1">
+          <mxGeometry x="399" y="-1170" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-153" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="331" y="-1510" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-154" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="eHs-UAjiz0eJx8ajhgTh-153" vertex="1">
+          <mxGeometry y="10" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-155" value="" style="triangle;whiteSpace=wrap;html=1;" parent="eHs-UAjiz0eJx8ajhgTh-153" vertex="1">
+          <mxGeometry x="25" width="12.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-156" value="for photoperiod in [8, 12, 16]" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="395" y="-1500" width="196" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-157" value="init default options" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="347" y="-2160" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-158" value="init light conditions" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="346" y="-2100" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-159" value="load_P2011_parameters({&#39;wt&#39;})" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="675.5" y="-2000" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-160" value="@ clock_dynamics_model_i == 4" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="675.5" y="-1940" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-161" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-163" target="eHs-UAjiz0eJx8ajhgTh-159" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-162" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-163" target="eHs-UAjiz0eJx8ajhgTh-164" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-163" value="&lt;div&gt;select clock parameters&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="346.5" y="-1960" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-164" value="load_F2014_parameters({&#39;wt&#39;})" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="675.5" y="-1920" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-165" value="wrap_P2011_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="675" y="-1840" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-166" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-168" target="eHs-UAjiz0eJx8ajhgTh-165" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-167" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-168" target="eHs-UAjiz0eJx8ajhgTh-169" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-168" value="&lt;div&gt;select clock model dynamics&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="346" y="-1800" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-169" value="wrap_F2014_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="675" y="-1760" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-170" value="@ clock_dynamics_model_i == 2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="675.5" y="-2020" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-171" value="&amp;lt; clock_parameters&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x120]" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="346.5" y="-1920" width="220" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-172" value="&amp;lt; clock_dynamics" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="346" y="-1760" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-173" value="@ clock_dynamics_model_i == 2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="674.75" y="-1860" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-174" value="@ clock_dynamics_model_i == 4" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="674.75" y="-1780" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-175" value="wrap_P2011_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="675.75" y="-1680" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-176" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-178" target="eHs-UAjiz0eJx8ajhgTh-175" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-177" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-178" target="eHs-UAjiz0eJx8ajhgTh-179" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-178" value="&lt;div&gt;select initial conditions for clock&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="346.75" y="-1640" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-179" value="wrap_F2014_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="675.75" y="-1600" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-180" value="&amp;lt; options.y0" style="text;whiteSpace=wrap;html=1;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="346.75" y="-1600" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-181" value="@ clock_dynamics_model_i == 2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="675.5" y="-1700" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-182" value="@ clock_dynamics_model_i == 4" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="675.5" y="-1620" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-183" value="init model parameters" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="348" y="-2020" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-184" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-185" target="eHs-UAjiz0eJx8ajhgTh-154" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-185" value="update options" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="386" y="-1440" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-186" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-187" target="eHs-UAjiz0eJx8ajhgTh-154" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-187" value="update env" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="387" y="-1380" width="159" height="40" as="geometry" />
+        </mxCell>
+        <UserObject label="&amp;gt; hour&amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* timepoints */&lt;br&gt;&amp;gt; T&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* temperature @ each timepoint */&lt;br&gt;&amp;gt; sunrise &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* hour of … @ each timepoint */&lt;br&gt;&amp;gt; sunset&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;/span&gt;[double: 6024x1] /* hour of … @ each timepoint */&lt;br&gt;&amp;gt; clock_parameters &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 1x120]&amp;nbsp; &amp;nbsp;/* ??? */&lt;br&gt;&amp;gt; clock_dynamics&amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;func&lt;br&gt;&amp;gt; clock_dynamics_model_i&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double (int)&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* flag: clock dynamics model */&lt;br&gt;&amp;gt; p&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;[double: 85x1]&amp;nbsp; &amp;nbsp; &amp;nbsp;/* undifferentiated parameters */&lt;br&gt;&amp;gt; run_phenology_model&amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;double&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* flag: use PIFCO phenology module */&lt;br&gt;&amp;gt; options&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;struct&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; /* dict: additional parameters {string:value} */" link="- hour&#x9;&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | hour / timestep 1 - 24 x 251 days &#xa;- T&#x9;&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | temperature (°C) @ each timestep&#xa;- sunrise&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | ??? (= rise * weather(:,3) where: rise = 0 &amp; weather(:,3) = weather.mat @ column 3 contents = [6024x1 /*each @ 1*/])&#xa;- sunset&#x9;&#x9;&#x9;= [double] @ 6024 x 1 | ??? (= set * weather(:,4) where: set = Phot(i /*loop index*/) @ 0 /* photo period */ &amp; weather(:,4) = weather.mat @ column 4 contents = [6024x1 /*each @ 1*/])&#xa;- clock_parameters&#x9;&#x9;= [double] @ 1 x 120  | ???&#xa;- clock_dynamics &#x9;&#x9;= func: F2014_Dynamics_COP1 | function implementing clock dynamics&#xa;- clock_dynamics_model_i&#x9;= [double] @ 1 x 1    | flag indicating which clock dynamics model to use&#xa;- p&#x9;&#x9;&#x9;&#x9;= [double] @ 85 x 1   | undifferentiated parameters from parameter.mat&#xa;- run_phenology_model&#x9;&#x9;= [double] @ 1 x 1    | flag indicating whether to use PIFCO phenology module or not&#xa;- options" id="eHs-UAjiz0eJx8ajhgTh-188">
+          <mxCell style="text;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+            <mxGeometry x="399" y="-1320" width="500" height="150" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-189" value="costfunction" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="359.75" y="-1000" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-190" value="plot" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="358.25" y="-920" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-191" value="p[17] set high to ensure max days run" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="367.25" y="-2040" width="213.75" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-193" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-192" target="eHs-UAjiz0eJx8ajhgTh-154" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-192" value="plot cumulative phen thrm 1:90" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="400" y="-1080" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-224" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-194" target="eHs-UAjiz0eJx8ajhgTh-200" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-225" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-194" target="eHs-UAjiz0eJx8ajhgTh-217" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-230" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-194" target="eHs-UAjiz0eJx8ajhgTh-86" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="442" y="-4020" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-194" value="&lt;div&gt;select clock parameters&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="467" y="-4040" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-218" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-195" target="eHs-UAjiz0eJx8ajhgTh-203" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-219" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-195" target="eHs-UAjiz0eJx8ajhgTh-206" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-220" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-195" target="eHs-UAjiz0eJx8ajhgTh-208" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-221" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-195" target="eHs-UAjiz0eJx8ajhgTh-210" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-233" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;entryX=0.508;entryY=0.982;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-195" target="eHs-UAjiz0eJx8ajhgTh-86" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="-4100" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="442" y="-3540" />
+              <mxPoint x="442" y="-4100" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-195" value="&lt;div&gt;select clock model dynamics&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="467" y="-3560" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-236" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-196" target="eHs-UAjiz0eJx8ajhgTh-86" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="442" y="-3740" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-196" value="&lt;div&gt;select initial conditions for clock&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="467" y="-3760" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-229" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;endArrow=none;endFill=0;startArrow=classic;startFill=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-197" target="eHs-UAjiz0eJx8ajhgTh-80" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-243" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;endFill=0;startArrow=classic;startFill=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-80" target="eHs-UAjiz0eJx8ajhgTh-76" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="364" y="-4270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-197" value="update options genotype" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="435" y="-4230" width="159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-199" value="@ clock_dynamics_model_i == 1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760" y="-4100" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-200" value="load_P2011_parameters(genotype)" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760" y="-4080" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-203" value="P2011_dynamics_Red" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3680" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-204" value="@ clock_dynamics_model_i == 1" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3700" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-205" value="@ clock_dynamics_model_i == 2" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3620" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-206" value="P2011_dynamics_COP1" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3600" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-207" value="@ clock_dynamics_model_i == 3" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3540" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-208" value="&lt;div class=&quot;rtcContent&quot; style=&quot;padding: 30px; font-size: medium; text-align: start;&quot;&gt;&lt;div class=&quot;lineNode&quot; style=&quot;font-size: 10pt;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;F2014_dynamics_Red&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3520" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-209" value="@ clock_dynamics_model_i == 4" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3460" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-210" value="&lt;div class=&quot;rtcContent&quot; style=&quot;padding: 30px; text-align: start;&quot;&gt;&lt;div class=&quot;lineNode&quot; style=&quot;&quot;&gt;&lt;font&gt;&lt;span style=&quot;font-size: 13.3333px; white-space: pre;&quot;&gt;F2014_dynamics_COP1&lt;/span&gt;&lt;/font&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3440" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-222" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-211" target="eHs-UAjiz0eJx8ajhgTh-213" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-223" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-211" target="eHs-UAjiz0eJx8ajhgTh-214" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-234" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-211" target="eHs-UAjiz0eJx8ajhgTh-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-211" value="&lt;div&gt;select clock model dynamics wrapper&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;align=left;spacingLeft=20;" parent="1" vertex="1">
+          <mxGeometry x="469" y="-3880" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-212" value="@ clock_dynamics_model_i &amp;lt; 3" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760.25" y="-3940" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-213" value="wrap_P2011_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760.25" y="-3920" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-214" value="wrap_F2014_model_dynamics" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3840" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-215" value="@ otherwise" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-3860" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-216" value="@ otherwise" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#4D4D4D;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-4020" width="200.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-217" value="load_F2014_parameters(&lt;div&gt;genotype,paramSet)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="760.5" y="-4000" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-238" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-237" target="eHs-UAjiz0eJx8ajhgTh-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-237" value="&lt;div style=&quot;padding: 30px;&quot; class=&quot;rtcContent&quot;&gt;&lt;div style=&quot;&quot; class=&quot;lineNode&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space: pre;&quot;&gt;entrain_and_run_clock_model(&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot; class=&quot;lineNode&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;parameters, clock_dynamics, clock_dynamics_wrapper,&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot; class=&quot;lineNode&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space: pre;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;c,options,y0)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;align=left;" parent="1" vertex="1">
+          <mxGeometry x="481" y="-3360" width="399" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-241" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-239" target="eHs-UAjiz0eJx8ajhgTh-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-239" value="&lt;div style=&quot;padding: 30px;&quot; class=&quot;rtcContent&quot;&gt;&lt;div style=&quot;&quot; class=&quot;lineNode&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space: pre;&quot;&gt;plot output&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;align=left;" parent="1" vertex="1">
+          <mxGeometry x="481" y="-3260" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-242" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-240" target="eHs-UAjiz0eJx8ajhgTh-86" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-240" value="&lt;div style=&quot;padding: 30px;&quot; class=&quot;rtcContent&quot;&gt;&lt;div style=&quot;&quot; class=&quot;lineNode&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space: pre;&quot;&gt;save output&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;align=left;" parent="1" vertex="1">
+          <mxGeometry x="479" y="-3180" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-244" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-86" target="eHs-UAjiz0eJx8ajhgTh-80" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="420" y="-4240" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="403" y="-4130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-245" value="" style="group" parent="1" vertex="1" connectable="0">
+          <mxGeometry x="381" y="-3110" width="50" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-246" value="" style="verticalLabelPosition=bottom;verticalAlign=top;html=1;shape=mxgraph.basic.arc;startAngle=0.25604095587391684;endAngle=0.0015914963824541276;strokeColor=default;" parent="eHs-UAjiz0eJx8ajhgTh-245" vertex="1">
+          <mxGeometry y="10" width="50" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-247" value="" style="triangle;whiteSpace=wrap;html=1;" parent="eHs-UAjiz0eJx8ajhgTh-245" vertex="1">
+          <mxGeometry x="25" width="12.5" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-248" value="for clock_dynamics_model_i, clock_dynamics_model in&amp;nbsp;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;enumerate(&#39;P2011_Red&#39;, &#39;P2011_COP1&#39;, &#39;F2014_Red&#39;, &#39;F2014_COP1&#39;)&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="445" y="-3100" width="424" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-250" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-249" target="eHs-UAjiz0eJx8ajhgTh-246" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-251" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;endArrow=none;endFill=0;" parent="1" source="eHs-UAjiz0eJx8ajhgTh-246" target="eHs-UAjiz0eJx8ajhgTh-76" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="364" y="-3080" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="eHs-UAjiz0eJx8ajhgTh-249" value="&lt;div style=&quot;padding: 30px;&quot; class=&quot;rtcContent&quot;&gt;&lt;div style=&quot;&quot; class=&quot;lineNode&quot;&gt;&lt;span style=&quot;font-size: 13.3333px; white-space: pre;&quot;&gt;save output&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Helvetica;align=left;" parent="1" vertex="1">
+          <mxGeometry x="444.5" y="-3040" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ailRnwe11aoC7oRFltEW-1" value="Entry Points (4 / 4)" style="rounded=0;whiteSpace=wrap;html=1;align=left;fontStyle=0;fontSize=16;spacingLeft=8;" vertex="1" parent="1">
+          <mxGeometry x="20.5" y="2360" width="1620" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
