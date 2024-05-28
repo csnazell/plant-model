@@ -24,14 +24,20 @@
 
 floweringGenotype = ??
 
-light = lightModel()
+lightConditions = ...
 
 plantParameters = load("parameter.mat")
+
+# clock 
+
+clock = clockModel(
+            
+                  )
 
 # construct phenology model using base PIF_CO_FT
 
 phenology = phenologyModel(
-                simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype, light),
+                simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype, lightConditions),
                 plantParameters,
                 floweringThresholdGenotype
                 )
@@ -89,15 +95,15 @@ func loadPifCoFtParameters(genotype) -> struct(parameters)
     - NB: adjustment for temperature in MATLAB code moved into simulation
     -     improves performance (not constantly reloading data)
 
-func dynamics_PIF_CO_FT(t, y, P, u, c, lightModel) -> dydt
-    - as per matlab but light model passed in
+func dynamics_PIF_CO_FT(t, y, P, u, c, lightConditions) -> dydt
+    - as per matlab but light conditions passed in
 
 func simulationPhenology_PIF_CO_FT
         ( 
          clockModelId,
          floweringGenotype,
          floweringSet,          # optional defaults to 1
-         lightModel
+         lightConditions
         ) -> simulation
     - select clock parameter (clockModelId, floweringGenotype, floweringSet)
     - select clock adapter   (clockModelId)
@@ -133,11 +139,11 @@ func simulationPhenology_PIF_CO_FT_HypocotylLength
          clockModelId,
          floweringGenotype,
          floweringSet,
-         lightModel,
+         lightConditions,
          hypocotylParameters
         ) -> simulation
     - baseFunc = simulationPhenology_PIF_CO_FT(
-                    clockModelId, floweringGenotype, floweringSet, lightModel
+                    clockModelId, floweringGenotype, floweringSet, lightConditions
                         )
     - construct extended simulation with hypocotyl functionality
 
