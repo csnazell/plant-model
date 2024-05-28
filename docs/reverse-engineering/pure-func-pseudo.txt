@@ -22,7 +22,7 @@
 # example code use -------------------------------------------------------------
 #
 
-floweingGenotype = ??
+floweringGenotype = ??
 
 light = lightModel()
 
