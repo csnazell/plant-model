@@ -22,11 +22,12 @@
 # example code use -------------------------------------------------------------
 #
 
-floweringGenotype = ??
+floweringGenotype           = ??
+floweringThresholdGenotype  = ??
 
-lightConditions = ...
+weather                     = load("weather.mat")
 
-plantParameters = load("parameter.mat")
+plantParameters             = load("parameter.mat")
 
 # clock 
 
@@ -37,7 +38,7 @@ clock = clockModel(
 # construct phenology model using base PIF_CO_FT
 
 phenology = phenologyModel(
-                simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype, lightConditions),
+                simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype),
                 plantParameters,
                 floweringThresholdGenotype
                 )
@@ -46,11 +47,11 @@ plant     = plantModel(..., phenology, ...)
 
 # construct phenology model with hypocotyl length calculation
 
-hypodotylParameters = load("Hypocotyl_parameters_P2011")
+hypocotylParameters = load("Hypocotyl_parameters_P2011")
 
 phenology = phenologyModel(
                 simulationPhenology_PIF_CO_FT_HypocotylLength( 
-                    clockModelId, floweringGenotype, light, hypocotylParameters
+                    clockModelId, floweringGenotype, hypocotylParameters
                         ),
                 plantParameters,
                 floweringThresholdGenotype
@@ -103,17 +104,19 @@ func simulationPhenology_PIF_CO_FT
          clockModelId,
          floweringGenotype,
          floweringSet,          # optional defaults to 1
-         lightConditions
         ) -> simulation
+    
     - select clock parameter (clockModelId, floweringGenotype, floweringSet)
+
     - select clock adapter   (clockModelId)
                              # referred to as dynamics wrapper in MATLAB)
-    - select simulation parameters (floweringGenotype)
+    - select simulation parameters: 
+        loadPifCoFtParameters(floweringGenotype)
+
     - construct simulation func of form:
       NB: the idea is that every phenology simulation will have this form
           extension of function behaviour can be achieved by nesting 
           (see func simulationPhenology_PIF_CO_FT_HypocotylLength below)
-
 
         func simulation
                 (
@@ -122,12 +125,17 @@ func simulationPhenology_PIF_CO_FT
                  temperature,
                  lightConditions       
                 ) -> dailyFTArea, simulationState, output
+
             - captures clock & simulation parameters from constructor
+
             - captures clock adapter from constructor
+
             - tweak simulation parameters for temperature
+
             - as per MATLAB: simulate_PIF_CO_FT_model without selection logic
               NB: sunrise & sunset are only used to construct lightConditions struct
                   it's cleaner to bump this construction to calling function
+
             - return dailyFTArea, simulationState, output
 
     - return simulation
@@ -139,13 +147,12 @@ func simulationPhenology_PIF_CO_FT_HypocotylLength
          clockModelId,
          floweringGenotype,
          floweringSet,
-         lightConditions,
          hypocotylParameters
         ) -> simulation
-    - baseFunc = simulationPhenology_PIF_CO_FT(
-                    clockModelId, floweringGenotype, floweringSet, lightConditions
-                        )
-    - construct extended simulation with hypocotyl functionality
+
+    - baseFunc = simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype, floweringSet)
+
+    - construct extended simulation with hypocotyl functionality:
 
         func simulation
                 (
@@ -154,11 +161,16 @@ func simulationPhenology_PIF_CO_FT_HypocotylLength
                  temperature,
                  lightConditions       
                 ) -> dailyFTArea, simulationState, output
+
             - dailyFTArea, simulationState, output = 
                 baseFunc(clockOuput, simulationState, temperature, lightConditions)
+            
             - output.hypocotylLength = 
                 calculation using output.T, output.Y + hypocotylParameters
+            
             - return dailyFTArea, simulationState, output
+
+    - return simulation
 
 # Phenology model constructor
 # - creates a function embodying configured model parameters
@@ -171,34 +183,52 @@ func phenologyModel(
 
         if no arguments supplied:
 
-            func model(timepoint, temperature, modelState) -> dailyThrm, modelState, modelOutput
+            - construct model:
+
+                func model(
+                           timepoint, 
+                           temperature, 
+                           modelState
+                          ) -> dailyThrm, modelState, modelOutput
+
                 - return 0, none, none
+
+            - return model
 
         else:
 
             - tweak parameters according to floweringThresholdGenotype
 
-            func model
-                    (
-                     timepoint,
-                     clockOutput
-                     temperature,
-                     sunrise,
-                     sunset,
-                     modelState,
-                    ) -> dailyThrm, modelState, modelOutput
+            - constuct model:
+
+                func model(
+                           timepoint,
+                           clockOutput
+                           temperature,
+                           sunrise,
+                           sunset,
+                           modelState,
+                          ) -> dailyThrm, modelState, modelOutput
+
                     - captures simulation from constuctor
+                    
                     - captures parameters from constructor
+                    
                     - calculate lightConditions
+                    
                     - dailyFTArea, simulationState, simulationOutput
                         = simulation(clockOutput, modelState, temperature, lightConditions)
+                    
                     - dailyThrm calculation as per MATLAB
+                    
                     - modelState = simulationState      
                     # optionally modelState could encapsulate simulationState
                     #  e.g. modelState.simulation = simulationState
+                    
                     - modelOutput = simulationOutput
                     # optionally modelOutput could encapsulate simulationOutput
                     #  e.g. modelOutput.simulation = simulationOutput
-                    - return dailytThrm, modelState, modelOutput
+                    
+                    - return dailyThrm, modelState, modelOutput
 
-
+            - return model
