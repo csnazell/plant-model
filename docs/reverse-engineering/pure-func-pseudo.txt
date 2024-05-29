@@ -21,29 +21,32 @@
 #
 # example code use -------------------------------------------------------------
 #
+# loosely based on Fit_Model_To_Hypocotyl_Data.m with default configuration & 
+# single photoperiod of 8 hours
+#
 
-floweringGenotype           = ??
-floweringThresholdGenotype  = ??
+# initial conditions
+
+floweringGenotype           = 2
 
 weather                     = load("weather.mat")
+sunset(weather)             = sunset(weather) * 8 # 8 hour photoperiod
 
 plantParameters             = load("parameter.mat")
 
 # clock 
 
-clock = clockModel(
-            
-                  )
+import F2014_clocks
 
-# construct phenology model using base PIF_CO_FT
-
-phenology = phenologyModel(
-                simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype),
-                plantParameters,
-                floweringThresholdGenotype
-                )
-
-plant     = plantModel(..., phenology, ...)
+clock, clockInitialState = 
+    clockModel(
+        F2014_clocks.dynamicsCOP1,
+        F2014_clocks.parameters(genotype)
+        entrainDuration=12,
+        entrainSunset=first(sunrise(weather)),
+        entrainSunrise=first(sunset(weather)),
+        entrainClockState=ones(1:35)
+        )
 
 # construct phenology model with hypocotyl length calculation
 
@@ -54,36 +57,69 @@ phenology = phenologyModel(
                     clockModelId, floweringGenotype, hypocotylParameters
                         ),
                 plantParameters,
-                floweringThresholdGenotype
+                floweringGenotype
                 )
 
-plant     = plantModel(..., phenology, ...)
+# plant model
 
-# construct a simulation with no-op phenology model
+plant = plantModel(plantParameters, weather, clock, clockInitialState, phenology)
 
-plant     = plantModel(..., phenologyModel(), ...)
+plantOutput = plant(days=90)
+
+
 
 #
 # functions --------------------------------------------------------------------
 #
 
 #
-# clock
+# clock simulation
 #
 
-func loadClockParameters(modelId, genotype, set) -> [parameter]
-    - load parameters from file identified by model flag 
-    - fillet according to genotype
-    - ??: unless there's something intrinsic in the use of this vector
-          it's probably a good idea to bump this to a struct which 
-          will map to a Julia type
+# module: F2014_clocks
 
-#
-# framework simulation
-#
+func dynamicsCOP1(...) -> ...
 
-func plantModel(..., phenologyModel, ...)
-    - TBD
+    - as per MATLAB: F2014_dynamics_COP1(...)
+
+func parameters(genotype, set=1) -> ...
+
+    - as per MATLAB: load_F2014_parameters(...)
+
+# base clock functionality
+
+func clockModel(
+                clockDynamics,
+                clockParameters,
+                entrainDuration,
+                entrainSunrise,
+                entrainSunset,
+                entrainClockState
+               ) -> model, initialClockState, 
+
+    - construct dynamics func of form:
+
+        func dynamics
+                (
+                    sunrise,
+                    sunset,
+                    initialState                # aka y0 in MATLAB code
+                ) -> clockOutput, clockState    # aka clock_output, clock_state_0
+
+            - captures clockParameters from constructor
+
+            - aka MATLAB: run_clock_model_for_a_day
+
+            - clockState = interp1q(clock_output.T,clock_output.Y,24)
+
+            - return clock
+
+    - determine entrainedInitialClockState for entrainDuration (using clockDynamics)
+
+    - initialClockOutput, initialClockState = 
+        dynamics(entrainSunrise, entrainSunset, entrainedInitialClockState)
+
+    - return dynamics, initialClockState
 
 #
 # phenology
@@ -232,3 +268,74 @@ func phenologyModel(
                     - return dailyThrm, modelState, modelOutput
 
             - return model
+
+#
+# plant model
+#
+
+func plantModel(
+                plantParameters, 
+                weather, 
+                clockModel,        
+                clockInitialState,
+                phenologyModel
+               ) -> model
+
+    - construct plant model function:
+
+        func model(days) -> simData:
+
+            # initialise
+
+            # - clock
+
+            - initialise clockState = clockInitialState
+
+            # - phenology
+
+            - initialise FT_module_state = ones(1:18)
+
+            - initialise cumulativePhenThrms = zeroes(1:days)
+
+            - initialise cumulativePhenThrm = 0
+
+            - hasFlowered = false
+
+            # run simulation
+
+            - for day in 1:days :
+
+                - if hasFlowered: break
+
+                # environment
+
+                - timepoint = (day - 1) * 24 + 1
+
+                # clock
+
+                - clockOutput, nextClockState = 
+                    clockModel(sunrise, sunset, clockState)
+
+                # phenology
+
+                - dailyThrm, nextFT_module_state, modelOutput = 
+                    phenologyModel(
+                           timepoint,
+                           clockOutput
+                           temperatures(weather),
+                           at(sunrise(weather), timepoint),
+                           at(sunset(weather), timepoint), 
+                           FT_module_state,
+                          )
+
+                - cumulativePhenThrm = dailyThrm + cumulativePhenThrm
+
+                - cumulativePhenThrms[day] = cumulativePhenThrms
+
+                - FT_module_state = nextFT_module_state
+
+            # simdata
+
+            - construct sim data as per MATLAB
+
+    - return model
