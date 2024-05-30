@@ -1,5 +1,5 @@
 #                                                                              #
-# pure-func-pseudo.txt                                                         #
+# pure-func.txt                                                                #
 #                                                                              #
 # A "pure" functional pseudo-code "sketch" of model implementation             #
 #                                                                              #
