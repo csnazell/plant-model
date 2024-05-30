@@ -108,11 +108,11 @@ func clockModel(
 
             - captures clockParameters from constructor
 
-            - aka MATLAB: run_clock_model_for_a_day
+            - clockOutput = aka MATLAB: run_clock_model_for_a_day
 
             - clockState = interp1q(clock_output.T,clock_output.Y,24)
 
-            - return clock
+            - return clockOutput, clockState
 
     - determine entrainedInitialClockState for entrainDuration (using clockDynamics)
 
