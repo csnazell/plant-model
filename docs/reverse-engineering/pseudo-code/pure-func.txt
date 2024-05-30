@@ -222,9 +222,12 @@ func phenologyModel(
             - construct model:
 
                 func model(
-                           timepoint, 
-                           temperature, 
-                           modelState
+                           timepoint,
+                           clockOutput
+                           temperature,
+                           sunrise,
+                           sunset,
+                           modelState,
                           ) -> dailyThrm, modelState, modelOutput
 
                 - return 0, none, none
