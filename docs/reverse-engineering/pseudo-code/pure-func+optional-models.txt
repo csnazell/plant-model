@@ -1,0 +1,481 @@
+#                                                                              #
+# pure-func+optional-models.txt                                                #
+#                                                                              #
+# A "pure" functional pseudo-code "sketvh" of model implementation with        #
+# recording of state & output from each timestep & support for discrete models #
+# that can be optionally added to plant model.                                 #
+#                                                                              #
+# Extends sketch in pure-func.txt:                                             #
+#                                                                              #
+# - plant model maintains a list of "frames" for states & outputs with the     #
+#   frame containing a collection of states / outputs (as appropriate) for     #  
+#   each time increment                                                        #  
+#                                                                              #
+# - each model can store & access its state or output in a frame keyed to a    #
+#   (string) value configured by model's constructor.                          # 
+#                                                                              #
+#   - clock model & phenology model are most likely special cases and their    #
+#     output is explicitly passed into other models                            #
+#                                                                              #
+#   - additional models should not touch data inserted into state / output by  #
+#     other models                                                             #
+#                                                                              #
+#     - it may be impractical to prevent but should it be necessary the keys   #
+#       to other models should be passed in at the constructor stage           #
+#                                                                              #
+# - plant model passes the frame lists for state & output, along with current  #
+#   frames for state & output to each model as it's called enabling the model  #
+#   to obtain both the previous value or its history of values                 #
+#                                                                              #
+#   - I believe the original framework has a sub-model that does something     #
+#     the preceding history                                                    #
+#                                                                              #
+#   - model adds its state & outputs to appropriate current frames             #
+#                                                                              #
+# - at the end of the pass within the loop, the plant model adds frames for    # 
+#   current states & outputs to the approrpriate histories and the loop        #
+#   repeats.                                                                   #
+#                                                                              #
+# - at the end of the loop the plant model returns the frame collections for   # 
+#   states & outputs.                                                          #
+#                                                                              #
+# - output of model is bumped to a function that extracts data into suitable   #
+#   form from return values                                                    #
+#                                                                              #
+
+#
+# example code use -------------------------------------------------------------
+#
+# loosely based on Fit_Model_To_Hypocotyl_Data.m with default configuration & 
+# single photoperiod of 8 hours
+#
+
+# initial conditions
+
+floweringGenotype           = 2
+
+weather                     = load("weather.mat")
+sunset(weather)             = sunset(weather) * 8 # 8 hour photoperiod
+
+plantParameters             = load("parameter.mat")
+
+# clock 
+
+import F2014_clocks
+
+initialOutput = Frame(1, 0) # day 1 | timepoint 0 i.e. before simulation starts
+initialState  = Frame(1, 0)
+
+clock, clockInitialState = 
+    clockModel(
+        weather,
+        F2014_clocks.dynamicsCOP1,
+        F2014_clocks.parameters(genotype)
+        entrainDuration=12,
+        entrainClockState=ones(1:35)
+        initialOutput,
+        initialState
+        )
+
+# construct phenology model
+
+phenology = phenologyModel(
+                weather
+                simulationPhenology_PIF_CO_FT(clockModelId, floweringGenotype),
+                plantParameters,
+                floweringGenotype
+                initialOutput,
+                initialState
+                )
+
+# hypocotyl model
+
+hypocotylParameters = load("Hypocotyl_parameters_P2011")
+
+hypocotyl = hypocotylModel(hypocotylParameters, key="model.hypocotyl")
+
+# plant model
+
+plant = plantModel(
+            weather, 
+            plantParameters, 
+            clock, 
+            phenology,
+            # additional models appended to end
+            hypocotyl
+            )
+
+# run plant model
+
+plantOutput, plantState = plant(days=90, initialOutput, initialState)
+
+# process plantOutput / plantState for output
+
+- construct sim data as per MATLAB (collating data from each frame plantOutput)
+
+
+
+#
+# functions --------------------------------------------------------------------
+#
+
+#
+# clock simulation
+#
+
+# module: F2014_clocks
+
+func dynamicsCOP1(...) -> ...
+
+    - as per MATLAB: F2014_dynamics_COP1(...)
+
+func parameters(genotype, set=1) -> ...
+
+    - as per MATLAB: load_F2014_parameters(...)
+
+# base clock functionality
+
+func clockModel(
+                weather,
+                clockDynamics,
+                clockParameters,
+                entrainDuration,
+                entrainClockState,
+                outputInitial,          # used to seed initial item in history (@ T = 0)
+                stateInitial,           # used to seed initial item in history (@ T = 0)
+                key="model.clock"
+               ) -> model, initialClockState, 
+
+    - construct dynamics func of form:
+
+        func dynamics
+                (
+                    day,
+                    timepoint,
+                    outputCurrent,
+                    outputHistory,
+                    stateCurrent,
+                    stateHistory
+                ) -> clockOutput, clockState    # aka clock_output, clock_state_0
+
+            - captures weather 'model' from constructor
+
+            - captures clockParameters from constructor
+
+            - captures key from constructor
+
+            - sunrise = sunrise(weather)
+
+            - sunset  = sunset(weather)
+
+            - clockOutput = aka MATLAB: run_clock_model_for_a_day
+
+            - set(outputCurrent, key, clockOutput)
+
+            - clockState = interp1q(clock_output.T,clock_output.Y,24)
+
+            - set(stateCurrent, key, clockState)
+
+            - return clockOutput
+
+    - determine entrainedInitialClockState for entrainDuration (using clockDynamics)
+
+    - stateEntrained = Frame()
+
+    - set(stateEntrained, key, entrainedInitialClockState)
+
+    - dynamics(1, 1, outputInitial, [], stateInitial, [])
+
+    - return dynamics
+
+#
+# hypocotyl model
+#
+# example of an additional model
+#
+# - calculates hypocotyl length
+#
+# - if model needs weather parameters &c these can be supplied in the 
+#    constructor & captured
+#
+
+func hypocotylModel
+        (
+            key,
+            hypocotylParameters
+        ) -> model
+
+        # construct model
+
+        func model(
+                    day,
+                    timepoint,
+                    clockOutput,
+                    phenologyOutput,
+                    outputCurrent,
+                    outputHistory,
+                    stateCurrent,
+                    stateHistory
+                  )
+
+            - captures hypocotylParameters
+
+            - captures key
+
+            # if required get previous output / state
+            # - NA
+
+            # hypocotyl calculations
+            
+            - hypocotylLength = 
+                calculation using phenologyOutput.T, phenologyOutput.Y + hypocotylParameters
+
+            # compose output & state (if required)
+
+            output = ... 
+            # ^ composite type associated with model
+
+            set(outputCurrent, key, output)
+
+        # return model
+        
+        return model
+
+#
+# phenology
+#
+
+# PIF_CO_FT
+
+func loadPifCoFtParameters(genotype) -> struct(parameters)
+    - load parameters from file into struct
+    - NB: adjustment for temperature in MATLAB code moved into simulation
+    -     improves performance (not constantly reloading data)
+
+func dynamics_PIF_CO_FT(t, y, P, u, c, lightConditions) -> dydt
+    - as per matlab but light conditions passed in
+
+func simulationPhenology_PIF_CO_FT
+        ( 
+         clockModelId,
+         floweringGenotype,
+         floweringSet,          # optional defaults to 1
+        ) -> simulation
+    
+    - select clock parameter (clockModelId, floweringGenotype, floweringSet)
+
+    - select clock adapter   (clockModelId)
+                             # referred to as dynamics wrapper in MATLAB)
+    - select simulation parameters: 
+        loadPifCoFtParameters(floweringGenotype)
+
+    - construct simulation func of form:
+      NB: the idea is that every phenology simulation will have this form
+          extension of function behaviour can be achieved by nesting 
+          (see func simulationPhenology_PIF_CO_FT_HypocotylLength below)
+
+        func simulation
+                (
+                 clockOutput,
+                 simulationState,
+                 temperature,
+                 lightConditions       
+                ) -> dailyFTArea, simulationState, output
+
+            - captures clock & simulation parameters from constructor
+
+            - captures clock adapter from constructor
+
+            - tweak simulation parameters for temperature
+
+            - as per MATLAB: simulate_PIF_CO_FT_model without selection logic
+              NB: sunrise & sunset are only used to construct lightConditions struct
+                  it's cleaner to bump this construction to calling function
+
+            - return dailyFTArea, simulationState, output
+
+    - return simulation
+
+# Phenology model constructor
+# - creates a function embodying configured model parameters
+
+func phenologyModel(
+                    weather,
+                    simulation,
+                    parameters,
+                    floweringThresholdGenotype,
+                    outputInitial,          # used to seed initial item in history (@ T = 0)
+                    stateInitial,           # used to seed initial item in history (@ T = 0)
+                    key="model.phenology"
+                   ) -> model
+
+        if no arguments supplied:
+
+            - construct model:
+
+                func model(
+                           day,
+                           timepoint, 
+                           clockOutput,
+                           outputCurrent,
+                           outputHistory,
+                           stateCurrent,
+                           stateHistory
+                          ) -> dailyThrm, modelState, modelOutput
+
+                - return phenologyOutput
+
+            - return model
+
+        else:
+
+            - tweak parameters according to floweringThresholdGenotype
+
+            - constuct model:
+
+                func model(
+                           day,
+                           timepoint,
+                           clockOutput
+                           outputCurrent,
+                           outputHistory,
+                           stateCurrent,
+                           stateHistory
+                          ) -> phenologyOutput
+
+                    - captures weather 'model' from constructor
+
+                    - captures simulation from constuctor
+                    
+                    - captures parameters from constructor
+
+                    - temperature = temperature(weather)
+                    
+                    - sunrise     = sunrise(weather)
+
+                    - sunset      = sunset(weather)
+                    
+                    - calculate lightConditions
+
+                    - previousState = get(at(stateHistory, :END:), key)
+                    
+                    - simulationState, simulationOutput
+                        = simulation(clockOutput, 
+                                     previousState,
+                                     temperature, 
+                                     lightConditions)
+                    
+                    # dailyThrm + cumulativePhenThrm tracked in outputCurrent
+                    # cumulativePhenThrm also tracked in stateCurrent
+                    - dailyThrm calculation as per MATLAB
+
+                    - cumulativePhenThrm = dailyThrm + previousState.cumulativePhenThrm
+
+                    - cumulativePhenThrms[day] = cumulativePhenThrms
+                    
+                    - set(stateCurrent, key, simulationState)
+                    # optionally model state could encapsulate simulationState
+                    #  e.g. modelState.simulation = simulationState
+                    
+                    - set(outputCurrent, key, simulationOutput)
+                    # optionally modelOutput could encapsulate simulationOutput
+                    #  e.g. modelOutput.simulation = simulationOutput
+                    
+                    - return composed output
+
+            - return model
+
+#
+# plant model
+#
+
+func plantModel(
+                weather, 
+                plantParameters, 
+                key="model.plant",
+                clockModel,        
+                phenologyModel,
+                otherModels...      # VARARGS
+               ) -> model
+            weather, 
+            plantParameters, 
+            clock, 
+            phenology,
+            # additional models appended to end
+            hypocotyl
+
+    - construct plant model function:
+
+        func model(
+                   days, 
+                   initialOutput, 
+                   initialState
+                  ) -> outputHistory, stateHistory:
+
+            # initialise
+
+            # - history
+
+            outputHistory = [initialOutput] # @ Day 1 | T = 0
+            stateHistory  = [initialState]  # @ Day 1 | T = 0
+
+            # - phenology
+
+            - hasFlowered = false
+
+            # run simulation
+
+            - for day in 1:days :
+
+                - if hasFlowered: break
+
+                # environment
+
+                - timepoint = (day - 1) * 24 + 1
+
+                # history: new frames
+
+                outputCurrent = Frame(day, timepoint)
+
+                stateCurrent = Frame(day, timepoint)
+
+                # clock
+
+                - clockOutput, nextClockState = 
+                    clockModel(sunrise, sunset, clockState)
+
+                # phenology
+
+                phenologyOutput = 
+                    phenologyModel(day,
+                                   timepoint,
+                                   clockOutput
+                                   outputCurrent,
+                                   outputHistory,
+                                   stateCurrent,
+                                   stateHistory)
+
+                # other models
+
+                for model in otherModels:
+
+                    model(day,
+                          timepoint, 
+                          clockOutput,
+                          phenologyOutput,
+                          outputCurrent,
+                          outputHistory,
+                          stateCurrent,
+                          stateHistory)
+
+                # history: record current output + state
+
+                outputHistory.push(outputCurrent)
+
+                stateHistory.push(stateCurrent)
+
+            # return histories for processing
+
+            return outputHistory, stateHistory
+
+    - return model
