@@ -1,7 +1,7 @@
 #                                                                              #
 # pure-func+optional-models.txt                                                #
 #                                                                              #
-# A "pure" functional pseudo-code "sketvh" of model implementation with        #
+# A "pure" functional pseudo-code "sketch" of model implementation with        #
 # recording of state & output from each timestep & support for discrete models #
 # that can be optionally added to plant model.                                 #
 #                                                                              #
