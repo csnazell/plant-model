@@ -13,6 +13,7 @@ module PlantModelFramework
 #
 
 include("Environment.jl")
+using .Environment
 
 #
 # structs
@@ -24,9 +25,10 @@ include("Environment.jl")
 # functions
 #
 
-function plantModel()
+function plantModel(environment::Function)
 
-    print("Plant Model!")
+    println("Plant Model!")
+    println("- environment = $(environment)")
 
 end
 

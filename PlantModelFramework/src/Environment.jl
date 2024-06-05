@@ -62,7 +62,7 @@ module Environment
 
     function simpleModel(temperature::AbstractFloat=22.0, 
                          sunrise::Integer=0, 
-                         sunset::Integer=0)
+                         sunset::Integer=0)::EnvState
 
         model = 
             let t = temperature, sr = sunrise, ss = sunset
