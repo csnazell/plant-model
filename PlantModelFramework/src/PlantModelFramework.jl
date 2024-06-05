@@ -14,24 +14,6 @@ module PlantModelFramework
 
 include("Environment.jl")
 
-module Frank
-
-using ..Environment
-
-function debug()
-
-    Environment.debug()
-
-end
-
-function output()
-
-    print("Frank!")
-
-end
-
-end
-
 #
 # structs
 #
