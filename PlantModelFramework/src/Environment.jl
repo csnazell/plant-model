@@ -3,64 +3,49 @@
 #                                                                              #
 # Environment.jl                                                               #
 #                                                                              #
-# Environment model.                                                           #
+# Environment modelling.                                                       #
 #                                                                              #
-# Environment models report climate conditions for a given time point within a #
-# simulation.                                                                  #
+# Environment models report environmental conditions for a given time point    #
+# # within a simulation expressed as day and an hour.                          #
 #                                                                              #
-# Environment models conform to:                                               #
-# - func model(day, timepoint) -> state                                        #
+# Environment models are derived from the Model abstract base type. They are a #
+# Julia "functor" (NB: not a proper functor) of the form:                      #
 #                                                                              #
-# where:                                                                       #
-#                                                                              #
-# - day   : UInt8 unsigned integer                                             #
-# - hour  : UInt8 timepoint hour (1 - 24)                                      #
-# - state : EnvState structure defining environmental state properties         #
+# - model(day, timepoint) -> state                                             #
 #                                                                              #
 
 module Environment
 
-    export photoperiod, sunrise, sunset, temperature
+    #
+    # State
+    #
+    # Base environment state
+    #
 
-    #
-    # state
-    # - base environment state
-    #
+    # exports
+
+    export photoperiod, sunrise, sunset, temperature
 
     # type
 
-    struct EnvState
-        day::UInt32             # timepoint day  : 0+
-        hour::UInt8             # timepoint hour : 1 - 24
+    struct State
+        day::Int32              # timepoint day  : 0+
+        hour::Int8              # timepoint hour : 1 - 24
         temperature::Float32    # temperature @ timepoint (ºC)
-        sunrise::UInt8          # hour of sunrise @ timepoint : 0 - 24
-        sunset::UInt8           # hour of sunrise @ timepoint : 0 - 24
+        sunrise::Int8           # hour of sunrise @ timepoint : 0 - 24
+        sunset::Int8            # hour of sunrise @ timepoint : 0 - 24
     end
 
     # functions
 
-    function photoperiod(state::EnvState)
-        return sunset(state) - sunrise(state)
-    end
+    photoperiod(state::State) = sunset(state) - sunrise(state)
 
-    function sunrise(state::EnvState)
-        return state.sunrise
-    end
+    sunrise(state::State) = state.sunrise
 
-    function sunset(state::EnvState)
-        return state.sunset
-    end
+    sunset(state::State) = state.sunset
 
-    function temperature(state::EnvState)
-        return state.temperature
-    end
+    temperature(state::State) = state.temperature
     
-    #
-    #
-    # models             
-    #
-    #
-
     #
     # Model
     #
@@ -69,35 +54,35 @@ module Environment
 
     abstract type Model end
 
-    function (m::Model)(day::Integer, hour::Integer)::EnvState
+    function (m::Model)(day::Integer, hour::Integer)::State
         error("Enviroment.Model() please implement this abstract functor for your subtype")
     end
 
     #
-    # SimpleModel
+    # ConstantModel
     #
     # Constant environmental model
     # 
 
-    struct SimpleModel <: Model
+    struct ConstantModel <: Model
 
         # fields
 
         temperature::Float32    # temperature @ timepoint (ºC)
-        sunrise::UInt8          # hour of sunrise @ timepoint : 0 - 24
-        sunset::UInt8           # hour of sunrise @ timepoint : 0 - 24
+        sunrise::Int8           # hour of sunrise @ timepoint : 0 - 24
+        sunset::Int8            # hour of sunrise @ timepoint : 0 - 24
 
         # constructor
 
-        function SimpleModel( ; temperature::AbstractFloat=22.0, 
-                                sunrise::Integer=0, 
-                                sunset::Integer=0)
+        function ConstantModel( ; temperature::AbstractFloat=22.0, 
+                                  sunrise::Integer=0, 
+                                  sunset::Integer=0)
 
             # parameter constraints
             # - sunrise <= sunset & 0 | 1:24
 
             sunrise = min(sunrise, sunset)
-            sunset = max(sunrise, sunset)
+            sunset  = max(sunrise, sunset)
 
             @assert sunrise in 0:24 "sunrise should be within range 1:24"
             @assert sunset in 0:24 "sunset should be within range 1:24"
@@ -111,10 +96,10 @@ module Environment
 
     # functions
 
-    function (m::SimpleModel)(day::Integer, hour::Integer)
+    function (m::ConstantModel)(day::Integer, hour::Integer)
 
-        state = EnvState(day, hour, m.temperature, m.sunrise, m.sunset)
+        state = State(day, hour, m.temperature, m.sunrise, m.sunset)
 
     end
 
-end
+end # module: Environment

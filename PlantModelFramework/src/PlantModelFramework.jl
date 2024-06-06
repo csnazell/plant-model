@@ -8,32 +8,33 @@
                                                                               
 module PlantModelFramework
 
-#
-# dependencies
-#
+    #
+    # dependencies
+    #
 
-include("Environment.jl")
-using .Environment
+    # environment
 
-#
-# structs
-#
+    include("Environment.jl")
+    using .Environment
 
-# - 
 
-#
-# functions
-#
+    export photoperiod, sunrise, sunset, temperature
 
-function plantModel(environment::Environment.Model)
+    #
+    # structs
+    #
 
-    println("Plant Model!")
-    println("- environment = $(environment)")
+    # - 
 
-end
+    #
+    # functions
+    #
 
-#
-# exports
-#
+    function plantModel(environment::Environment.Model)
+
+        println("Plant Model!")
+        println("- environment = $(environment)")
+
+    end
 
 end # module: PlantModelFramework
