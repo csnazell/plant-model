@@ -23,12 +23,11 @@ module Environment
     export photoperiod, sunrise, sunset, temperature
 
     #
-    # types
+    # state
+    # - base environment state
     #
 
-    # base environment state
-
-    # - type
+    # type
 
     struct EnvState
         day::UInt32             # timepoint day  : 0+
@@ -38,7 +37,7 @@ module Environment
         sunset::UInt8           # hour of sunrise @ timepoint : 0 - 24
     end
 
-    # - functions
+    # functions
 
     function photoperiod(state::EnvState)
         return sunset(state) - sunrise(state)
@@ -60,33 +59,41 @@ module Environment
     # models             
     #
 
-    function simpleModel(temperature::AbstractFloat=22.0, 
-                         sunrise::Integer=0, 
-                         sunset::Integer=0)::EnvState
+    struct Model
 
-        model = 
-            let t = temperature, sr = sunrise, ss = sunset
+        # fields
 
-                # parameter constraints
-                # - sunrise <= sunset & 0 | 1:24
+        temperature::Float32    # temperature @ timepoint (ºC)
+        sunrise::UInt8          # hour of sunrise @ timepoint : 0 - 24
+        sunset::UInt8           # hour of sunrise @ timepoint : 0 - 24
 
-                sr = min(sr, ss)
-                ss = max(sr, ss)
+        # constructor
 
-                @assert sr in 0:24 "sunrise should be within range 1:24"
-                @assert ss in 0:24 "sunset should be within range 1:24"
+        function Model( ; temperature::AbstractFloat=22.0, 
+                          sunrise::Integer=0, 
+                          sunset::Integer=0)
 
-                # model
+            # parameter constraints
+            # - sunrise <= sunset & 0 | 1:24
 
-                function(day::Integer, hour::Integer)
-                    state = EnvState(day, hour, t, sr, ss)
+            sunrise = min(sunrise, sunset)
+            sunset = max(sunrise, sunset)
 
-                    return state
-                end
+            @assert sunrise in 0:24 "sunrise should be within range 1:24"
+            @assert sunset in 0:24 "sunset should be within range 1:24"
 
-            end
+            # construct
 
-        return model
+            new(temperature, sunrise, sunset)
+        end
+
+    end
+
+    # functions
+
+    function (m::Model)(day::Integer, hour::Integer)
+
+        state = EnvState(day, hour, m.temperature, m.sunrise, m.sunset)
 
     end
 

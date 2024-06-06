@@ -25,7 +25,7 @@ using .Environment
 # functions
 #
 
-function plantModel(environment::Function)
+function plantModel(environment::Environment.Model)
 
     println("Plant Model!")
     println("- environment = $(environment)")
