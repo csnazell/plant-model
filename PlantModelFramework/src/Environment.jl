@@ -15,7 +15,7 @@
 #                                                                              #
 # - day   : UInt8 unsigned integer                                             #
 # - hour  : UInt8 timepoint hour (1 - 24)                                      #
-# - state : EnvState structure defining environmental state properties            #
+# - state : EnvState structure defining environmental state properties         #
 #                                                                              #
 
 module Environment
@@ -56,10 +56,30 @@ module Environment
     end
     
     #
+    #
     # models             
     #
+    #
 
-    struct Model
+    #
+    # Model
+    #
+    # Abstract base type for environmental models.
+    # 
+
+    abstract type Model end
+
+    function (m::Model)(day::Integer, hour::Integer)::EnvState
+        error("Enviroment.Model() please implement this abstract functor for your subtype")
+    end
+
+    #
+    # SimpleModel
+    #
+    # Constant environmental model
+    # 
+
+    struct SimpleModel <: Model
 
         # fields
 
@@ -69,9 +89,9 @@ module Environment
 
         # constructor
 
-        function Model( ; temperature::AbstractFloat=22.0, 
-                          sunrise::Integer=0, 
-                          sunset::Integer=0)
+        function SimpleModel( ; temperature::AbstractFloat=22.0, 
+                                sunrise::Integer=0, 
+                                sunset::Integer=0)
 
             # parameter constraints
             # - sunrise <= sunset & 0 | 1:24
@@ -91,7 +111,7 @@ module Environment
 
     # functions
 
-    function (m::Model)(day::Integer, hour::Integer)
+    function (m::SimpleModel)(day::Integer, hour::Integer)
 
         state = EnvState(day, hour, m.temperature, m.sunrise, m.sunset)
 
