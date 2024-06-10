@@ -16,6 +16,10 @@
 
 module Environment
 
+    # dependencies
+    
+    import ..Models
+
     #
     # State
     #
@@ -47,12 +51,12 @@ module Environment
     temperature(state::State) = state.temperature
     
     #
-    # Model
+    # EnvironmentModel
     #
     # Abstract base type for environmental models.
     # 
 
-    abstract type Model end
+    abstract type Model <: Models.Base end
 
     function (m::Model)(day::Integer, hour::Integer)::State
         error("Enviroment.Model() please implement this abstract functor for your subtype")
