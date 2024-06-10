@@ -2,3 +2,6 @@ name = "PlantModelFramework"
 uuid = "f544a799-5eef-482e-b287-93a29dd5c0b3"
 authors = ["Christopher Snazell <chris@snazell.software>"]
 version = "0.1.0"
+
+[deps]
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"

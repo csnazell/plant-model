@@ -9,6 +9,12 @@
 module PlantModelFramework
 
     #
+    # dependencies: Standard Library
+    #
+    
+    using Printf
+
+    #
     # dependencies: PlantModelFramework
     #
 
@@ -58,16 +64,15 @@ module PlantModelFramework
 
     function (m::PlantModel)(days::UInt32)
 
-        # @info "running model for $(@sprintf("%u", days)) days"
+        @info "running model for $(@sprintf("%u", days)) days"
 
         for day in 1:days
 
-            #@info "day: $(day) ($(typeof(day)))"
-            println("- day: $(day) ")
+            @info "- day: $(day) "
 
         end
 
-        #@info "model run completed."
+        @info "model run completed."
 
     end
 
