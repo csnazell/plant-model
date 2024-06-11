@@ -16,21 +16,29 @@
 
 module Environment
 
-    # dependencies
+    # dependencies ------------------------------------------------------------
+    
+    # standard library
+    # -
+
+    # third-party
+    #
+    # - ArgCheck
+    # -- argument validation macros
+    # -- (https://github.com/jw3126/ArgCheck.jl)
+
+    using ArgCheck
+
+    # package
     
     import ..Models
 
+    # implementation ----------------------------------------------------------
+
     #
     # State
+    # - base environment state
     #
-    # Base environment state
-    #
-
-    # exports
-
-    export photoperiod, sunrise, sunset, temperature
-
-    # type
 
     struct State
         day::Int32              # timepoint day  : 0+
@@ -49,14 +57,19 @@ module Environment
     sunset(state::State) = state.sunset
 
     temperature(state::State) = state.temperature
+
+    # exports
+
+    export photoperiod, sunrise, sunset, temperature
     
     #
-    # EnvironmentModel
-    #
-    # Abstract base type for environmental models.
+    # Model
+    # - abstract base type for environmental models.
     # 
 
     abstract type Model <: Models.Base end
+
+    # functions
 
     function (m::Model)(day::Integer, hour::Integer)::State
         error("Enviroment.Model() please implement this abstract functor for your subtype")
@@ -64,8 +77,7 @@ module Environment
 
     #
     # ConstantModel
-    #
-    # Constant environmental model
+    # - environmental model with constant state
     # 
 
     struct ConstantModel <: Model
@@ -85,15 +97,15 @@ module Environment
             # parameter constraints
             # - sunrise <= sunset & 0 | 1:24
 
-            sunrise = min(sunrise, sunset)
-            sunset  = max(sunrise, sunset)
+            sunriseCorrected = min(sunrise, sunset)
+            sunsetCorrected  = max(sunrise, sunset)
 
-            @assert sunrise in 0:24 "sunrise should be within range 1:24"
-            @assert sunset in 0:24 "sunset should be within range 1:24"
+            @argcheck sunriseCorrected in 0:24 "sunrise should be within range 1:24"
+            @argcheck sunsetCorrected in 0:24 "sunset should be within range 1:24"
 
             # construct
 
-            new(temperature, sunrise, sunset)
+            new(temperature, sunriseCorrected, sunsetCorrected)
         end
 
     end

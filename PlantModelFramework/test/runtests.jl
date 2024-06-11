@@ -26,6 +26,7 @@ using PlantModelFramework
 
 @testset "Tests: PlantModelFramework" begin
 
+    include("TestEnvironment.jl")
     include("TestSimulation.jl")
 
 end
