@@ -4,4 +4,6 @@ authors = ["Christopher Snazell <chris@snazell.software>"]
 version = "0.1.0"
 
 [deps]
+ArgCheck = "dce04be8-c92d-5529-be00-80e4d2c0e197"
 Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
