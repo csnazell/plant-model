@@ -8,18 +8,22 @@
                                                                               
 module PlantModelFramework
 
-    #
-    # dependencies: Standard Library
-    #
+    # dependencies ------------------------------------------------------------
+
+    # standard library
     
     using Printf
 
+    # third-party
+    # -
+
     #
-    # dependencies: PlantModelFramework
+    # package
     #
 
     include("Models.jl")
     include("Environment.jl")
+    include("Simulation.jl")
 
     # - models
     
@@ -30,6 +34,14 @@ module PlantModelFramework
     using .Environment
 
     export photoperiod, sunrise, sunset, temperature
+
+    # - simulation
+    
+    using .Simulation
+
+    export getData, setData
+
+    # implementation ----------------------------------------------------------
 
     #
     # PlantModel
@@ -62,28 +74,101 @@ module PlantModelFramework
 
     # functions
 
-    function (m::PlantModel)(days::UInt32)
+    function (m::PlantModel)(days::UInt32, 
+                             outputInitial::Union{Nothing, Simulation.Frame}=nothing, 
+                             stateInitial::Union{Nothing, Simulation.Frame}=nothing)
 
         @info "running model for $(@sprintf("%u", days)) days"
 
+        # initialise history
+        # - @ D = 1 | T = 0
+
+        outputHistory = Vector{Simulation.Frame}()
+
+        push!(outputHistory,
+              (isnothing(outputInitial) ? Simulation.Frame() : outputInitial))
+
+        stateHistory  = Vector{Simulation.Frame}()
+
+        push!(stateHistory,
+              (isnothing(stateInitial) ? Simulation.Frame() : stateInitial))
+
         for day in 1:days
 
-            @info "- day: $(day) "
+            # flowered
+            # FIXME: BREAK @ FLOWERED | CUSTOMISABLE?
+            
+            # timepoint
+
+            timepoint = 1
+
+            @info "- day: $(day) | timepoint: $(timepoint) "
+
+            # current output & state 
+            # - @ D = day | T = timepoint
+            
+            outputCurrent = Simulation.Frame(day, timepoint)
+            stateCurrent  = Simulation.Frame(day, timepoint)
+
+            # clock model
+            # clockOutput = clockModel(day, timepoint, stateHistory)
+            @debug "— clock "
+            
+            # phenology model
+            # phenologyOutput = 
+            #   phenologyModel(day, 
+            #                   timepoint,
+            #                   clockOutput,
+            #                   outputCurrent,
+            #                   outputHistory,
+            #                   stateCurrent,
+            #                   stateHistory)
+            @debug "— phenology "
+                
+            # additional models
+            @debug "— other models " 
+            # for model in additionalModels
+            #   model(day,
+            #           timepoint,
+            #           clockOutput,
+            #           phenologyOutput,
+            #           outputCurrent,
+            #           outputHistory,
+            #           stateCurrent,
+            #           stateHistory)
+            # end
+
+            # update history
+            
+            push!(outputHistory, outputCurrent)
+            push!(stateHistory, stateCurrent)
 
         end
 
         @info "model run completed."
 
+        # output
+        # FIXME: TURN OUTPUT & STATE HISTORIES INTO DATAFRAMES
+
+        @debug "output frames: $(length(outputHistory)) "
+        @debug "state frames : $(length(stateHistory)) "
+
     end
+    
+    # helper functions
 
     function simulate(plant::PlantModel, days::UInt32)
+
         plant(days)
+
     end
 
     # exports
-    
+
     export PlantModel
 
+    export Environment
+    
     export simulate
 
 end # module: PlantModelFramework

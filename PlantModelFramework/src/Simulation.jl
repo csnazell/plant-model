@@ -41,15 +41,15 @@ module Simulation
     
     struct Frame 
 
-        day::Int32                          # timepoint day  : 0+
+        day::Int32                          # timepoint day  : 1+
         timepoint::Int8                     # timepoint hour : 0 | 1 - 24
         modelData::Dict{String,ModelData}   # {model key : model data}
 
-        function Frame(day::Integer, timepoint::Integer)
+        function Frame(day::Integer=1, timepoint::Integer=0)
 
             # guard condition: parameter bounds checking
 
-            @argcheck day >= 0 "day should be >= 0" 
+            @argcheck day >= 1 "day should be >= 1" 
             @argcheck (timepoint >= 0 && timepoint < 25) "day should be >= 0"
 
             # construct

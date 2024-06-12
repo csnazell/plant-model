@@ -32,12 +32,19 @@ using PlantModelFramework.Simulation
     @testset "construction " begin
 
         @test_throws ArgumentError Simulation.Frame(-1,0)
-        @test_throws ArgumentError Simulation.Frame(0,-1)
-        @test_throws ArgumentError Simulation.Frame(0,25)
+        @test_throws ArgumentError Simulation.Frame(0,0)
+        @test_throws ArgumentError Simulation.Frame(1,-1)
+        @test_throws ArgumentError Simulation.Frame(1,25)
 
-        f = Simulation.Frame(0,0)
+        fDefault = Simulation.Frame()
 
-        @test f.day == 0
+        @test fDefault.day == 1
+        @test fDefault.timepoint == 0
+        @test length(fDefault.modelData) == 0
+
+        f = Simulation.Frame(1,0)
+
+        @test f.day == 1
         @test f.timepoint == 0
         @test length(f.modelData) == 0
 
@@ -51,7 +58,7 @@ using PlantModelFramework.Simulation
 
         # empty model data
 
-        f = Simulation.Frame(0,0)
+        f = Simulation.Frame(1,0)
 
         @test length(f.modelData) == 0
 
