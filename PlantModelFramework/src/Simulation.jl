@@ -42,7 +42,7 @@ module Simulation
     struct Frame 
 
         day::Int32                          # timepoint day  : 1+
-        timepoint::Int8                     # timepoint hour : 0 | 1 - 24
+        hour::Int8                          # timepoint hour : 0 | 1 - 24
         modelData::Dict{String,ModelData}   # {model key : model data}
 
         function Frame(day::Integer=1, timepoint::Integer=0)
@@ -74,9 +74,15 @@ module Simulation
 
     end
 
+    function timepoint(frame::Frame)::Int32
+
+        (frame.day - 1) * 24 + frame.hour
+
+    end
+
     # exports
 
-    export getData, setData
+    export getData, setData, timepoint
 
 end
 

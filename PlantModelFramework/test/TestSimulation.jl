@@ -39,13 +39,13 @@ using PlantModelFramework.Simulation
         fDefault = Simulation.Frame()
 
         @test fDefault.day == 1
-        @test fDefault.timepoint == 0
+        @test fDefault.hour == 0
         @test length(fDefault.modelData) == 0
 
         f = Simulation.Frame(1,0)
 
         @test f.day == 1
-        @test f.timepoint == 0
+        @test f.hour == 0
         @test length(f.modelData) == 0
 
     end # end: testset construction
@@ -93,6 +93,19 @@ using PlantModelFramework.Simulation
 
     end #end: testset model data
     
+    @testset "derived properties" begin
+
+        day  = 1749
+        hour = 7
+
+        tP   = (day - 1) * 24 + hour
+
+        f = Simulation.Frame(day,hour)
+
+        @test tP == timepoint(f)
+
+    end
+
 end #end: testset frames
 
 end

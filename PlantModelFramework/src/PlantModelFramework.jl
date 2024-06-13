@@ -21,9 +21,15 @@ module PlantModelFramework
     # package
     #
 
+    include("Simulation.jl")
     include("Models.jl")
     include("Environment.jl")
-    include("Simulation.jl")
+
+    # - simulation
+    
+    using .Simulation
+
+    export getData, setData
 
     # - models
     
@@ -34,12 +40,6 @@ module PlantModelFramework
     using .Environment
 
     export photoperiod, sunrise, sunset, temperature
-
-    # - simulation
-    
-    using .Simulation
-
-    export getData, setData
 
     # implementation ----------------------------------------------------------
 
@@ -98,17 +98,15 @@ module PlantModelFramework
             # flowered
             # FIXME: BREAK @ FLOWERED | CUSTOMISABLE?
             
-            # timepoint
-
-            timepoint = 1
-
-            @info "- day: $(day) | timepoint: $(timepoint) "
-
             # current output & state 
             # - @ D = day | T = timepoint
+
+            hour = 1
             
-            outputCurrent = Simulation.Frame(day, timepoint)
-            stateCurrent  = Simulation.Frame(day, timepoint)
+            outputCurrent = Simulation.Frame(day, hour)
+            stateCurrent  = Simulation.Frame(day, hour)
+
+            @info "- day: $(day) + hour: $(day) = timepoint: $(timepoint(outputCurrent)) "
 
             # clock model
             # clockOutput = clockModel(day, timepoint, stateHistory)
