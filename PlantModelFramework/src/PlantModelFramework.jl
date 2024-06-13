@@ -24,6 +24,7 @@ module PlantModelFramework
     include("Simulation.jl")
     include("Models.jl")
     include("Environment.jl")
+    include("Clock.jl")
 
     # - simulation
     
@@ -39,7 +40,17 @@ module PlantModelFramework
 
     using .Environment
 
+    export Environment
+
     export photoperiod, sunrise, sunset, temperature
+
+    # - clocks
+    
+    using .Clock
+
+    export Clock
+
+    export run
 
     # implementation ----------------------------------------------------------
 
@@ -92,6 +103,10 @@ module PlantModelFramework
 
         push!(stateHistory,
               (isnothing(stateInitial) ? Simulation.Frame() : stateInitial))
+
+        # initialise clock model
+
+        # run simulation
 
         for day in 1:days
 
@@ -164,8 +179,6 @@ module PlantModelFramework
     # exports
 
     export PlantModel
-
-    export Environment
     
     export simulate
 
