@@ -62,6 +62,8 @@ module Simulation
 
     # functions
 
+    # - model data
+
     function getData(frame::Frame, key::String)::Union{ModelData, Nothing}
 
         Base.get(frame.modelData, key, nothing)
@@ -74,15 +76,19 @@ module Simulation
 
     end
 
-    function timepoint(frame::Frame)::Int32
+    # - time
 
-        (frame.day - 1) * 24 + frame.hour
+    day(frame::Frame) = frame.day
 
-    end
+    hour(frame::Frame) = frame.hour
+
+    timepoint(frame::Frame) = ( (frame.day - 1) * 24 ) + frame.hour
 
     # exports
 
-    export getData, setData, timepoint
+    export getData, setData
+
+    export day, hour, timepoint
 
 end
 
