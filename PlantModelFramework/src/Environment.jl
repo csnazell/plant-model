@@ -48,7 +48,7 @@ module Environment
         sunset::Int8            # hour of sunrise @ timepoint : 0 - 24
     end
 
-    # functions
+    # accessors
 
     photoperiod(state::State) = sunset(state) - sunrise(state)
 
@@ -58,9 +58,57 @@ module Environment
 
     temperature(state::State) = state.temperature
 
+    # functions
+
+    function light_condition(state::State, t::AbstractFloat)
+
+        # guard condition: photoperiod @ 0
+
+        if (photoperiod(state) == 0)
+            return 0
+        end
+
+        # guard condition: photoperiod @ day
+
+        period        = 24.0        # period of day
+
+        if (photoperiod(state) == Int8(period))
+            return 1.0
+        end
+
+        # calculate state of light
+
+        lightAmp    =  1.0        # amplitude of light wave
+        lightOffset =  0.0        # offset light function result
+        twilightPer =  0.00005    # duration of time between value of force in dark and 
+                                  # value of force in light
+
+        tCorrected    = mod((t - (15 * twilightPer)), period)
+
+        dawn = Float64(sunrise(state))
+        pp   = Float64(photoperiod(state))
+
+        thingA = (tCorrected + dawn) / period - floor( floor(tCorrected + dawn) / period )
+
+        thingB = 1 + tanh( (period / twilightPer) * thingA )
+        thingD = 1 + tanh( (period / twilightPer) * thingA - (pp / twilightPer) )  
+        thingE = 1 + tanh( (period / twilightPer) * thingA - (period / twilightPer) )
+
+        L = lightOffset + 
+            (0.5 * lightAmp * thingB) - 
+            (0.5 * lightAmp * thingD) + 
+            (0.5 * lightAmp * thingE)
+
+        # light condition
+
+        return L
+
+    end
+
     # exports
 
     export photoperiod, sunrise, sunset, temperature
+    export light_condition 
     
     #
     # Model
