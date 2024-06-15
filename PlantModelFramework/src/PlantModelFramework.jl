@@ -25,6 +25,7 @@ module PlantModelFramework
     include("Models.jl")
     include("Environment.jl")
     include("Clock.jl")
+    include("Clocks/F2014.jl")
 
     # - simulation
     
@@ -48,7 +49,9 @@ module PlantModelFramework
     
     using .Clock
 
-    export Clock
+    import .Clocks
+
+    export Clock, Clocks
 
     export run
 

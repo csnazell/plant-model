@@ -5,7 +5,23 @@
 #                                                                              #
 # Clock gene modelling.                                                        #
 #                                                                              #
-# ...                                                                          #
+# Notes:                                                                       #
+#                                                                              #
+# SciML solvers for ordinary differential equations:                           #
+# https://docs.sciml.ai/DiffEqDocs/dev/solvers/ode_solve/                      #
+#                                                                              #
+# ode15s mapping into Julia (from above):                                      #
+# "ode15s/vode –> QNDF() or FBDF(), though in many cases Rodas5P(), KenCarp4(),# 
+# TRBDF2(), or RadauIIA5() are more efficient.                                 #
+#                                                                              # 
+# Julia differential equations solvers use du / dt terminology rather than the #
+# dy / dt terminology seen in MATLAB.                                          #
+#                                                                              #
+# Queries:                                                                     #
+#                                                                              #
+# Should we track solution from solver rather than Output(solution.t,          #
+# solution.u)?                                                                 #
+#                                                                              #
 #                                                                              #
 
 module Clock
@@ -23,6 +39,13 @@ module Clock
 
     using ArgCheck
 
+    # - OrdinaryDiffEq
+    # -- Ordinary differential equation solvers + utilities
+    #    standalone sub-package of SciML / DifferentialEquations
+    # -- (https://github.com/SciML/OrdinaryDiffEq.jl)
+
+    using OrdinaryDiffEq
+
     # package
     
     import ..Simulation
@@ -38,7 +61,7 @@ module Clock
 
     struct Output
         T
-        Y
+        U
     end
 
     #
@@ -47,7 +70,7 @@ module Clock
     #
 
     struct State
-        Y_previous
+        U
     end
 
     #
@@ -56,19 +79,20 @@ module Clock
     #   i.e. the bit that performs the calculations
     #
 
-    abstract type Dynamics <: Models.Base end
-
     abstract type DynamicsParameters end
+
+    struct Dynamics{P <: DynamicsParameters} <: Models.Base 
+        parameters::P
+    end
 
     # functions
 
-    function (m::Dynamics)()
-        # MATLAB: dynamics(t,y,P,sunrise,sunset) -> vector(values) 2011 ~> 30 | 2014 ~> 35
-        # t: time (segment)
-        # y: vector values
-        # P: clock parameters vector
-        # sunrise: value hour -+-> environment 
-        # sunset: value hour  -|
+    function (m::Dynamics)(
+                du,                             # calculated matrix of next values
+                u,                              # vector  of values
+                envState::Environment.State,    # environment state @ day + hour
+                t                               # time 
+                )
         error("Clock.Dynamics() please implement this abstract functor for your subtype")
     end
 
@@ -81,18 +105,16 @@ module Clock
 
         environment::Environment.Model          # environment model
         clockDynamics::Dynamics                 # clock behaviour
-        clockParameters::DynamicsParameters     # clock behaviour parameters
         key::String                             # model identifier
 
         function Model(
                 environment::Environment.Model,      
                 clockDynamics::Dynamics,             
-                clockParameters::DynamicsParameters, 
                 key::String="model.clock"
                 # TODO: DO WE NEED A clock dynamics id here so we know what's running?
                 )
 
-            new(environment, clockDynamics, clockParameters, key)
+            new(environment, clockDynamics, key)
 
         end
 
@@ -105,35 +127,41 @@ module Clock
                         stateCurrent::Vector{Simulation.Frame},
                         stateHistory::Vector{Simulation.Frame})
 
+        # last times values
+
         previousState = stateHistory[end]
 
-        # output
-        # FIXME: IMPLEMENT
-	    # MATLAB: % Run model for 27 hours:
-	    #   Tout = 0:0.05:27;
-	    #   [T,Y] = ode15s(@(t,y) clock_dynamics(t,y,parameters,sunrise,sunset),Tout,y0);
+        # environment
 
-        # FIXME: REMOVE PLACEHOLDER
-        # PLACEHOLDER
-        # T = [541x1]  
-        T = reshape(0.0:0.05:27, (541, 1))
-        # Y = [541x35] | 541 == # time increments & 35 == length(y0) | 
-        Y = broadcast(+, zeros(Float64, 35, 541), previousState.Y_previous)
-        # PLACEHOLDER
-	
-        setData(outputCurrent, m.key, Output(T, Y))
+        envState = m.environment(day(outputCurrent), hour(outputCurrent))
 
-        # state
-        # FIXME: IMPLEMENT
-        # MATLAB: % work out the clock state at ZT24 i.e. at the start of the next day
-        #         clock_state_0 = interp1q(clock_output.T,clock_output.Y,24);
+        # dynamics
         
-        # FIXME: REMOVE PLACEHOLDER
-        # PLACEHOLDER
-        clock_state_0 = vcat(previousState.Y_previous)
-        # PLACEHOLDER
+        problem = ODEProblem(m.clockDynamics,
+                             previousState.U,
+                             (0.0, 27.0),
+                             envState)
 
-        setData(stateCurrent, m.key, State(clock_state_0))
+        solution = solve(problem, solver=QNDF, dt=0.05)
+
+        # - output
+
+        output = Output(solution.t, solution.u)
+
+        setData(outputCurrent, m.key, output)
+
+        # - state
+        #   NB: MATLAB code uses linear interpolation here however 
+        #       in Julia the algorithm used to solve the differential 
+        #       equations implicitly specifies the interpolation algorithm
+        
+        state = State(solution(24))
+
+        setData(stateCurrent, m.key, state)
+
+        # output
+
+        return output
 
     end
 
@@ -142,18 +170,7 @@ module Clock
                      outputInitial::Simulation.Frame,
                      stateInitial::Simulation.Frame,
                      duration::Integer=12,
-                     photoperiod::Integer=12)::Output
-
-        # MATLAB: entrain_clock_model(clock_parameters,
-        #                             clock_dynamics,
-        #                             sunrise(1),
-        #                             sunrise(1)+options.entrain,
-        #                             options.y0);
-        # MATLAB: entrain_clock_model(parameters,
-        #                             clock_dynamics,
-        #                             sunrise,
-        #                             sunset,
-        #                             y0)
+                     photoperiod::Integer=12)
 
         # parameter constraints
         
@@ -161,26 +178,36 @@ module Clock
 
         # environment
 
-        sr = sunrise(m.environment)
-        ss = sr + photoperiod
+        envState = m.environment(1,1)
+
+        envState = Environment.State(envState.day,
+                                     envState.hour, 
+                                     envState.temperature,
+                                     envState.sunrise,
+                                     (envState.sunrise + photoperiod))
 
         # entrain clock state
-        # FIXME: IMPLEMENT
 
-        # - initialise clock model
+        # - initialise clock model 
+        #   entrain for specified duration
+
+        problem = ODEProblem(m.clockDynamics,
+                             fromState.U,
+                             (0.0, (duration * 24.0)),
+                             envState)
+
+        solution = solve(problem, solver=QNDF, dt=0.1)
+
+        # - state
+        #   NB: MATLAB code uses linear interpolation here however 
+        #       in Julia the algorithm used to solve the differential 
+        #       equations implicitly specifies the interpolation algorithm
+
+        stateEntrained = Frame() 
+
+        state = State(solution.u[end])
         
-        # MATLAB:   % Initialise clock model (12 days)
-	    # MATLAB:   [~,Ycinit] = ode15s(@(t,y) clock_dynamics(t,y,parameters,sunrise,sunset),0:0.1:(12*24),y0);
-	    # MATLAB:   y0 = Ycinit(end,:)';
-        
-        # FIXME: REMOVE PLACEHOLDER
-        # PLACEHOLDER
-        y0 = vcat(fromState.Y_previous)
-        # PLACEHOLDER
-
-        stateEntrained = Frame()
-
-        set(stateEntrained, m.key, State(y0))
+        set(stateEntrained, m.key, state)
 
         # - run for a day
 
@@ -192,7 +219,7 @@ module Clock
                  outputCurrent::Simulation.Frame,
                  outputHistory::Simulation.Frame,
                  stateCurrent::Vector{Simulation.Frame},
-                 stateHistory::Vector{Simulation.Frame})
+                 stateHistory::Vector{Simulation.Frame})::Output
 
         m(outputCurrent, outputHistory, stateCurrent, stateHistory)
 

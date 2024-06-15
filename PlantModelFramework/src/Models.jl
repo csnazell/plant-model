@@ -38,9 +38,7 @@ module Models
 
     # functions
 
-    function (m::Dynamic)(day::Integer,
-                          timepoint::Integer,
-                          outputCurrent::Simulation.Frame,
+    function (m::Dynamic)(outputCurrent::Simulation.Frame,
                           outputHistory::Simulation.Frame,
                           stateCurrent::Vector{Simulation.Frame},
                           stateHistory::Vector{Simulation.Frame})
