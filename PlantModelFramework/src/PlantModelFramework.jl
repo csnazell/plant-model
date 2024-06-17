@@ -161,9 +161,9 @@ module PlantModelFramework
     
     # helper functions
 
-    function simulate(plant::PlantModel, 
-                      days::UInt32, 
-                      initialFrame::Union{Nothing,Simulation.Frame}=nothing)
+    function run(plant::PlantModel, 
+                 days::UInt32, 
+                 initialFrame::Union{Nothing,Simulation.Frame}=nothing)
 
         plant(days, initialFrame)
 
@@ -173,6 +173,6 @@ module PlantModelFramework
 
     export PlantModel
     
-    export simulate
+    export run
 
 end # module: PlantModelFramework

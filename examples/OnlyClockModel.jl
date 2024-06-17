@@ -55,7 +55,7 @@ Clock.entrain(clock,
 # run model
 #
 
-# dfOutput, dfState = simulate(plant, days=90, initialFrame)
+# dfOutput, dfState = run(plant, days=90, initialFrame)
 
 #
 # analysis
