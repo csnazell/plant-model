@@ -31,7 +31,7 @@ module PlantModelFramework
     
     using .Simulation
 
-    export getData, setData
+    export getOutput, setOutput, getState, setState
 
     # - models
     
@@ -89,25 +89,16 @@ module PlantModelFramework
     # functions
 
     function (m::PlantModel)(days::UInt32, 
-                             outputInitial::Union{Nothing, Simulation.Frame}=nothing, 
-                             stateInitial::Union{Nothing, Simulation.Frame}=nothing)
+                             initialFrame::Union{Nothing, Simulation.Frame}=nothing)
 
         @info "running model for $(@sprintf("%u", days)) days"
 
         # initialise history
         # - @ D = 1 | T = 0
 
-        outputHistory = Vector{Simulation.Frame}()
+        history = Vector{Simulation.Frame}()
 
-        push!(outputHistory,
-              (isnothing(outputInitial) ? Simulation.Frame() : outputInitial))
-
-        stateHistory  = Vector{Simulation.Frame}()
-
-        push!(stateHistory,
-              (isnothing(stateInitial) ? Simulation.Frame() : stateInitial))
-
-        # initialise clock model
+        push!(history, (isnothing(initialFrame) ? Simulation.Frame() : initialFrame))
 
         # run simulation
 
@@ -121,10 +112,9 @@ module PlantModelFramework
 
             hour = 1
             
-            outputCurrent = Simulation.Frame(day, hour)
-            stateCurrent  = Simulation.Frame(day, hour)
+            current = Simulation.Frame(day, hour)
 
-            @info "- day: $(day) + hour: $(day) = timepoint: $(timepoint(outputCurrent)) "
+            @info "- day: $(day) + hour: $(day) = timepoint: $(timepoint(current)) "
 
             # clock model
             # clockOutput = clockModel(day, timepoint, stateHistory)
@@ -156,8 +146,7 @@ module PlantModelFramework
 
             # update history
             
-            push!(outputHistory, outputCurrent)
-            push!(stateHistory, stateCurrent)
+            push!(history, current)
 
         end
 
@@ -166,16 +155,17 @@ module PlantModelFramework
         # output
         # FIXME: TURN OUTPUT & STATE HISTORIES INTO DATAFRAMES
 
-        @debug "output frames: $(length(outputHistory)) "
-        @debug "state frames : $(length(stateHistory)) "
+        @debug "history length: $(length(outputHistory)) frames"
 
     end
     
     # helper functions
 
-    function simulate(plant::PlantModel, days::UInt32)
+    function simulate(plant::PlantModel, 
+                      days::UInt32, 
+                      initialFrame::Union{Nothing,Simulation.Frame}=nothing)
 
-        plant(days)
+        plant(days, initialFrame)
 
     end
 

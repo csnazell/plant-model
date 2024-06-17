@@ -122,18 +122,18 @@ module Clock
 
     # functions
 
-    function (m::Model)(outputCurrent::Simulation.Frame,
-                        outputHistory::Simulation.Frame,
-                        stateCurrent::Vector{Simulation.Frame},
-                        stateHistory::Vector{Simulation.Frame})
+    function (m::Model)(current::Simulation.Frame,
+                        history::Vector{Simulation.Frame})
 
         # last times values
 
-        previousState = stateHistory[end]
+        previousFrame = history[end]
+
+        previousState = getState(previousFrame, m.key)
 
         # environment
 
-        envState = m.environment(day(outputCurrent), hour(outputCurrent))
+        envState = m.environment(day(current), hour(current))
 
         # dynamics
         
@@ -148,7 +148,7 @@ module Clock
 
         output = Output(solution.t, solution.u)
 
-        setData(outputCurrent, m.key, output)
+        setOutput(current, m.key, output)
 
         # - state
         #   NB: MATLAB code uses linear interpolation here however 
@@ -157,7 +157,7 @@ module Clock
         
         state = State(solution(24))
 
-        setData(stateCurrent, m.key, state)
+        setState(current, m.key, state)
 
         # output
 
@@ -167,8 +167,7 @@ module Clock
 
     function entrain(m::Model, 
                      fromState::State,
-                     outputInitial::Simulation.Frame,
-                     stateInitial::Simulation.Frame,
+                     initialFrame::Simulation.Frame,
                      duration::Integer=12,
                      photoperiod::Integer=12)
 
@@ -203,25 +202,23 @@ module Clock
         #       in Julia the algorithm used to solve the differential 
         #       equations implicitly specifies the interpolation algorithm
 
-        stateEntrained = Frame() 
+        entrainedFrame = Frame() 
 
-        state = State(solution.u[end])
+        entrainedState = State(solution.u[end])
         
-        set(stateEntrained, m.key, state)
+        setState(entrainedFrame, m.key, state)
 
         # - run for a day
 
-        run(m, 1, 1, outputInitial, [], stateInitial, [stateEntrained])
+        run(m, 1, 1, initialFrame, [stateEntrained])
 	
     end
 
     function run(m::Model,
-                 outputCurrent::Simulation.Frame,
-                 outputHistory::Simulation.Frame,
-                 stateCurrent::Vector{Simulation.Frame},
-                 stateHistory::Vector{Simulation.Frame})::Output
+                 current::Simulation.Frame,
+                 history::Vector{Simulation.Frame})::Output
 
-        m(outputCurrent, outputHistory, stateCurrent, stateHistory)
+        m(current, history)
 
     end
 

@@ -43,7 +43,8 @@ module Simulation
 
         day::Int32                          # timepoint day  : 1+
         hour::Int8                          # timepoint hour : 0 | 1 - 24
-        modelData::Dict{String,ModelData}   # {model key : model data}
+        outputData::Dict{String,ModelData}  # output: {model key : model data}
+        stateData::Dict{String,ModelData}   # state: {model key : model data}
 
         function Frame(day::Integer=1, timepoint::Integer=0)
 
@@ -54,7 +55,7 @@ module Simulation
 
             # construct
 
-            new(day, timepoint, Dict{String,ModelData}())
+            new(day, timepoint, Dict{String,ModelData}(), Dict{String,ModelData}())
 
         end
 
@@ -64,15 +65,27 @@ module Simulation
 
     # - model data
 
-    function getData(frame::Frame, key::String)::Union{ModelData, Nothing}
+    function getOutput(frame::Frame, key::String)::Union{ModelData, Nothing}
 
-        Base.get(frame.modelData, key, nothing)
+        Base.get(frame.outputData, key, nothing)
 
     end
 
-    function setData(frame::Frame, key::String, data::ModelData)
+    function setOutput(frame::Frame, key::String, data::ModelData)
 
-        Base.setindex!(frame.modelData, data, key)
+        Base.setindex!(frame.outputData, data, key)
+
+    end
+
+    function getState(frame::Frame, key::String)::Union{ModelData, Nothing}
+
+        Base.get(frame.stateData, key, nothing)
+
+    end
+
+    function setState(frame::Frame, key::String, data::ModelData)
+
+        Base.setindex!(frame.stateData, data, key)
 
     end
 
@@ -86,7 +99,7 @@ module Simulation
 
     # exports
 
-    export getData, setData
+    export getOutput, setOutput, getState, setState
 
     export day, hour, timepoint
 

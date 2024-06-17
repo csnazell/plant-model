@@ -37,13 +37,11 @@ clock           = Clock.Model(environment, clockBehaviour)
 # - entrain model
 # - starting conditions @ day 1 + hour 0 (prior to simulation start)
 
-initialOutput = Frame()
-initialState  = Frame()
+initialFrane = Frame()
 
 Clock.entrain(clock,
               Clocks.F2014.initialState(),
-              initialOutput,
-              initialState)
+              initialFrame)
 
 # phenology model
 
@@ -57,7 +55,7 @@ Clock.entrain(clock,
 # run model
 #
 
-# dfOutput, dfState = simulate(plant, days=90, initialOutput, initialState)
+# dfOutput, dfState = simulate(plant, days=90, initialFrame)
 
 #
 # analysis

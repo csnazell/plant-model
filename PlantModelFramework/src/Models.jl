@@ -38,10 +38,8 @@ module Models
 
     # functions
 
-    function (m::Dynamic)(outputCurrent::Simulation.Frame,
-                          outputHistory::Simulation.Frame,
-                          stateCurrent::Vector{Simulation.Frame},
-                          stateHistory::Vector{Simulation.Frame})
+    function (m::Dynamic)(current::Simulation.Frame,
+                          history::Vector{Simulation.Frame})
         error("Models.Dynamic() please implement this abstract functor for your subtype")
     end
     
