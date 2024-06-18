@@ -105,10 +105,34 @@ module Environment
 
     end
 
+    function light_fraction(state::State)
+
+        hr = hour(state)
+
+        if     photoperiod(envState) == 0
+
+            return 0.0
+
+        elseif photoperiod(envState) == 24
+
+            return 1.0 
+
+        elseif hr > sunrise(envState) && hr <= sunset(envState)
+
+            return 1.0
+
+        else 
+
+            return 0.0
+
+        end
+
+    end
+
     # exports
 
     export photoperiod, sunrise, sunset, temperature
-    export light_condition 
+    export light_condition, light_fraction
     
     #
     # Model

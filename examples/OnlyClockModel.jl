@@ -45,6 +45,12 @@ Clock.entrain(clock,
 
 # phenology model
 
+plantParameters = Phenology.Plant.loadParameters(floweringGenotype)
+
+# phenologyBehaviour = ???
+
+phenologyModel = Phenology.Model(environment, phenologyBehaviour)
+
 #phenology = phenologyModel() # no-op
 
 # plant model
