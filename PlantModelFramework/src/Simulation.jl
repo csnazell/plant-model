@@ -46,16 +46,16 @@ module Simulation
         outputData::Dict{String,ModelData}  # output: {model key : model data}
         stateData::Dict{String,ModelData}   # state: {model key : model data}
 
-        function Frame(day::Integer=1, timepoint::Integer=0)
+        function Frame(day::Integer=1, hour::Integer=0)
 
             # guard condition: parameter bounds checking
 
             @argcheck day >= 1 "day should be >= 1" 
-            @argcheck (timepoint >= 0 && timepoint < 25) "day should be >= 0"
+            @argcheck (hour >= 0 && hour < 25) "hour should be >= 0 && < 25"
 
             # construct
 
-            new(day, timepoint, Dict{String,ModelData}(), Dict{String,ModelData}())
+            new(day, hour, Dict{String,ModelData}(), Dict{String,ModelData}())
 
         end
 
