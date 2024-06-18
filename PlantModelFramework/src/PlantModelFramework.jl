@@ -70,18 +70,19 @@ module PlantModelFramework
         # fields
 
         environment::Environment.Model          # model : environment
-                                                # model : clock
+        clock::Clock.Model                      # model : clock
                                                 # model : phenology
                                                 # models: extensions 
 
         # constructor
 
         function PlantModel(environment::Environment.Model, 
+                            clock::Clock.Model
                            )
 
             # construct
 
-            new(environment)
+            new(environment, clock)
         end
 
     end
@@ -119,6 +120,8 @@ module PlantModelFramework
             # clock model
             # clockOutput = clockModel(day, timepoint, stateHistory)
             @debug "— clock "
+
+            clockOutput = run(m.clock, current, history)
             
             # phenology model
             # phenologyOutput = 

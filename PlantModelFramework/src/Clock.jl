@@ -98,7 +98,6 @@ module Clock
 
     #
     # Model
-    # - abstract base type for clock models.
     # 
 
     struct Model <: Models.Dynamic
