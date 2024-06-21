@@ -174,11 +174,18 @@ end # end: module: Plant
 
     using OrdinaryDiffEq
 
+    # = Trapz
+    # -- Trapezoidal integration library
+    # -- (https://github.com/francescoalemanno/Trapz.jl)
+    
+    using Trapz
+
     # package
     
     import ..Simulation
     import ..Models
     import ..Environment
+    import ..Clock
 
     # local
     
@@ -188,14 +195,33 @@ end # end: module: Plant
     # implementation ----------------------------------------------------------
 
     #
+    # ClockInput
+    #
+
+    abstract type struct ClockInput end
+
+    struct ClockOutputAdapter{P <: Clock.DynamicsParameters} <: Models.Base 
+        parameters::P
+    end
+
+    # functions
+
+    function (a::ClockOutputAdapter)(clockOutput)::ClockInput
+        error("Phenology.ClockOutputAdapter() please implement this abstract functor for your subtype")
+    end
+
+    #
     # Output
-    # - clock dynamics output data
+    # - phenology dynamics output data
     #
 
     struct Output
         dailyThrm::Float64
         dailyThrmCumulative::Float64
         flowered::Bool
+        FTArea::Float64
+        T
+        U
     end
 
     #
@@ -216,7 +242,8 @@ end # end: module: Plant
 
     abstract type DynamicsParameters end
 
-    struct Dynamics{P <: DynamicsParameters} <: Models.Base 
+    struct Dynamics{P <: DynamicsParameters, Q <: Clock.DynamicsParameters} <: Models.Base 
+        clockAdapter::Q
         parameters::P
     end
 
@@ -224,8 +251,9 @@ end # end: module: Plant
 
     function (m::Dynamics)(
                 du,                             # calculated matrix of next values
-                u,                              # vector  of values
-                envState::Environment.State,    # environment state @ day + hour
+                u,                              # vector of values
+                parameters::Tuple{Clock.Output, Environment.State},    
+                                                # parameters for dynamics calculations
                 t                               # time 
                 )
         error("Phenology.Dynamics() please implement this abstract functor for your subtype")
@@ -258,7 +286,8 @@ end # end: module: Plant
 
     # functions
 
-    function (m::Model)(current::Simulation.Frame,
+    function (m::Model)(clockOutput::Clock.Output,
+                        current::Simulation.Frame,
                         history::Vector{Simulation.Frame})
 
         # last times values
@@ -266,14 +295,23 @@ end # end: module: Plant
         previousFrame = history[end]
 
         previousState = getState(previousFrame, m.key)
+        
+        # environment
 
-        # phenology dynamics
-        #envState = m.environment(day(current), hour(current))
-        #tp       = timepoint(current)
+        envState = m.environment(day(current), hour(current))
 
-        # FIXME: IMPLEMENT
+        # dynamics
+        
+        problem = ODEProblem(m.phenologyDynamics,
+                             previousState.U,
+                             (0.0, 24.0),
+                             (clockOutput, envState))
+
+        solution = solve(problem, solver=QNDF)
 
         # mptu calculation (Daily Phenology Thrm)
+
+        dailyFTarea = trapz(solution.t, solution.u[:,15]);
 
         # - photoperiod component
 
@@ -316,16 +354,22 @@ end # end: module: Plant
             isnothing(previousState) ? 0.0 : previousState.dailyThrmCumulative
 
         cumulativeDailyThrm = dailyPhenThrm + cumulativeDailyThrmLTV
-
-        state = State(cumulativeDailyThrm)
+        
+        # NB: MATLAB code uses linear interpolation here however 
+        #     in Julia the algorithm used to solve the differential 
+        #     equations implicitly specifies the interpolation algorithm
+        
+        state = State(cumulativeDailyThrm, (solution.u[end,:])')
 
         setState(current, m.key, state)
 
         # output
 
         flowered = cumulativeDailyThrm > m.plant.Threshold
+
+        # - output
         
-        output = Output(dailyPhenThrm, cumulativeDailyThrm, flowered)
+        output = Output(dailyPhenThrm, cumulativeDailyThrm, flowered, dailyFTArea, solution.t, solution.u)
 
         setOutput(current, m.key, output)
 
@@ -334,10 +378,11 @@ end # end: module: Plant
     end
 
     function run(m::Model,
+                 clockOutput::Clock.Output,
                  current::Simulation.Frame,
                  history::Vector{Simulation.Frame})::Output
 
-        m(current, history)
+        m(clockOutput, current, history)
 
     end
 

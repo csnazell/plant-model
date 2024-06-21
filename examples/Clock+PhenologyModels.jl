@@ -43,9 +43,21 @@ Clock.entrain(clock,
               Clocks.F2014.initialState(),
               initialFrame)
 
+# phenology model
+
+plantParameters       = Phenology.Plant.loadParameters(floweringGenotype)
+
+phenologyClockAdapter = Phenologues.PIFCOFT.ClockAdapters.F2014.COP1.adapter(clockParameters)
+
+phenologyParameters   = Phenologies.PIFCOFT.parameters(clockGenotype)
+
+phenologyBehaviour    = Phenologies.PIFCOFT.dynamics(phenologyClockAdapter, phenologyParameters)
+
+phenology             = Phenology.Model(environment, phenologyBehaviour)
+
 # plant model
 
-#plant = plantModel(environment, clock)
+#plant = plantModel(environment, clock, phenology)
 
 #
 # run model

@@ -34,6 +34,7 @@ module Common
 
     # implementation ----------------------------------------------------------
 
+    # TODO: MEMOISE?
     function loadParameters(genotype::Set{String}, set::Integer)
 
         fpParameters = normpath(joinpath(@__DIR__), "Data", "F2014", "Parameters.tsv")
