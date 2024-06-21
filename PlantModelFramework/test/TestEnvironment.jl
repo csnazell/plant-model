@@ -36,10 +36,11 @@ using PlantModelFramework.Environment
             day  = 1
             time = 1
             temp = 22.0
-            sr   = 6
-            ss   = 18
+            sr   = 6        # sunrise
+            ss   = 18       # sunset
+            dd   = 24       # day duration
     
-            s = Environment.State(day, time, temp, sr, ss)
+            s = Environment.State(day, time, temp, sr, ss, dd)
     
             @test photoperiod(s) == (ss - sr)
     
@@ -48,6 +49,8 @@ using PlantModelFramework.Environment
             @test sunset(s) == ss
     
             @test isapprox(temp, temperature(s); atol=1e-6)
+
+            @test dayDuration(s) == dd
     
         end # end: testset: accessors
 
@@ -55,7 +58,7 @@ using PlantModelFramework.Environment
 
             # photoperiod = 0
             
-            state_pp00 = Environment.State(1,1,22.0,0,0)
+            state_pp00 = Environment.State(1,1,22.0,0,0,24)
 
             @test isapprox(0, light_condition(state_pp00, 0.0), atol=1e-8)
             @test isapprox(0, light_condition(state_pp00, 8.0), atol=1e-8)
@@ -64,7 +67,7 @@ using PlantModelFramework.Environment
 
             # photoperiod = 8
             
-            state_pp08 = Environment.State(1,1,22.0,0,8)
+            state_pp08 = Environment.State(1,1,22.0,0,8,24)
 
             @test isapprox(0, light_condition(state_pp08, 0.0), atol=1e-8)
             @test isapprox(1, light_condition(state_pp08, 8.0), atol=1e-8)
@@ -73,7 +76,7 @@ using PlantModelFramework.Environment
 
             # photoperiod = 16
             
-            state_pp16 = Environment.State(1,1,22.0,0,16)
+            state_pp16 = Environment.State(1,1,22.0,0,16,24)
 
             @test isapprox(0, light_condition(state_pp16, 0.0), atol=1e-8)
             @test isapprox(1, light_condition(state_pp16, 8.0), atol=1e-8)
@@ -82,7 +85,7 @@ using PlantModelFramework.Environment
 
             # photoperiod = 0
             
-            state_pp24 = Environment.State(1,1,22.0,0,24)
+            state_pp24 = Environment.State(1,1,22.0,0,24,24)
 
             @test isapprox(1, light_condition(state_pp24, 0.0), atol=1e-8)
             @test isapprox(1, light_condition(state_pp24, 8.0), atol=1e-8)

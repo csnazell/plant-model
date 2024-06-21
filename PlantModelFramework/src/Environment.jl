@@ -46,9 +46,16 @@ module Environment
         temperature::Float32    # temperature @ timepoint (ºC)
         sunrise::Int8           # hour of sunrise @ timepoint : 0 - 24
         sunset::Int8            # hour of sunrise @ timepoint : 0 - 24
+        dayDuration::Int8       # duration of day (default: 24)
     end
 
     # accessors
+
+    dayDuration(state::State) = state.dayDuration
+
+    dayDuration(state::State) = Float32(state.dayDuration)
+
+    dayDuration(state::State) = Float64(state.dayDuration)
 
     photoperiod(state::State) = sunset(state) - sunrise(state)
 
@@ -131,7 +138,7 @@ module Environment
 
     # exports
 
-    export photoperiod, sunrise, sunset, temperature
+    export dayDuration, photoperiod, sunrise, sunset, temperature
     export light_condition, light_fraction
     
     #
@@ -159,12 +166,14 @@ module Environment
         temperature::Float32    # temperature @ timepoint (ºC)
         sunrise::Int8           # hour of sunrise @ timepoint : 0 - 24
         sunset::Int8            # hour of sunrise @ timepoint : 0 - 24
+        dayDuration::Int8       # duration of day in hours
 
         # constructor
 
         function ConstantModel( ; temperature::AbstractFloat=22.0, 
                                   sunrise::Integer=0, 
-                                  sunset::Integer=0)
+                                  sunset::Integer=0,
+                                  dayDuration::Integer=24)
 
             # parameter constraints
             # - sunrise <= sunset & 0 | 1:24
@@ -172,12 +181,15 @@ module Environment
             sunriseCorrected = min(sunrise, sunset)
             sunsetCorrected  = max(sunrise, sunset)
 
+            dayDuration      = max(0, dayDuration)
+
             @argcheck sunriseCorrected in 0:24 "sunrise should be within range 1:24"
             @argcheck sunsetCorrected in 0:24 "sunset should be within range 1:24"
+            @argcheck dayDuration > 0 "duration of day should be > 0"
 
             # construct
 
-            new(temperature, sunriseCorrected, sunsetCorrected)
+            new(temperature, sunriseCorrected, sunsetCorrected, dayDuration)
         end
 
     end
@@ -186,7 +198,7 @@ module Environment
 
     function (m::ConstantModel)(day::Integer, hour::Integer)
 
-        state = State(day, hour, m.temperature, m.sunrise, m.sunset)
+        state = State(day, hour, m.temperature, m.sunrise, m.sunset, m.dayDuration)
 
     end
 
