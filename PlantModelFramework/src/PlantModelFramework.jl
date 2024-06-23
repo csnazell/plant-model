@@ -15,7 +15,12 @@ module PlantModelFramework
     using Printf
 
     # third-party
-    # -
+    #
+    # - ArgCheck
+    # -- argument validation macros
+    # -- (https://github.com/jw3126/ArgCheck.jl)
+
+    using ArgCheck
 
     #
     # package
@@ -33,6 +38,8 @@ module PlantModelFramework
     # - simulation
     
     using .Simulation
+
+    export Simulation
 
     export getOutput, setOutput, getState, setState
 
@@ -102,8 +109,11 @@ module PlantModelFramework
 
     # functions
 
-    function (m::PlantModel)(days::UInt32, 
+    function (m::PlantModel)(days::Integer, 
                              initialFrame::Union{Nothing, Simulation.Frame}=nothing)
+
+        @argcheck days > 0 "# days should be more than 1 (< 1 specified)"
+
 
         @info "running model for $(@sprintf("%u", days)) days"
 
@@ -124,6 +134,8 @@ module PlantModelFramework
             
             if flowered 
 
+                @info "- flowered @ day: $(day - 1) "
+
                 break
 
             end
@@ -135,19 +147,19 @@ module PlantModelFramework
             
             current = Simulation.Frame(day, hour)
 
-            @info "- day: $(day) + hour: $(day) = timepoint: $(timepoint(current)) "
+            @info "- day: $(day) + hour: $(hour) = timepoint: $(timepoint(current)) "
 
             # clock model
             #
             @debug "— clock "
 
-            clockOutput = run(m.clock, current, history)
+            clockOutput = Clock.run(m.clock, current, history)
             
             # phenology model
             
             @debug "— phenology "
 
-            phenologyOutput = run(m.phenologyModel, clockOutput, current, history)
+            phenologyOutput = Phenology.run(m.phenology, clockOutput, current, history)
 
             # additional models
 
@@ -182,7 +194,7 @@ module PlantModelFramework
     # helper functions
 
     function run(plant::PlantModel, 
-                 days::UInt32, 
+                 days::Integer, 
                  initialFrame::Union{Nothing,Simulation.Frame}=nothing)
 
         plant(days, initialFrame)

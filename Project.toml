@@ -1,2 +1,4 @@
 [deps]
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+LoggingExtras = "e6f89c97-d47a-5376-807f-9c37f3926c36"
 PlantModelFramework = "f544a799-5eef-482e-b287-93a29dd5c0b3"

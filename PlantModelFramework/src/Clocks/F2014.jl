@@ -313,7 +313,7 @@ module COP1
                 du,                             # calculated matrix of next values
                 u,                              # vector  of values
                 envState::Environment.State,    # environment state @ day + hour
-                t                               # time 
+                time                            # time 
                 )
 
         # map variables to supplied u vector
@@ -325,10 +325,10 @@ module COP1
 
         # light calculations
 
-        BlueL = light_conditions(envState)
+        BlueL = Environment.light_condition(envState, time)
         BlueD = 1.0 - BlueL;
 
-        RedL  = (d.parameters.yhb + L) / (d.parameters.yhb + 1)
+        RedL  = (d.parameters.yhb + BlueL) / (d.parameters.yhb + 1)
         RedD  = 1 - RedL;
 
         L     = BlueL;
@@ -342,10 +342,10 @@ module COP1
 
         LCcommon = (d.parameters.q1 * L * P + d.parameters.n1) / 
                     (1 + (d.parameters.r1 * PRR9p)^2 + (d.parameters.r2 * PRR7p)^2 + 
-                            (d.paramters.r3 * PRR5n)^2 + (d.parameters.r4 * TOC1n)^2)
+                            (d.parameters.r3 * PRR5n)^2 + (d.parameters.r4 * TOC1n)^2)
 
         EC = ((LUXp + d.parameters.f6 * NOXp) * (ELF34 + d.parameters.f1 * ELF3p)) / 
-                (1 + d.parameters.f3 * (LUXp + d.paramters.f2 * NOXp) + d.paramters.f4 * 
+                (1 + d.parameters.f3 * (LUXp + d.parameters.f2 * NOXp) + d.parameters.f4 * 
                     (ELF34 + d.parameters.f1 * ELF3p))
 
         P5trans = d.parameters.t5 * PRR5c - d.parameters.t6 * PRR5n

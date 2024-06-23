@@ -67,7 +67,7 @@ module Environment
 
     # functions
 
-    function light_condition(state::State, t::AbstractFloat)
+    function light_condition(state::State, time::AbstractFloat)
 
         # guard condition: photoperiod @ 0
 
@@ -90,12 +90,12 @@ module Environment
         twilightPer =  0.00005    # duration of time between value of force in dark and 
                                   # value of force in light
 
-        tCorrected    = mod((t - (15 * twilightPer)), period)
+        timeCorrected    = mod((time - (15 * twilightPer)), period)
 
         dawn = Float64(sunrise(state))
         pp   = Float64(photoperiod(state))
 
-        thingA = (tCorrected + dawn) / period - floor( floor(tCorrected + dawn) / period )
+        thingA = (timeCorrected + dawn) / period - floor( floor(timeCorrected + dawn) / period )
 
         thingB = 1 + tanh( (period / twilightPer) * thingA )
         thingD = 1 + tanh( (period / twilightPer) * thingA - (pp / twilightPer) )  

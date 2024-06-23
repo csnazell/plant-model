@@ -358,7 +358,7 @@ module PIFCOFT
                 u,                              # vector of values
                 parameters::Tuple{Clock.Output, Environment.State},    
                                                 # parameters for dynamics calculations
-                t                               # time 
+                time                            # time 
                 )
 
         # parameters
@@ -371,12 +371,12 @@ module PIFCOFT
 
         # light conditions
         
-        L = light_conditions(envState)
+        L = Environment.light_condition(envState, time)
 
         # clock inputs
 
-        modTime         = mod(t, dayDuration(envState))
-        modTimeAdvanced = mod((t + modelParameters.advance), dayDuration(envState))
+        modTime         = mod(t, Environment.dayDuration(envState))
+        modTimeAdvanced = mod((t + modelParameters.advance), Environment.dayDuration(envState))
 
         cP      = ( LinearInterpolation(clockInput.cP, clockInput.T) )(modTime)
 

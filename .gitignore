@@ -23,6 +23,10 @@ docs/site/
 # environment.
 Manifest.toml
 
+# log files
+log.txt
+.log
+
 # swap / backup files
 # - drawio
 .$*.drawio.bkp

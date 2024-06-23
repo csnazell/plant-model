@@ -190,7 +190,6 @@ end # end: module: Plant
     # local
     
     import .Plant
-    import .Flowering
 
     # implementation ----------------------------------------------------------
 
@@ -215,7 +214,7 @@ end # end: module: Plant
     # - phenology dynamics output data
     #
 
-    struct Output
+    struct Output <: Simulation.ModelData
         dailyThrm::Float64
         dailyThrmCumulative::Float64
         flowered::Bool
@@ -247,7 +246,7 @@ end # end: module: Plant
     # - clock dynamics state data
     #
 
-    struct State
+    struct State <: Simulation.ModelData
         dailyThrmCumulative::Float64
         U
     end
@@ -312,7 +311,7 @@ end # end: module: Plant
 
         previousFrame = history[end]
 
-        previousState = getState(previousFrame, m.key)
+        previousState = Simulation.getState(previousFrame, m.key)
         
         # environment
 
@@ -325,7 +324,7 @@ end # end: module: Plant
                              (0.0, 24.0),
                              (clockOutput, envState))
 
-        solution = solve(problem, solver=QNDF)
+        solution = solve(problem, QNDF())
 
         # mptu calculation (Daily Phenology Thrm)
 
@@ -389,7 +388,7 @@ end # end: module: Plant
         
         output = Output(dailyPhenThrm, cumulativeDailyThrm, flowered, dailyFTArea, solution.t, solution.u)
 
-        setOutput(current, m.key, output)
+        Simulation.setOutput(current, m.key, output)
 
         return output
 

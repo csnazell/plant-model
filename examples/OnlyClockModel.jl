@@ -8,9 +8,29 @@
 
 # dependencies ----------------------------------------------------------------
 
+# standard libraries
+
+using Logging
+using LoggingExtras
+
+# third-party libraries
+
 using PlantModelFramework
 
+# package
+# -
+
 # implementation --------------------------------------------------------------
+
+#
+# set-up
+#
+
+# logging (@debug so we can see everything going on)
+
+logger = FileLogger("log.txt")
+
+global_logger(logger)
 
 #
 # construct model
@@ -18,13 +38,11 @@ using PlantModelFramework
 
 # initial conditions
 
-clockGenotype     = ['wt']
+clockGenotype     = Set(["wt"])
 
 floweringGenotype = 2
 
 environment       = Environment.ConstantModel(sunset=8)
-
-#plantParameters = load("parameter.mat") # ?? phenology only?
 
 # clock model 
 
@@ -37,21 +55,21 @@ clock           = Clock.Model(environment, clockBehaviour)
 # - entrain model
 # - starting conditions @ day 1 + hour 0 (prior to simulation start)
 
-initialFrane = Frame()
+initialFrame = Simulation.Frame()
 
 Clock.entrain(clock,
-              Clocks.F2014.initialState(),
+              Clocks.F2014.COP1.initialState(),
               initialFrame)
 
 # plant model
 
-plant = plantModel(environment, clock)
+plant = PlantModel(environment, clock)
 
 #
 # run model
 #
 
-# dfOutput, dfState = run(plant, days=40, initialFrame)
+history = PlantModelFramework.run(plant, 40, initialFrame)
 
 #
 # analysis

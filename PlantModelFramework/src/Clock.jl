@@ -59,7 +59,7 @@ module Clock
     # - clock dynamics output data
     #
 
-    struct Output
+    struct Output <: Simulation.ModelData
         T
         U
     end
@@ -69,7 +69,7 @@ module Clock
     # - clock dynamics state data
     #
 
-    struct State
+    struct State <: Simulation.ModelData
         U
     end
 
@@ -128,11 +128,11 @@ module Clock
 
         previousFrame = history[end]
 
-        previousState = getState(previousFrame, m.key)
+        previousState = Simulation.getState(previousFrame, m.key)
 
         # environment
 
-        envState = m.environment(day(current), hour(current))
+        envState = m.environment(Simulation.day(current), Simulation.hour(current))
 
         # dynamics
         
@@ -141,13 +141,13 @@ module Clock
                              (0.0, 27.0),
                              envState)
 
-        solution = solve(problem, solver=QNDF, dt=0.05)
+        solution = solve(problem, QNDF(), dt=0.05)
 
         # - output
 
         output = Output(solution.t, solution.u)
 
-        setOutput(current, m.key, output)
+        Simulation.setOutput(current, m.key, output)
 
         # - state
         #   NB: MATLAB code uses linear interpolation here however 
@@ -156,7 +156,7 @@ module Clock
         
         state = State(solution(24))
 
-        setState(current, m.key, state)
+        Simulation.setState(current, m.key, state)
 
         # output
 
@@ -182,7 +182,8 @@ module Clock
                                      envState.hour, 
                                      envState.temperature,
                                      envState.sunrise,
-                                     (envState.sunrise + photoperiod))
+                                     (envState.sunrise + photoperiod),
+                                     envState.dayDuration)
 
         # entrain clock state
 
@@ -194,22 +195,22 @@ module Clock
                              (0.0, (duration * 24.0)),
                              envState)
 
-        solution = solve(problem, solver=QNDF, dt=0.1)
+        solution = solve(problem, QNDF(), dt=0.1)
 
         # - state
         #   NB: MATLAB code uses linear interpolation here however 
         #       in Julia the algorithm used to solve the differential 
         #       equations implicitly specifies the interpolation algorithm
 
-        entrainedFrame = Frame() 
+        entrainedFrame = Simulation.Frame() 
 
         entrainedState = State(solution.u[end])
         
-        setState(entrainedFrame, m.key, state)
+        Simulation.setState(entrainedFrame, m.key, entrainedState)
 
         # - run for a day
 
-        run(m, 1, 1, initialFrame, [stateEntrained])
+        run(m, initialFrame, [entrainedFrame])
 	
     end
 
