@@ -28,7 +28,7 @@ using PlantModelFramework
 
 # logging (@debug so we can see everything going on)
 
-logger = FileLogger("log.txt")
+logger = FileLogger("only-clock-model.log")
 
 global_logger(logger)
 
