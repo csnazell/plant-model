@@ -9,8 +9,6 @@
 # - ???                                                                        #
 #                                                                              #
 
-module Phenologies
-
 module PIFCOFT
 
     # dependencies ------------------------------------------------------------
@@ -171,7 +169,7 @@ module PIFCOFT
 
     # functions
 
-    function applyTemperatureCorrection(p::DynamicsParameters, temperature::Float64)
+    function applyTemperatureCorrection(p::DynamicsParameters, temperature::AbstractFloat)
 
         # guard condition: temperature neither ~= 22.0 or ~= 27.0
 
@@ -180,14 +178,14 @@ module PIFCOFT
         is27 = isapprox(27.0, temperature, atol=1e-8)
 
         if (!(is22 || is27))
-            error("PIFCOFT.DynamicParameters(temperature): temperatore must be 22° or 27°")
+            error("PIFCOFT.DynamicParameters(temperature): temperature must be 22° or 27°")
         end
 
         # guard condition: temperature ~= 22.0
         
         if is22
             
-            return copy(p)
+            return p
 
         end
 
@@ -212,13 +210,13 @@ module PIFCOFT
         # raw parameters loaded from common data set definition &
         # corrected for specified genotype
 
-        fpParameters = normpath(joinpath(@__DIR__), "Phenologies", "Data", "PIFCOFT", "Parameters.tsv")
+        fpParameters = normpath(joinpath(@__DIR__), "Data", "PIFCOFT", "Parameters.tsv")
 
         @info "loading PIFCOFT parameters (set @ $(genotype)) from $(fpParameters)"
 
-        column = thresholdGenotype + 1
+        column = 2
 
-        rawParameters = Dict( map(r -> (Symbol(r[1]) , Float64( r[column] )), CSV.File(fpParameters, delim="\t")) )
+        rawParameters = Dict( map(r -> (Symbol(r[1]), Float64( r[column] )), CSV.File(fpParameters, delim="\t")) )
 
         # overriden parameters
         # - lifted verbatim from MATLAB load_PIF_CO_FT_parameters.m
@@ -345,9 +343,9 @@ module PIFCOFT
 
     # - factory for PIF_CO_FT dynamics
 
-    function dynamics(parameters::DynamicsParameters)
+    function dynamics(clockAdapter::Phenology.ClockOutputAdapter, parameters::DynamicsParameters)
 
-        dynamics = Clock.Dynamics(parameters)
+        dynamics = Phenology.Dynamics(clockAdapter, parameters)
 
     end
 
@@ -365,7 +363,7 @@ module PIFCOFT
 
         (clockOutput, envState) = parameters
 
-        modelParameters = applyTemperatureCorrection(d.parameters, temperature(envState))
+        modelParameters = applyTemperatureCorrection(d.parameters, Environment.temperature(envState))
 
         clockInput = d.clockAdapter(clockOutput)
 
@@ -481,6 +479,14 @@ module PIFCOFT
 
     end
 
-end #end: module: PIFCOFT
+    #
+    # Utilities
+    #
+    
+    function initialState()
 
-end #end: module: Phenologies
+        Phenology.State(0.0, ones(1,18));
+
+    end
+
+end #end: module: PIFCOFT

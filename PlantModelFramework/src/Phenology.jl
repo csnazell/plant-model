@@ -260,7 +260,7 @@ end # end: module: Plant
     abstract type DynamicsParameters end
 
     struct Dynamics{P <: DynamicsParameters, Q <: Clock.DynamicsParameters} <: Models.Base 
-        clockAdapter::Q
+        clockAdapter::ClockOutputAdapter{Q}
         parameters::P
     end
 
@@ -315,7 +315,7 @@ end # end: module: Plant
         
         # environment
 
-        envState = m.environment(day(current), hour(current))
+        envState = m.environment(Simulation.day(current), Simulation.hour(current))
 
         # dynamics
         
@@ -378,7 +378,7 @@ end # end: module: Plant
         
         state = State(cumulativeDailyThrm, (solution.u[end,:])')
 
-        setState(current, m.key, state)
+        Simulation.setState(current, m.key, state)
 
         # output
 
@@ -391,6 +391,12 @@ end # end: module: Plant
         Simulation.setOutput(current, m.key, output)
 
         return output
+
+    end
+
+    function initialise(m::Model, fromState::State, initialFrame::Simulation.Frame)
+
+        Simulation.setState(initialFrame, m.key, fromState)
 
     end
 
@@ -472,6 +478,6 @@ end # end: module: Plant
 
     # exports
     
-    export run
+    export initialise, run
 
 end # end: module: Phenology

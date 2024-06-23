@@ -1,21 +1,17 @@
 #                                                                              #
 # PlantModelFramework                                                          #
 #                                                                              #
-# Phenologies/PIFCOFT/F2014.jl                                                 #
+# Phenologies/ClockAdapters/F2014.jl                                           #
 #                                                                              #
-# Adapters for F2014 clock output. Adapts clock output into form compatible    #
-# with PIF_CO_FT phenology model.                                              #
+# Adapters for F2014 clock output.                                             #
 #                                                                              #
-
-module Phenologies
-
-module PIFCOFT
-
-module ClockAdapters
+# Implements adapter behaviour for Phenology.ClockOutputAdapters with          #
+# concrete combinations of Phenology.ClockInputs and Clock.ClockOutputs.       #
+#                                                                              #
 
 module F2014
 
-module COP1
+    module COP1
 
     # dependencies ------------------------------------------------------------
     
@@ -30,27 +26,29 @@ module COP1
     import ......Clock
     import ......Clocks.F2014 as F2014
     import ......Phenology
-    import .....PIFCOFT
+    import ....PIFCOFT
 
     # implementation ----------------------------------------------------------
 
     #
-    # ClockInput
+    # COP1.DynamicsParameters -> PIFCOFT.ClockInput
     #
     
     # functions
 
-    # - factory for COP1 dynamics
+    # - factory
+    
+    function pifcoftAdapter(parameters::F2014.COP1.DynamicsParameters)
 
-    function adapter(parameters::F2014.COP1.DynamicsParameters)
-
-        adapter = Phenology.ClockOutputAdapter(parameters)
+        Phenology.ClockOutputAdapter(parameters)
 
     end
 
-    # - type-specific adapter implementation (COP1.DynamicsParameters)
+    # - type-specific adapter implementation 
 
     function (a::Phenology.ClockOutputAdapter{<: F2014.COP1.DynamicsParameters})(clockOutput::Clock.Output)::PIFCOFT.ClockInput
+
+        @debug "adapting clock output: U $(size(clockOutput.U))"
 
         # clock model properties
 
@@ -79,13 +77,6 @@ module COP1
 
     end
 
-end #end: module: COP1
+    end #end: module: COP1
 
 end #end: module: F2014
-
-end #end: module: ClockAdapters
-
-end #end: module: PIFCOFT
-
-end #end: module: Phenologies
-

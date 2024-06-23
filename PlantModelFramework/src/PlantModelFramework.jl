@@ -32,8 +32,7 @@ module PlantModelFramework
     include("Clock.jl")
     include("Clocks/F2014.jl")
     include("Phenology.jl")
-    include("Phenologies/PIFCOFT/PIFCOFT.jl")
-    include("Phenologies/PIFCOFT/F2014.jl")
+    include("Phenologies/Phenologies.jl")
 
     # - simulation
     
@@ -63,15 +62,13 @@ module PlantModelFramework
 
     export Clock, Clocks
 
-    export run
-
     # - phenology
     
     using  .Phenology
 
     import .Phenologies
 
-    export run
+    export Phenology, Phenologies
 
     # implementation ----------------------------------------------------------
 
