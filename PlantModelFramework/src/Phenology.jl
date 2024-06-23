@@ -198,7 +198,7 @@ end # end: module: Plant
     # ClockInput
     #
 
-    abstract type struct ClockInput end
+    abstract type ClockInput end
 
     struct ClockOutputAdapter{P <: Clock.DynamicsParameters} <: Models.Base 
         parameters::P
@@ -222,6 +222,24 @@ end # end: module: Plant
         FTArea::Float64
         T
         U
+    end
+
+    # functions
+
+    function hasFlowered(output::Union{Nothing, Output})::Bool
+
+        # guard condition: output undefined
+
+        if ( isnothing( output ) )
+
+            return 0
+
+        end
+
+        # output defined
+        
+        return output.flowered
+
     end
 
     #
@@ -377,10 +395,20 @@ end # end: module: Plant
 
     end
 
-    function run(m::Model,
+    function run(m::Union{Nothing, Model},
                  clockOutput::Clock.Output,
                  current::Simulation.Frame,
-                 history::Vector{Simulation.Frame})::Output
+                 history::Vector{Simulation.Frame})::Union{Nothing, Output}
+
+        # guard condition: phenology model not specified
+        
+        if ( isnothing(m) )
+
+            return nothing
+
+        end
+
+        # run model
 
         m(clockOutput, current, history)
 

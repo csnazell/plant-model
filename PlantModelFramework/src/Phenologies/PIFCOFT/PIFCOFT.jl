@@ -313,7 +313,7 @@ module PIFCOFT
 
         if      ("co" in genotype)
             rawParameters[:Bco] = 0.0
-        else if ("COox" in genotype)
+        elseif ("COox" in genotype)
             rawParameters[:Bco] = 2.0
         end
 
@@ -353,7 +353,7 @@ module PIFCOFT
 
     # - type-specific implementation (PIFCOFT.DynamicsParameters)
 
-    function (d::Dynamics{<: DynamicsParameters})(
+    function (d::Phenology.Dynamics{<: DynamicsParameters})(
                 du,                             # calculated matrix of next values
                 u,                              # vector of values
                 parameters::Tuple{Clock.Output, Environment.State},    

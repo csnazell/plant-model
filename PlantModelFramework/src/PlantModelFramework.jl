@@ -26,6 +26,9 @@ module PlantModelFramework
     include("Environment.jl")
     include("Clock.jl")
     include("Clocks/F2014.jl")
+    include("Phenology.jl")
+    include("Phenologies/PIFCOFT/PIFCOFT.jl")
+    include("Phenologies/PIFCOFT/F2014.jl")
 
     # - simulation
     
@@ -47,11 +50,19 @@ module PlantModelFramework
 
     # - clocks
     
-    using .Clock
+    using  .Clock
 
     import .Clocks
 
     export Clock, Clocks
+
+    export run
+
+    # - phenology
+    
+    using  .Phenology
+
+    import .Phenologies
 
     export run
 
@@ -69,20 +80,22 @@ module PlantModelFramework
 
         # fields
 
-        environment::Environment.Model          # model : environment
-        clock::Clock.Model                      # model : clock
-                                                # model : phenology
-                                                # models: extensions 
+        environment::Environment.Model              # model : environment
+        clock::Clock.Model                          # model : clock
+        phenology::Union{Nothing, Phenology.Model}  # model : phenology
+        # FIXME: IMPLEMENT ADDITIONAL MODELS        # models: extensions 
 
         # constructor
 
         function PlantModel(environment::Environment.Model, 
-                            clock::Clock.Model
+                            clock::Clock.Model,
+                            phenology::Union{Nothing, Phenology.Model}=nothing
+                            # FIXME: IMPLEMENT ADDITIONAL MODELS: VARARGS
                            )
 
             # construct
 
-            new(environment, clock)
+            new(environment, clock, phenology)
         end
 
     end
@@ -103,10 +116,17 @@ module PlantModelFramework
 
         # run simulation
 
+        flowered = false
+
         for day in 1:days
 
             # flowered
-            # FIXME: BREAK @ FLOWERED | CUSTOMISABLE?
+            
+            if flowered 
+
+                break
+
+            end
             
             # current output & state 
             # - @ D = day | T = timepoint
@@ -118,24 +138,21 @@ module PlantModelFramework
             @info "- day: $(day) + hour: $(day) = timepoint: $(timepoint(current)) "
 
             # clock model
-            # clockOutput = clockModel(day, timepoint, stateHistory)
+            #
             @debug "— clock "
 
             clockOutput = run(m.clock, current, history)
             
             # phenology model
-            # phenologyOutput = 
-            #   phenologyModel(day, 
-            #                   timepoint,
-            #                   clockOutput,
-            #                   outputCurrent,
-            #                   outputHistory,
-            #                   stateCurrent,
-            #                   stateHistory)
+            
             @debug "— phenology "
-                
+
+            phenologyOutput = run(m.phenologyModel, clockOutput, current, history)
+
             # additional models
+
             @debug "— other models " 
+
             # for model in additionalModels
             #   model(day,
             #           timepoint,
@@ -153,12 +170,12 @@ module PlantModelFramework
 
         end
 
-        @info "model run completed."
+        @info "model run completed ($(length(history)) frames)."
 
         # output
-        # FIXME: TURN OUTPUT & STATE HISTORIES INTO DATAFRAMES
+        # FIXME: TURN OUTPUT & STATE HISTORIES INTO DATAFRAMES? OR NICE OUTPUT
 
-        @debug "history length: $(length(outputHistory)) frames"
+        return history
 
     end
     

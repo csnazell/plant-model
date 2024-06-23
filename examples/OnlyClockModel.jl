@@ -45,13 +45,13 @@ Clock.entrain(clock,
 
 # plant model
 
-#plant = plantModel(environment, clock)
+plant = plantModel(environment, clock)
 
 #
 # run model
 #
 
-# dfOutput, dfState = run(plant, days=90, initialFrame)
+# dfOutput, dfState = run(plant, days=40, initialFrame)
 
 #
 # analysis
