@@ -51,11 +51,15 @@ module Environment
 
     # accessors
 
+    day(state::State) = state.day
+
     dayDuration(state::State) = state.dayDuration
 
     dayDuration(state::State) = Float32(state.dayDuration)
 
     dayDuration(state::State) = Float64(state.dayDuration)
+
+    hour(state::State) = state.hour
 
     photoperiod(state::State) = sunset(state) - sunrise(state)
 
@@ -116,15 +120,15 @@ module Environment
 
         hr = hour(state)
 
-        if     photoperiod(envState) == 0
+        if     photoperiod(state) == 0
 
             return 0.0
 
-        elseif photoperiod(envState) == 24
+        elseif photoperiod(state) == 24
 
             return 1.0 
 
-        elseif hr > sunrise(envState) && hr <= sunset(envState)
+        elseif hr > sunrise(state) && hr <= sunset(state)
 
             return 1.0
 
@@ -138,7 +142,7 @@ module Environment
 
     # exports
 
-    export dayDuration, photoperiod, sunrise, sunset, temperature
+    export day, dayDuration, hour, photoperiod, sunrise, sunset, temperature
     export light_condition, light_fraction
     
     #

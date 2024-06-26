@@ -163,7 +163,7 @@ module PIFCOFT
         m19::Float64
         m20::Float64
         n22::Float64
-        n24::Float64
+        n23::Float64
         YHB::Float64
     end
 
@@ -367,14 +367,16 @@ module PIFCOFT
 
         clockInput = d.clockAdapter(clockOutput)
 
+        P = d.parameters # phenology model parameters
+
         # light conditions
         
         L = Environment.light_condition(envState, time)
 
         # clock inputs
 
-        modTime         = mod(t, Environment.dayDuration(envState))
-        modTimeAdvanced = mod((t + modelParameters.advance), Environment.dayDuration(envState))
+        modTime         = mod(time, Environment.dayDuration(envState))
+        modTimeAdvanced = mod((time + modelParameters.advance), Environment.dayDuration(envState))
 
         cP      = ( LinearInterpolation(clockInput.cP, clockInput.T) )(modTime)
 

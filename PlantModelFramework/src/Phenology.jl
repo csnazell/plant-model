@@ -328,23 +328,23 @@ end # end: module: Plant
 
         # mptu calculation (Daily Phenology Thrm)
 
-        dailyFTarea = trapz(solution.t, solution.u[:,15]);
+        dailyFTArea = trapz(solution.t, solution[15,:]);
 
         # - photoperiod component
 
         mptuPhotoperiod = 
             m.plant.Phot_a + m.plant.Phot_b * m.plant.Phot_c ^ m.plant.Phot_n / 
-                (m.plant.Phot_c ^ m.plant.Phot_n + dailyFTarea ^ m.plant.Phot_n);
+                (m.plant.Phot_c ^ m.plant.Phot_n + dailyFTArea ^ m.plant.Phot_n);
 
         # - hourly components
 
         cumulativeVernalisation = 0.0
 
-        dayPhenThrm = 0.0
+        dailyPhenThrm = 0.0
 
         for hour in 1:24
 
-            envState = m.environment(day(current), hour)
+            envState = m.environment(Simulation.day(current), hour)
 
             # thermal component
 
@@ -376,7 +376,7 @@ end # end: module: Plant
         #     in Julia the algorithm used to solve the differential 
         #     equations implicitly specifies the interpolation algorithm
         
-        state = State(cumulativeDailyThrm, (solution.u[end,:])')
+        state = State(cumulativeDailyThrm, (solution[:, end])')
 
         Simulation.setState(current, m.key, state)
 
@@ -421,29 +421,29 @@ end # end: module: Plant
 
     # functions (internal)
 
-    function _mptuThermal(plant::Plant.Parameters, env::Environment.State)
+    function _mptuThermal(plant::Plant.Parameters, envState::Environment.State)
 
-        lightFraction = light_fraction(envState)
+        lightFraction = Environment.light_fraction(envState)
 
-        temp = temperature(envState)
+        envTemperature = Environment.temperature(envState)
 
-        unscaledThermal = max(0.0, (envTemperature - plant.Tb));
+        unscaledThermals = max(0.0, (envTemperature - plant.Tb));
 
-        thermal = 
+        thermals = 
             # daytime component
-            (unscaledThermals * fractionLight) +
+            (unscaledThermals * lightFraction) +
             # nighttime component
-            ( (1.0 - fractionLight) * (unscaledThermals * parameter.Night) )
+            ( (1.0 - lightFraction) * (unscaledThermals * plant.Night) )
 
         # mptu: thermal
 
-        return thermal
+        return thermals
 
     end
 
     function _mptuVernalization(plant::Plant.Parameters, env::Environment.State, cumulativeLTV::Float64)
 
-        temp = temperature(envState)
+        temp = Environment.temperature(env)
 
         # effective vernalization
         # - (vernalization: induction of plant's flowering process)
@@ -465,9 +465,9 @@ end # end: module: Plant
 
         vernalization = 1.0;
 
-        if	cumulative <= m.plant.Vsat
+        if	cumulative <= plant.Vsat
 
-            vernalization = m.plant.Fb + cumulative * (1.0 - plant.Fb) / plant.Vsat;
+            vernalization = plant.Fb + cumulative * (1.0 - plant.Fb) / plant.Vsat;
 
         end
 

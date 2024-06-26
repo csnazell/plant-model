@@ -48,32 +48,32 @@ module F2014
 
     function (a::Phenology.ClockOutputAdapter{<: F2014.COP1.DynamicsParameters})(clockOutput::Clock.Output)::PIFCOFT.ClockInput
 
-        @debug "adapting clock output: U $(size(clockOutput.U))"
+        Umatrix = vcat(clockOutput.U...)
 
         # clock model properties
 
-        LUXp  = clockOutput.U[:,23] 
-        NOXp  = clockOutput.U[:,33] 
-        ELF34 = clockOutput.U[:,21] 
-        ELF3p = clockOutput.U[:,20] 
+        LUXp  = Umatrix[:,23] 
+        NOXp  = Umatrix[:,33] 
+        ELF34 = Umatrix[:,21] 
+        ELF3p = Umatrix[:,20] 
 
         # phenology clock inputs
 
-        cP      = clockOutput.U[:,5] 
-        COP1n_n = clockOutput.U[:,25] 
-        EC      = ( (LUXp + a.parameters.f6 * NOXp) .* (ELF34 + a.parameters.f1 * ELF3p) ) ./ 
-                    ( 1 + a.parameters.f3 * (LUXp + a.parameters.f2 * NOXp) + a.parameters.f4 * (ELF34 + a.parameters.f1 * ELF3p) )
-        GIn     = clockOutput.U[:,31] * 40.9 
-        LHY     = ( clockOutput.U[:,2] + clockOutput.U[:,4] ) / 1.561   # LHY + CCA1
-        PRR5    = clockOutput.U[:,12] * 0.841                           # nuclear
-        PRR7    = clockOutput.U[:,9] / 2.6754 
-        PRR9    = Y[:,7] 
-        TOC1    = clockOutput.U[:,14] * 1.21                            # nuclear
+        cP      = Umatrix[:,5] 
+        COP1n_n = Umatrix[:,25] 
+        EC      = ( (LUXp .+ a.parameters.f6 * NOXp) .* (ELF34 .+ a.parameters.f1 * ELF3p) ) ./ 
+                   ( 1.0 .+ a.parameters.f3 * (LUXp + a.parameters.f2 * NOXp) + a.parameters.f4 * (ELF34 + a.parameters.f1 * ELF3p) )
+        GIn     = Umatrix[:,31] * 40.9 
+        LHY     = ( Umatrix[:,2] + Umatrix[:,4] ) / 1.561   # LHY + CCA1
+        PRR5    = Umatrix[:,12] * 0.841                           # nuclear
+        PRR7    = Umatrix[:,9] / 2.6754 
+        PRR9    = Umatrix[:,7] 
+        TOC1    = Umatrix[:,14] * 1.21                            # nuclear
         T       = clockOutput.T
 
         # clockinput
 
-        Phenology.ClockInput(cp, COP1n_n, EC, GIn, LHY, PRR5, PRR7, PRR9, TOC1, T)
+        PIFCOFT.ClockInput(cP, COP1n_n, EC, GIn, LHY, PRR5, PRR7, PRR9, TOC1, T)
 
     end
 
