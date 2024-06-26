@@ -122,16 +122,18 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     
     rename!(dataframe, ["x$(i)" => "P$(i)" for i in 1:ncol(dataframe)])
     
-    @info "dataframe -> \"states-$(pp)-julia.tsv\" " 
-    CSV.write("states-$(pp)-julia.tsv", dataframe; delim='\t')
+    @info "dataframe -> \"plots/states-$(pp)-julia.tsv\" " 
+    CSV.write("plots/states-$(pp)-julia.tsv", dataframe; delim='\t')
     
     # - plot
     #   clock has 35 parameters & we're mostly interested in the shape
     #   so legend is suppressed for the moment
     
     plot(Matrix(dataframe), legend=false);
-    
-    @info "plot      -> \"states-$(pp)-julia.svg\" " 
-    savefig("states-$(pp)-julia.svg")
+
+    title!("Interpolated Properties @ 2400\n(photoperiod = $(pp)) (JULIA)") 
+
+    @info "plot      -> \"plots/states-$(pp)-julia.svg\" " 
+    savefig("plots/states-$(pp)-julia.svg")
 
 end #end: for pp in [...]
