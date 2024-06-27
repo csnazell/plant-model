@@ -158,6 +158,8 @@ module PlantModelFramework
 
             phenologyOutput = Phenology.run(m.phenology, clockOutput, current, history)
 
+            flowered = phenologyOutput.flowered
+
             # additional models
 
             @debug "— other models " 
