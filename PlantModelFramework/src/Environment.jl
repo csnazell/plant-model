@@ -55,10 +55,6 @@ module Environment
 
     dayDuration(state::State) = state.dayDuration
 
-    dayDuration(state::State) = Float32(state.dayDuration)
-
-    dayDuration(state::State) = Float64(state.dayDuration)
-
     hour(state::State) = state.hour
 
     photoperiod(state::State) = sunset(state) - sunrise(state)
