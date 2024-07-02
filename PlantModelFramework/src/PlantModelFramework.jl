@@ -30,7 +30,7 @@ module PlantModelFramework
     include("Models.jl")
     include("Environment.jl")
     include("Clock.jl")
-    include("Clocks/F2014.jl")
+    include("Clocks/Clocks.jl")
     include("Phenology.jl")
     include("Phenologies/Phenologies.jl")
 

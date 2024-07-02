@@ -11,8 +11,6 @@
 #   PLoS Comput Biol 10(7): e1003705. doi:10.1371/journal.pcbi.1003705         #
 #                                                                              #
 
-module Clocks
-
 module F2014
 
 module Common
@@ -498,8 +496,6 @@ module COP1
         # -- RVE8p
         du[35] = RVE8m - d.parameters.m47 * RVE8p
     end
-
-end
 
 end
 
