@@ -3,7 +3,7 @@
 #                                                                              #
 # Phenologies.jl                                                               #
 #                                                                              #
-# Root module for Phenologies namespace withing package.                       #
+# Root module for Phenologies namespace within package.                        #
 #                                                                              #
 
 module Phenologies
