@@ -158,7 +158,7 @@ module PlantModelFramework
 
             phenologyOutput = Phenology.run(m.phenology, clockOutput, current, history)
 
-            flowered = phenologyOutput.flowered
+            flowered = isnothing(phenologyOutput) ? false : phenologyOutput.flowered
 
             # additional models
 
