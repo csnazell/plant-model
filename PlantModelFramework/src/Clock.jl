@@ -141,7 +141,7 @@ module Clock
                              (0.0, 27.0),
                              envState)
 
-        solution = solve(problem, QNDF(), dt=0.05)
+        solution = solve(problem, QNDF(), saveat=0.05)
 
         # - output
 
