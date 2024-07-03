@@ -1,9 +1,9 @@
 #                                                                              #
-# OnlyClockModel.jl                                                            #
+# Clock+PhenologyModel.jl                                                      #
 #                                                                              #
 # Simple simulation demonstrating PlantModelFramework.                         #
 #                                                                              #
-# ...                                                                          #
+# Simulation runs clock model + associated PIF_CO_FT phenology model.          #
 #                                                                              #
 
 # dependencies ----------------------------------------------------------------
