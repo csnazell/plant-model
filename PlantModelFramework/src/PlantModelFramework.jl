@@ -33,6 +33,8 @@ module PlantModelFramework
     include("Clocks/Clocks.jl")
     include("Phenology.jl")
     include("Phenologies/Phenologies.jl")
+    include("Feature.jl")
+    include("Features/Features.jl")
 
     # - simulation
     
@@ -70,6 +72,14 @@ module PlantModelFramework
 
     export Phenology, Phenologies
 
+    # - features
+    
+    using  .Feature
+
+    import .Features
+
+    export Feature, Features
+
     # implementation ----------------------------------------------------------
 
     #
@@ -87,19 +97,21 @@ module PlantModelFramework
         environment::Environment.Model              # model : environment
         clock::Clock.Model                          # model : clock
         phenology::Union{Nothing, Phenology.Model}  # model : phenology
-        # FIXME: IMPLEMENT ADDITIONAL MODELS        # models: extensions 
+        features::Vector{Feature.Model}             # models: extensions 
 
         # constructor
 
         function PlantModel(environment::Environment.Model, 
                             clock::Clock.Model,
-                            phenology::Union{Nothing, Phenology.Model}=nothing
-                            # FIXME: IMPLEMENT ADDITIONAL MODELS: VARARGS
+                            phenology::Union{Nothing, Phenology.Model}=nothing,
+                            features::Vararg{Feature.Model}=()
                            )
 
             # construct
 
-            new(environment, clock, phenology)
+            println(features)
+
+            new(environment, clock, phenology, [features...])
         end
 
     end
@@ -151,6 +163,8 @@ module PlantModelFramework
             @debug "— clock "
 
             clockOutput = Clock.run(m.clock, current, history)
+
+            @debug "—— $(clockOutput) "
             
             # phenology model
             
@@ -158,22 +172,22 @@ module PlantModelFramework
 
             phenologyOutput = Phenology.run(m.phenology, clockOutput, current, history)
 
+            @debug "—— $(phenologyOutput) (isnothing = $(isnothing(phenologyOutput)))"
+
             flowered = isnothing(phenologyOutput) ? false : phenologyOutput.flowered
+
+            @debug "—— flowered = $(flowered) "
 
             # additional models
 
             @debug "— other models " 
 
-            # for model in additionalModels
-            #   model(day,
-            #           timepoint,
-            #           clockOutput,
-            #           phenologyOutput,
-            #           outputCurrent,
-            #           outputHistory,
-            #           stateCurrent,
-            #           stateHistory)
-            # end
+            for feature in m.features
+
+                @debug "—— : $(typeof(feature))"
+
+                Feature.run(feature, clockOutput, phenologyOutput, current, history)
+            end
 
             # update history
             
