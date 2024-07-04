@@ -74,6 +74,8 @@ clockBehaviour  = Clocks.F2014.COP1.dynamics(clockParameters)
 
 for pp in [Integer(0), Integer(8), Integer(16)]
 
+    println("photoperiod = $(pp)")
+
     @info "photoperiod = $(pp)"
 
     #
