@@ -103,16 +103,25 @@ module PlantModelFramework
 
         function PlantModel(environment::Environment.Model, 
                             clock::Clock.Model,
-                            phenology::Union{Nothing, Phenology.Model}=nothing,
-                            features::Vararg{Feature.Model}=()
+                            phenology::Union{Nothing, Phenology.Model},
+                            features::Vararg{Feature.Model}
                            )
 
             # construct
 
-            println(features)
-
             new(environment, clock, phenology, [features...])
         end
+
+    end
+
+    # additional constructors
+
+    function PlantModel(environment::Environment.Model, 
+                        clock::Clock.Model,
+                        features::Vararg{Feature.Model}
+                       )
+
+        PlantModel(environment, clock, nothing, features...)
 
     end
 
