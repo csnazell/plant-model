@@ -138,13 +138,9 @@ module Hypocotyl
 
         # calculation
 
-        # - convert output.U from vector of observation vectors into a matrix
-
-        U = vcat(output.U...)
-
         # - calculation
 
-        length = f.parameters.a1 * trapz(output.T, (min.(U[:,8], f.parameters.a3) .- f.parameters.a2))
+        length = f.parameters.a1 * trapz(output.S.t, (min.(output.S[8,:], f.parameters.a3) .- f.parameters.a2))
 
         # - output
 

@@ -53,6 +53,12 @@ logger = FileLogger("hypocotyl.log")
 
 global_logger(logger)
 
+# ensure ./output/ exists
+    
+fpOutput = mkpath("./output/example/hypocotyl")
+fpData   = mkpath( joinpath(fpOutput, "data") )
+fpPlots  = mkpath( joinpath(fpOutput, "plots") )
+
 # initial conditions
 
 # - environment
@@ -149,26 +155,36 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     thrmDataframe = DataFrame( stack(thrmValues; dims=1), :auto )
     
     rename!(thrmDataframe, ["day", "daily", "cumulative"])
+
+    fpThrmDF = joinpath(fpData, "phenology-thrm-$(pp)-julia.tsv")
+
+    CSV.write(fpThrmDF, thrmDataframe; delim='\t')
     
-    @info "thrmDataframe -> \"plots/phenology-thrm-$(pp)-julia.tsv\" " 
-    CSV.write("plots/phenology-thrm-$(pp)-julia.tsv", thrmDataframe; delim='\t')
+    @info "- thrm data written to \"$(fpThrmDF)\" "
+
+    println("- thrm data written to \"$(fpThrmDF)\" ")
     
     # - plot
+
+    fpThrmPlot = joinpath(fpPlots, "phenology-thrm-$(pp)-julia.svg")
     
     plot(thrmDataframe.day, thrmDataframe.daily, 
             xlims=(1.0, Inf), label="daily", linecolor="blue", legend=true);
     plot!(twinx(), thrmDataframe.day, thrmDataframe.cumulative, 
             xlims=(1.0, Inf), linecolor="red", label="cumulative");
 
-    title!("Phenology (COP1 + PIF_CO_FT) Thrm\n(photoperiod = $(pp)) (JULIA)") 
+    savefig(fpThrmPlot)
+    
+    @info "- thrm plots written to \"$(fpThrmPlot)\" "
 
-    @info "plot      -> \"plots/phenology-thrm-$(pp)-julia.svg\" " 
-    savefig("plots/phenology-thrm-$(pp)-julia.svg")
+    println("- thrm plots written to \"$(fpThrmPlot)\" ")
 
     # flowering
 
     # - data frame
     #   (skip initial simulation frame since it's @ d=1 | t=0 & has no output)
+
+    fpFloweringDF = joinpath(fpData, "phenology-flowering-$(pp)-julia.tsv")
 
     floweringValues = 
         map(((d, o),) -> (d, o.flowered, o.FTArea), 
@@ -180,20 +196,27 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     rename!(floweringDataframe, ["day", "flowered", "FTArea"])
     
-    @info "floweringDataframe -> \"plots/phenology-flowering-$(pp)-julia.tsv\" " 
-    CSV.write("plots/phenology-flowering-$(pp)-julia.tsv", floweringDataframe; delim='\t')
+    CSV.write(fpFloweringDF, floweringDataframe; delim='\t')
+
+    @info "- flowering data written to \"$(fpFloweringDF)\" "
+
+    println("- flowering data written to \"$(fpFloweringDF)\" ")
 
     # - plot
+
+    fpFloweringPlot = joinpath(fpPlots, "phenology-flowering-$(pp)-julia.svg")
     
     plot(floweringDataframe.day, floweringDataframe.flowered, 
          xlims=(1,Inf), xaxis="days", yaxis="flowered", linecolor="blue", label="flowered", legend=true);
+
     plot!(twinx(), floweringDataframe.day, floweringDataframe.FTArea, 
           xlims=(1,Inf), yaxis="FTArea", linecolor="red", label="FT area")
 
-    title!("Phenology (COP1 + PIF_CO_FT) Flowering\n(photoperiod = $(pp)) (JULIA)") 
+    savefig(fpFloweringPlot)
 
-    @info "plot      -> \"plots/phenology-flowering-$(pp)-julia.svg\" " 
-    savefig("plots/phenology-flowering-$(pp)-julia.svg")
+    @info "- flowering plots to \"$(fpFloweringPlot)\" "
+
+    println("- flowering plots written to \"$(fpFloweringPlot)\" ")
 
     # collect hypocotyl lengths
     
@@ -211,20 +234,30 @@ end #end: for pp in [...]
 # hypocotyl data
 #
 
+fpSummaryDF = joinpath(fpData, "hypocotyl-summary-julia.tsv")
+
 hypocotylDataframe = 
     DataFrame( stack(hypocotylObservations; dims=1), :auto)
 
 rename!(hypocotylDataframe, ["day", "photoperiod", "length"])
 
 # - data
+
+CSV.write(fpSummaryDF, hypocotylDataframe; delim='\t')
     
-@info "hypocotyl data -> \"plots/hypocotyl-data-julia.tsv\" " 
-CSV.write("plots/hypocotyl-data-julia.tsv", hypocotylDataframe; delim='\t')
+@info "hypocotyl summary data written to \"$(fpSummaryDF)\" "
+
+println("hypocotyl summary data written to \"$(fpSummaryDF)\" ")
 
 # - plots
 
+fpSummaryPlot = joinpath(fpPlots, "hypocotyl-summary-julia.svg")
+
 plot(hypocotylDataframe.day, hypocotylDataframe.length, group = hypocotylDataframe.photoperiod)
 
-@info "plot      -> \"plots/hypocotyl-length-julia.svg\" " 
-savefig("plots/hypocotyl-length-julia.svg")
+savefig(fpSummaryPlot)
+    
+@info "hypocotyl summary plot written to \"$(fpSummaryPlot)\" "
+
+println("hypocotyl summary plot written to \"$(fpSummaryPlot)\" ")
 

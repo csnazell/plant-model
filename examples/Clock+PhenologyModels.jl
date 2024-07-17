@@ -52,6 +52,12 @@ logger = FileLogger("clock+phenology-models.log")
 
 global_logger(logger)
 
+# ensure ./output/... exists
+    
+fpOutput = mkpath("./output/example/clock+phenology")
+fpData   = mkpath( joinpath(fpOutput, "data") )
+fpPlots  = mkpath( joinpath(fpOutput, "plots") )
+
 # initial conditions
 
 # - environment
@@ -140,21 +146,30 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     thrmDataframe = DataFrame( stack(thrmValues; dims=1), :auto )
     
     rename!(thrmDataframe, ["day", "daily", "cumulative"])
+
+    fpThrmDF = joinpath(fpData, "phenology-thrm-COP1+PIFCOFT-$(pp)-julia.tsv")
     
-    @info "thrmDataframe -> \"plots/phenology-thrm-$(pp)-julia.tsv\" " 
-    CSV.write("plots/phenology-thrm-$(pp)-julia.tsv", thrmDataframe; delim='\t')
+    CSV.write(fpThrmDF, thrmDataframe; delim='\t')
+
+    @info "- thrm data written to \"$(fpThrmDF)\""
+
+    println("- thrm data written to \"$(fpThrmDF)\"")
     
     # - plot
     
     plot(thrmDataframe.day, thrmDataframe.daily, 
             xlims=(1.0, Inf), label="daily", linecolor="blue", legend=true);
+
     plot!(twinx(), thrmDataframe.day, thrmDataframe.cumulative, 
             xlims=(1.0, Inf), linecolor="red", label="cumulative");
 
-    title!("Phenology (COP1 + PIF_CO_FT) Thrm\n(photoperiod = $(pp)) (JULIA)") 
+    fpThrmPlot = joinpath(fpPlots, "phenology-thrm-COP1+PIFCOFT-$(pp)-julia.svg")
 
-    @info "plot      -> \"plots/phenology-thrm-$(pp)-julia.svg\" " 
-    savefig("plots/phenology-thrm-$(pp)-julia.svg")
+    savefig(fpThrmPlot)
+
+    @info "- thrm plots written to \"$(fpThrmDF)\""
+
+    println("- thrm plots written to \"$(fpThrmDF)\"")
 
     # flowering
 
@@ -170,20 +185,29 @@ for pp in [Integer(0), Integer(8), Integer(16)]
         DataFrame( stack(floweringValues; dims=1), :auto)
 
     rename!(floweringDataframe, ["day", "flowered", "FTArea"])
+
+    fpFlwrDF = joinpath(fpData, "phenology-flwr-COP1+PIFCOFT-$(pp)-julia.tsv")
     
-    @info "floweringDataframe -> \"plots/phenology-flowering-$(pp)-julia.tsv\" " 
-    CSV.write("plots/phenology-flowering-$(pp)-julia.tsv", floweringDataframe; delim='\t')
+    CSV.write(fpFlwrDF, floweringDataframe; delim='\t')
+
+    @info "- flowering data written to \"$(fpFlwrDF)\""
+
+    println("- flowering data written to \"$(fpFlwrDF)\"")
 
     # - plot
     
     plot(floweringDataframe.day, floweringDataframe.flowered, 
          xlims=(1,Inf), xaxis="days", yaxis="flowered", linecolor="blue", label="flowered", legend=true);
+
     plot!(twinx(), floweringDataframe.day, floweringDataframe.FTArea, 
           xlims=(1,Inf), yaxis="FTArea", linecolor="red", label="FT area")
 
-    title!("Phenology (COP1 + PIF_CO_FT) Flowering\n(photoperiod = $(pp)) (JULIA)") 
+    fpFlwrPlot = joinpath(fpPlots, "phenology-flwr-COP1+PIFCOFT-$(pp)-julia.svg")
 
-    @info "plot      -> \"plots/phenology-flowering-$(pp)-julia.svg\" " 
-    savefig("plots/phenology-flowering-$(pp)-julia.svg")
+    savefig(fpFlwrPlot)
+
+    @info "- flowering plots written to \"$(fpFlwrPlot)\""
+
+    println("- flowering plots written to \"$(fpFlwrPlot)\"")
 
 end #end: for pp in [...]

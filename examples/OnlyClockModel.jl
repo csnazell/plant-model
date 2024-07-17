@@ -114,6 +114,12 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     #
     # collecting & plotting interpolated clock values @ 2400 | 0000
     #
+
+    # - ensure ./output/ exists
+    
+    fpOutput = mkpath("./output/example/onlyclock")
+    fpData   = mkpath( joinpath(fpOutput, "data") )
+    fpPlots  = mkpath( joinpath(fpOutput, "plots") )
     
     # - dataframe
     
@@ -123,19 +129,29 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     dataframe = DataFrame( vcat(clockValues_2400...), :auto )
     
     rename!(dataframe, ["x$(i)" => "P$(i)" for i in 1:ncol(dataframe)])
+
+    fpDF = joinpath(fpData, "states-$(pp)-julia.tsv")
     
-    @info "dataframe -> \"plots/states-$(pp)-julia.tsv\" " 
-    CSV.write("plots/states-$(pp)-julia.tsv", dataframe; delim='\t')
+    CSV.write(fpDF, dataframe; delim='\t')
+
+    @info "- interpolated data written to \"$(fpDF)\""
+
+    println("- interpolated data written to \"$(fpDF)\"")
     
     # - plot
     #   clock has 35 parameters & we're mostly interested in the shape
     #   so legend is suppressed for the moment
+
+    fpPlot = joinpath(fpPlots, "states-$(pp)-julia.svg")
     
     plot(Matrix(dataframe), legend=false);
 
-    title!("Interpolated Properties @ 2400\n(photoperiod = $(pp)) (JULIA)") 
+    title!("Interpolated Properties @ 2400")
 
-    @info "plot      -> \"plots/states-$(pp)-julia.svg\" " 
-    savefig("plots/states-$(pp)-julia.svg")
+    savefig(fpPlot)
+
+    @info "- interpolated data plotted to \"$(fpPlot)\""
+
+    println("- interpolated data plotted to \"$(fpPlot)\"")
 
 end #end: for pp in [...]

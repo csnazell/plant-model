@@ -60,8 +60,7 @@ module Clock
     #
 
     struct Output <: Simulation.ModelData
-        T
-        U
+        S
     end
 
     #
@@ -145,7 +144,7 @@ module Clock
 
         # - output
 
-        output = Output(solution.t, solution.u)
+        output = Output(solution)
 
         Simulation.setOutput(current, m.key, output)
 

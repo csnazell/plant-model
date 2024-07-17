@@ -219,8 +219,7 @@ end # end: module: Plant
         dailyThrmCumulative::Float64
         flowered::Bool
         FTArea::Float64
-        T
-        U
+        S
     end
 
     # functions
@@ -376,8 +375,6 @@ end # end: module: Plant
         #     in Julia the algorithm used to solve the differential 
         #     equations implicitly specifies the interpolation algorithm
 
-        #FIXME: IS REMOVING TRANSPOSE OK?
-        #state = State(cumulativeDailyThrm, (solution[end])')
         state = State(cumulativeDailyThrm, solution[end])
 
         Simulation.setState(current, m.key, state)
@@ -388,7 +385,7 @@ end # end: module: Plant
 
         # - output
         
-        output = Output(dailyPhenThrm, cumulativeDailyThrm, flowered, dailyFTArea, solution.t, solution.u)
+        output = Output(dailyPhenThrm, cumulativeDailyThrm, flowered, dailyFTArea, solution)
 
         Simulation.setOutput(current, m.key, output)
 
