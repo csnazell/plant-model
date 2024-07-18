@@ -19,6 +19,7 @@ docs/site/
 
 # outputs
 output/**
+test/output/**
 
 # plots
 plots/**

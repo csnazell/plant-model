@@ -94,11 +94,11 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     # - starting conditions @ day 1 + hour 0 (prior to simulation start)
     
     initialFrame = Simulation.Frame()
-    
+
     Clock.entrain(clock,
                   Clocks.F2014.COP1.initialState(),
                   initialFrame)
-    
+
     #
     # compose plant model
     #
@@ -110,16 +110,50 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     #
     
     simulation = PlantModelFramework.run(plant, 40, initialFrame)
-    
+
     #
-    # collecting & plotting interpolated clock values @ 2400 | 0000
+    # collecting & plotting clock values & state
     #
+
+    clockParameters =
+        ["LHYm", "LHYp", "CCA1m", "CCA1p", "P", "PRR9m", "PRR9p", "PRR7m", "PRR7p", 
+         "PRR5m", "PRR5c", "PRR5n", "TOC1m", "TOC1n", "TOC1c", "ELF4m", "ELF4p", 
+         "ELF4d", "ELF3m", "ELF3p", "ELF34", "LUXm", "LUXp", "COP1c", "COP1n", 
+         "COP1d", "ZTL", "ZG", "Gim", "Gic", "Gin", "NOXm", "NOXp", "RVE8m", "RVE8p"]
+
+    qualifiedClockParameters = map(p -> "F2014.COP1." * p, clockParameters)
 
     # - ensure ./output/ exists
     
     fpOutput = mkpath("./output/example/onlyclock")
     fpData   = mkpath( joinpath(fpOutput, "data") )
     fpPlots  = mkpath( joinpath(fpOutput, "plots") )
+
+    # entrained output
+
+    entrainedSol = ( Simulation.getOutput(simulation[1], clock.key) ).S
+
+    entrainedDF = DataFrame(entrainedSol)
+    
+    rename!(entrainedDF, pushfirst!(copy(qualifiedClockParameters), "T"))
+
+    fpEntrainedDF = joinpath(fpData, "output-entrained-$(pp)-julia.csv")
+    
+    CSV.write(fpEntrainedDF, entrainedDF)
+    
+    # final output
+
+    lastSol = ( Simulation.getOutput(simulation[end], clock.key) ).S
+
+    finalDF = DataFrame(lastSol)
+    
+    rename!(finalDF, pushfirst!(copy(qualifiedClockParameters), "T"))
+
+    fpFinalDF = joinpath(fpData, "output-final-$(pp)-julia.csv")
+    
+    CSV.write(fpFinalDF, finalDF)
+
+    # interpolated clock values @ 2400 | 0000 (state)
     
     # - dataframe
     
@@ -127,12 +161,16 @@ for pp in [Integer(0), Integer(8), Integer(16)]
         map(f -> ( Simulation.getState(f, clock.key) ).U, simulation)
     
     dataframe = DataFrame( vcat(clockValues_2400...), :auto )
-    
-    rename!(dataframe, ["x$(i)" => "P$(i)" for i in 1:ncol(dataframe)])
 
-    fpDF = joinpath(fpData, "states-$(pp)-julia.tsv")
+    rename!(dataframe, qualifiedClockParameters)
     
-    CSV.write(fpDF, dataframe; delim='\t')
+    days = map(((i, v),) -> floor(v) * (i - 1), enumerate(ones(length(clockValues_2400))))
+
+    insertcols!(dataframe, 1, :D => days)
+
+    fpDF = joinpath(fpData, "states-$(pp)-julia.csv")
+    
+    CSV.write(fpDF, dataframe)
 
     @info "- interpolated data written to \"$(fpDF)\""
 
@@ -144,7 +182,9 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     fpPlot = joinpath(fpPlots, "states-$(pp)-julia.svg")
     
-    plot(Matrix(dataframe), legend=false);
+    subset = dataframe[:, 2:ncol(dataframe)]
+    
+    plot(dataframe.D, Matrix(subset), legend=false);
 
     title!("Interpolated Properties @ 2400")
 
