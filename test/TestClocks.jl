@@ -2,7 +2,7 @@
 # TestClocks.jl                                                                #
 #                                                                              #
 # Compare clock state from examples/OnlyClockModel.jl with MATLAB baseline     #
-# output in data/clock-COP1/F2014-COP1-State-2400.csv                          #
+# output in data/clock-COP1/clock-only/...                                     #
 #                                                                              #
 
 # dependencies -----------------------------------------------------------------
