@@ -194,7 +194,7 @@ module Clock
                              (0.0, (duration * 24.0)),
                              envState)
 
-        solution = solve(problem, QNDF(), dt=0.1)
+        solution = solve(problem, QNDF(), saveat=0.1)
 
         # - state
         #   NB: MATLAB code uses linear interpolation here however 
