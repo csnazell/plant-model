@@ -133,76 +133,53 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     # collecting & plotting data of interest
     #
 
-    # dailyThrm + dailyThrmCumulative
-    
-    # - data frame 
-    #   (skip initial simulation frame since it's @ d=1 | t=0 & has no output)
+    # phenology
 
-    thrmValues = 
-        map(((d, o),) -> [d, o.dailyThrm, o.dailyThrmCumulative], 
-            map(f -> ( Simulation.day(f), Simulation.getOutput(f, phenology.key) ), 
-                simulation[2:end]))
+    # - data
 
-    thrmDataframe = DataFrame( stack(thrmValues; dims=1), :auto )
-    
-    rename!(thrmDataframe, ["day", "daily", "cumulative"])
+    phenologyValues = 
+        map(((d, h, o),) -> [pp, d, o.dailyThrm, o.dailyThrmCumulative, o.flowered, o.FTArea], 
+            Simulation.getOutputs(simulation[2:end], phenology.key))
 
-    fpThrmDF = joinpath(fpData, "phenology-thrm-COP1+PIFCOFT-$(pp)-julia.tsv")
-    
-    CSV.write(fpThrmDF, thrmDataframe; delim='\t')
+    phenologyDF = DataFrame( stack(phenologyValues; dims=1), :auto)
 
-    @info "- thrm data written to \"$(fpThrmDF)\""
+    rename!(phenologyDF, ["PP", "D", "DayPhenThrm", "CumPhenThrm", "Flowered", "FTArea"]) 
 
-    println("- thrm data written to \"$(fpThrmDF)\"")
-    
+    fpPhenology = joinpath(fpData, "phenology-COP1-PIFCOFT-$(pp)-julia.csv")
+
+    CSV.write(fpPhenology, phenologyDF)
+
+    @info "- phenology data written to \"$(fpPhenology)\""
+
+    println("- phenology data written to \"$(fpPhenology)\"")
+
     # - plot
+
+    # -- thrm
+
+    fpThrmPlot = joinpath(fpPlots, "phenology-COP1-PIFCOFT-thrm-$(pp)-julia.svg")
     
-    plot(thrmDataframe.day, thrmDataframe.daily, 
+    plot(phenologyDF.D, phenologyDF.DayPhenThrm, 
             xlims=(1.0, Inf), label="daily", linecolor="blue", legend=true);
 
-    plot!(twinx(), thrmDataframe.day, thrmDataframe.cumulative, 
+    plot!(twinx(), phenologyDF.D, phenologyDF.CumPhenThrm, 
             xlims=(1.0, Inf), linecolor="red", label="cumulative");
-
-    fpThrmPlot = joinpath(fpPlots, "phenology-thrm-COP1+PIFCOFT-$(pp)-julia.svg")
 
     savefig(fpThrmPlot)
 
-    @info "- thrm plots written to \"$(fpThrmDF)\""
+    @info "- thrm plots written to \"$(fpThrmPlot)\""
 
-    println("- thrm plots written to \"$(fpThrmDF)\"")
+    println("- thrm plots written to \"$(fpThrmPlot)\"")
 
-    # flowering
+    # -- flowering
 
-    # - data frame
-    #   (skip initial simulation frame since it's @ d=1 | t=0 & has no output)
-
-    floweringValues = 
-        map(((d, o),) -> (d, o.flowered, o.FTArea), 
-            map(f -> ( Simulation.day(f), Simulation.getOutput(f, phenology.key) ),
-                simulation[2:end]))
-
-    floweringDataframe = 
-        DataFrame( stack(floweringValues; dims=1), :auto)
-
-    rename!(floweringDataframe, ["day", "flowered", "FTArea"])
-
-    fpFlwrDF = joinpath(fpData, "phenology-flwr-COP1+PIFCOFT-$(pp)-julia.tsv")
+    fpFlwrPlot = joinpath(fpPlots, "phenology-COP1-PIFCOFT-flwr-$(pp)-julia.svg")
     
-    CSV.write(fpFlwrDF, floweringDataframe; delim='\t')
-
-    @info "- flowering data written to \"$(fpFlwrDF)\""
-
-    println("- flowering data written to \"$(fpFlwrDF)\"")
-
-    # - plot
-    
-    plot(floweringDataframe.day, floweringDataframe.flowered, 
+    plot(phenologyDF.D, phenologyDF.Flowered, 
          xlims=(1,Inf), xaxis="days", yaxis="flowered", linecolor="blue", label="flowered", legend=true);
 
-    plot!(twinx(), floweringDataframe.day, floweringDataframe.FTArea, 
+    plot!(twinx(), phenologyDF.D, phenologyDF.FTArea, 
           xlims=(1,Inf), yaxis="FTArea", linecolor="red", label="FT area")
-
-    fpFlwrPlot = joinpath(fpPlots, "phenology-flwr-COP1+PIFCOFT-$(pp)-julia.svg")
 
     savefig(fpFlwrPlot)
 
