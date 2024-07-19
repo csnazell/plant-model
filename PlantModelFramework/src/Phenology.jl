@@ -371,10 +371,6 @@ end # end: module: Plant
 
         cumulativeDailyThrm = dailyPhenThrm + cumulativeDailyThrmLTV
         
-        # NB: MATLAB code uses linear interpolation here however 
-        #     in Julia the algorithm used to solve the differential 
-        #     equations implicitly specifies the interpolation algorithm
-
         state = State(cumulativeDailyThrm, solution[end])
 
         Simulation.setState(current, m.key, state)

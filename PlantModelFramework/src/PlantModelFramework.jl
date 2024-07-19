@@ -167,6 +167,8 @@ module PlantModelFramework
 
             @info "- day: $(day) + hour: $(hour) = timepoint: $(timepoint(current)) "
 
+            println("- day: $(day) + hour: $(hour)")
+
             # clock model
             #
             @debug "— clock "
