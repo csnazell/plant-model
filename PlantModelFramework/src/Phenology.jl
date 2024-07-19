@@ -422,13 +422,13 @@ end # end: module: Plant
 
         envTemperature = Environment.temperature(envState)
 
-        unscaledThermals = max(0.0, (envTemperature - plant.Tb));
+        unscaledThermals = (envTemperature - plant.Tb);
 
         thermals = 
             # daytime component
-            (unscaledThermals * lightFraction) +
+            max(0, (unscaledThermals * lightFraction)) +
             # nighttime component
-            ( (1.0 - lightFraction) * (unscaledThermals * plant.Night) )
+            (max(0, (unscaledThermals * (1.0 - lightFraction))) * plant.Night)
 
         # mptu: thermal
 
