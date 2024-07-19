@@ -71,6 +71,12 @@ module Simulation
 
     end
 
+    function getOutputs(frames::Vector{Frame}, key::String)::Vector{Tuple{Int32, Int8, ModelData}}
+
+        map(f -> (day(f), hour(f), getOutput(f, key)), frames) 
+
+    end
+
     function setOutput(frame::Frame, key::String, data::ModelData)
 
         Base.setindex!(frame.outputData, data, key)
@@ -80,6 +86,12 @@ module Simulation
     function getState(frame::Frame, key::String)::Union{ModelData, Nothing}
 
         Base.get(frame.stateData, key, nothing)
+
+    end
+
+    function getStates(frames::Vector{Frame}, key::String)::Vector{Tuple{Int32, Int8, ModelData}}
+
+        map(f -> (day(f), hour(f), getState(f, key)), frames) 
 
     end
 
