@@ -187,4 +187,36 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     println("- flowering plots written to \"$(fpFlwrPlot)\"")
 
+    # model: clock inputs
+    # - recalculate phenology clock input for a given clock model output & log
+    # - skip initial frame as it's @ D1 T0
+
+    dayDFs = []
+
+    for (d, h, o) in Simulation.getOutputs(simulation[2:end], clock.key)
+
+        i = phenologyClockAdapter(o)
+
+        days = fill(d, length(i.EC))
+
+        periods = fill(pp, length(i.EC))
+
+        m = hcat(periods, days, i.EC, i.COP1n_n, i.LHY, i.PRR9, i.PRR7, i.PRR5, i.cP, i.GIn, i.TOC1)
+    
+        push!(dayDFs, DataFrame(m, :auto))
+
+    end
+
+    clockInputsDF = reduce(vcat, dayDFs)
+
+    rename!(clockInputsDF, ["PP", "D", "EC", "COP1n_n", "LHY", "PRR9", "PRR7", "PRR5", "cP", "GIn", "TOC1"])
+
+    fpClockInputs = joinpath(fpData, "clock-inputs-COP1-PIFCOFT-$(pp)-julia.csv")
+
+    CSV.write(fpClockInputs, clockInputsDF)
+
+    @info "- clock inputs written to \"$(fpClockInputs)\""
+
+    println("- flowering plots written to \"$(fpClockInputs)\"")
+
 end #end: for pp in [...]

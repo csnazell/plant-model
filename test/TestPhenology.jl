@@ -79,10 +79,30 @@ function plotParameters(pp, fpOutput, fnPrefix, dfTest, dfOutput, x)
 
 end
 
+function plotClockInputs(pp, d, fpOutput, fnPrefix, dfTest, dfOutput)
+
+    for name in filter(n -> !(n in ["PP", "D"]), names(dfTest))
+
+        fn = replace(name, "." => "-")
+
+        fpParamOutput = mkpath(joinpath(fpOutput, fn, "$(pp)"))
+
+        fpPlot = joinpath(fpParamOutput, "$(fnPrefix)-$(pp)-$(d)-$(fn).svg")
+
+        plot(dfTest[:,name], label="MATLAB", linewidth=2, linestyle= :dash)
+
+        plot!(dfOutput[:,name], label="JULIA")
+
+        savefig(fpPlot)
+
+    end
+
+end
+
 #
 # phenology
 #
-# - output phenology output
+# - output phenology data
 #
 
 # test data
@@ -110,3 +130,46 @@ for pp in photoPeriods
     plotParameters(pp, fpTestOutput, "phenology-output", dfTest_pp, dfOutput_pp, "D")
 
 end
+
+#
+# clock inputs
+#
+# - output clock input values (mapped values from clock outputs)
+#
+
+fpTestOutputClockInputs = mkpath(joinpath(fpTestOutput, "clock-inputs"))
+
+# test data
+
+fpTestClockInputs = joinpath(fpTest, "F2014-COP1-PIFCOFT-clock-inputs.csv")
+
+dfTest = DataFrame(CSV.File(fpTestClockInputs))
+
+photoPeriods = sort!( unique!( map(d -> floor(d), collect( dfTest.PP ) ) ) )
+
+# output data
+
+fpJuliaClockInputs = map(pp -> joinpath(fpOutput, "clock-inputs-COP1-PIFCOFT-$(pp)-julia.csv"), photoPeriods)
+
+dfOutput = loadJuliaDF(fpJuliaClockInputs)
+
+# plots
+
+for pp in photoPeriods
+
+    dfTest_pp = filter(:PP => p -> (p == pp), dfTest)
+
+    days = sort!( unique!( map(d -> floor(d), collect( dfTest_pp.D ) ) ) )
+
+    for day in days
+
+        dfTest_pp_d = filter(:D => d -> (d == day), dfTest_pp)
+
+        dfOutput_pp_d = filter([:PP,:D] => (p, d) -> ((p == pp) && (d == day)), dfOutput)
+
+        plotClockInputs(pp, day, fpTestOutputClockInputs, "clock-inputs", dfTest_pp_d, dfOutput_pp_d)
+
+    end
+
+end
+
