@@ -275,6 +275,16 @@ end # end: module: Plant
         error("Phenology.Dynamics() please implement this abstract functor for your subtype")
     end
 
+    function (m::Dynamics)(
+                du,                             # calculated matrix of next values
+                u,                              # vector of values
+                parameters::Tuple{Clock.Output, Environment.State, Dict{Any,Any}},    
+                                                # parameters for dynamics calculations
+                t                               # time 
+                )
+        error("Phenology.Dynamics() please implement this abstract functor for your subtype")
+    end
+
     #
     # Model
     # 
@@ -285,16 +295,18 @@ end # end: module: Plant
         plant::Plant.Parameters                 # plant model parameters
         phenologyDynamics::Dynamics             # phenology model behaviour
         key::String                             # model identifier
+        tracing::Bool                           # flag: tracing enabled
 
         function Model(
                 environment::Environment.Model,      
                 plant::Plant.Parameters,
                 dynamics::Dynamics,             
-                key::String="model.phenology"
+                key::String="model.phenology";
+                tracing::Bool=false
                 # TODO: DO WE NEED A phenology dynamics id here so we know what's running?
                 )
 
-            new(environment, plant, dynamics, key)
+            new(environment, plant, dynamics, key, tracing)
 
         end
 
@@ -317,13 +329,24 @@ end # end: module: Plant
         envState = m.environment(Simulation.day(current), Simulation.hour(current))
 
         # dynamics
-        
-        problem = ODEProblem(m.phenologyDynamics,
-                             previousState.U,
-                             (0.0, 24.0),
-                             (clockOutput, envState))
 
-        solution = solve(problem, QNDF())
+        if (tracing(m))
+
+            problem = ODEProblem(m.phenologyDynamics,
+                                 previousState.U,
+                                 (0.0, 24.0),
+                                 (clockOutput, envState, Simulation.getTrace(current, m.key)))
+
+        else
+        
+            problem = ODEProblem(m.phenologyDynamics,
+                                 previousState.U,
+                                 (0.0, 24.0),
+                                 (clockOutput, envState))
+
+        end
+
+        solution = solve(problem, QNDF(autodiff=false))
 
         # mptu calculation (Daily Phenology Thrm)
 
@@ -413,6 +436,12 @@ end # end: module: Plant
         m(clockOutput, current, history)
 
     end
+
+    #
+    # tracing
+    #
+
+    tracing(m::Model) = m.tracing 
 
     # functions (internal)
 

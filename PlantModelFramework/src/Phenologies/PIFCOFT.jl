@@ -354,14 +354,43 @@ module PIFCOFT
     function (d::Phenology.Dynamics{<: DynamicsParameters})(
                 du,                             # calculated matrix of next values
                 u,                              # vector of values
-                parameters::Tuple{Clock.Output, Environment.State},    
+                parameters::Tuple{Clock.Output, Environment.State},
+                                                # parameters for dynamics calculations
+                time                            # time 
+                )
+
+        (clockOutput, envState) = parameters
+
+        _behaviour(d, du, u, (clockOutput, envState, nothing), time)
+
+    end
+
+    function (d::Phenology.Dynamics{<: DynamicsParameters})(
+                du,                             # calculated matrix of next values
+                u,                              # vector of values
+                parameters::Tuple{Clock.Output, Environment.State, Dict{Any,Any}},    
+                                                # parameters for dynamics calculations
+                time                            # time 
+                )
+
+        _behaviour(d, du, u, parameters, time)
+
+    end
+
+    # internal functions
+
+    function _behaviour(
+                d::Phenology.Dynamics{<: DynamicsParameters},
+                du,                             # calculated matrix of next values
+                u,                              # vector of values
+                parameters::Tuple{Clock.Output, Environment.State, Union{Nothing, Dict{Any,Any}}},    
                                                 # parameters for dynamics calculations
                 time                            # time 
                 )
 
         # parameters
 
-        (clockOutput, envState) = parameters
+        (clockOutput, envState, traceOrNothing) = parameters
 
         modelParameters = applyTemperatureCorrection(d.parameters, Environment.temperature(envState))
 
@@ -478,6 +507,42 @@ module PIFCOFT
 
         # -- dRepressedC1dt 
         du[18] = P.n22 + P.n23*P.g21^2/(P.g21^2+PIFact_5^2) - P.m20*RepressedC1
+
+        # tracing
+        
+        if (!(isnothing(traceOrNothing)))
+
+            day  = Environment.day(envState)
+            pp   = Environment.photoperiod(envState)
+
+            @info "tracing PIFCOFT calculation @ $(day) - $(time)" 
+
+            tracing = [ (pp,day,"1",time,modTime,modTimeAdvanced,du[1],PIF4m,EC_adv,missing,missing,missing,missing),
+                        (pp,day,"2",time,modTime,modTimeAdvanced,du[2],PIF5m,EC_adv,missing,missing,missing,missing),
+                        (pp,day,"3",time,modTime,modTimeAdvanced,du[3],PIF,PIF5m,PIF4m,phyB,missing,missing),
+                        (pp,day,"4",time,modTime,modTimeAdvanced,du[4],phyB,L,PIF,missing,missing,missing),
+                        (pp,day,"5",time,modTime,modTimeAdvanced,du[5],PR,L,missing,missing,missing,missing),
+                        (pp,day,"6",time,modTime,modTimeAdvanced,du[6],INT,PR,missing,missing,missing,missing),
+                        (pp,day,"7",time,modTime,modTimeAdvanced,du[7],IAA29m,PIFact_1,missing,missing,missing,missing),
+                        (pp,day,"8",time,modTime,modTimeAdvanced,du[8],ATHB2m,PIFact_2,missing,missing,missing,missing),
+                        (pp,day,"9",time,modTime,modTimeAdvanced,du[9],CDF1m,LHY,PRR9,PRR7,PRR5,TOC1),
+                        (pp,day,"10",time,modTime,modTimeAdvanced,du[10],FKF1m,L,LHY,EC,missing,missing),
+                        (pp,day,"11",time,modTime,modTimeAdvanced,du[11],FKF1,FKF1m,L,GIn,missing,missing),
+                        (pp,day,"12",time,modTime,modTimeAdvanced,du[12],CDF1,CDF1m,FKF1,GIn,missing,missing),
+                        (pp,day,"13",time,modTime,modTimeAdvanced,du[13],COm,CDF1,L,COP1n_n,missing,missing),
+                        (pp,day,"14",time,modTime,modTimeAdvanced,du[14],CO,COm,L,COP1n_n,FKF1,missing),
+                        (pp,day,"15",time,modTime,modTimeAdvanced,du[15],FTm,PIFtot,CDF1,CO,missing,missing),
+                        (pp,day,"16",time,modTime,modTimeAdvanced,du[16],InducedC1,PIFact_3,missing,missing,missing,missing),
+                        (pp,day,"17",time,modTime,modTimeAdvanced,du[17],InducedC2,PIFact_4,missing,missing,missing,missing),
+                        (pp,day,"18",time,modTime,modTimeAdvanced,du[18],RepressedC1,PIFact_5,missing,missing,missing,missing) ]
+
+            tracingMx = stack(tracing; dims=1)
+
+            trace = get!(traceOrNothing, "PIFCOFT-Behaviour", [])
+
+            push!(trace, tracingMx)
+
+        end
 
     end
 

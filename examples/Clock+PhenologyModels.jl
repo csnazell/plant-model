@@ -113,7 +113,7 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     # phenology model
 
-    phenology = Phenology.Model(environment, plantParameters, phenologyBehaviour)
+    phenology = Phenology.Model(environment, plantParameters, phenologyBehaviour; tracing=true)
 
     # - configure phenology initial state
 
@@ -218,5 +218,42 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     @info "- clock inputs written to \"$(fpClockInputs)\""
 
     println("- flowering plots written to \"$(fpClockInputs)\"")
+
+    # model: phenology calculations
+    # - snapped tracing data & log
+    # - skip initial frame as it's @ D1 T0
+
+    if (Phenology.tracing(phenology))
+
+        tracingDFs = []
+
+        for (d, h, t) in Simulation.getTraces(simulation[2:end], phenology.key)
+
+            # coerce tracing data into expected form & create a dataframe 
+            # encapsulating data
+
+            behaviourTracing = t["PIFCOFT-Behaviour"]
+
+            tracing = convert(Array{Matrix{Any}}, behaviourTracing)
+
+            combinedMx = reduce(vcat, behaviourTracing)
+
+            push!(tracingDFs, DataFrame(combinedMx, :auto))
+
+        end
+
+        # combine each day's frames into a single frame for photperiod & save
+
+        tracingDF = reduce(vcat, tracingDFs)
+
+        fpPhenologyTracing = joinpath(fpData, "phenology-tracing-COP1-PIFCOFT-$(pp)-julia.csv")
+
+        CSV.write(fpPhenologyTracing, tracingDF; writeheader=false)
+
+        @info "- clock inputs written to \"$(fpClockInputs)\""
+
+        println("- flowering plots written to \"$(fpClockInputs)\"")
+
+    end
 
 end #end: for pp in [...]

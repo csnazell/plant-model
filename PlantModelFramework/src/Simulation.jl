@@ -41,10 +41,11 @@ module Simulation
     
     struct Frame 
 
-        day::Int32                          # timepoint day  : 1+
-        hour::Int8                          # timepoint hour : 0 | 1 - 24
-        outputData::Dict{String,ModelData}  # output: {model key : model data}
-        stateData::Dict{String,ModelData}   # state: {model key : model data}
+        day::Int32                              # timepoint day  : 1+
+        hour::Int8                              # timepoint hour : 0 | 1 - 24
+        outputData::Dict{String,ModelData}      # output: {model key : model data}
+        stateData::Dict{String,ModelData}       # state: {model key : model data}
+        traceData::Dict{String,Dict{Any,Any}}   # trace: {model key : dict}
 
         function Frame(day::Integer=1, hour::Integer=0)
 
@@ -55,7 +56,7 @@ module Simulation
 
             # construct
 
-            new(day, hour, Dict{String,ModelData}(), Dict{String,ModelData}())
+            new(day, hour, Dict{String,ModelData}(), Dict{String,ModelData}(), Dict{String,Dict{Any,Any}}())
 
         end
 
@@ -101,6 +102,18 @@ module Simulation
 
     end
 
+    function getTrace(frame::Frame, key::String)::Dict{Any,Any}
+
+        Base.get!(frame.traceData, key, Dict{Any,Any}())
+
+    end
+
+    function getTraces(frames::Vector{Frame}, key::String)::Vector{Tuple{Int32, Int8, Dict{Any,Any}}}
+
+        map(f -> (day(f), hour(f), getTrace(f, key)), frames) 
+
+    end
+
     # - time
 
     day(frame::Frame) = frame.day
@@ -111,10 +124,8 @@ module Simulation
 
     # exports
 
-    export getOutput, setOutput, getState, setState
+    export getOutput, setOutput, getState, setState, getTrace, getTraces
 
     export day, hour, timepoint
 
 end
-
-
