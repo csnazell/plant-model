@@ -104,15 +104,21 @@ module Clock
         environment::Environment.Model          # environment model
         clockDynamics::Dynamics                 # clock behaviour
         key::String                             # model identifier
+        algorithm                               # ODE problem solver
+                                                # - Untyped due to SCIML not typing this 
+                                                #   parameter in its code
 
         function Model(
                 environment::Environment.Model,      
                 clockDynamics::Dynamics,             
-                key::String="model.clock"
+                key::String="model.clock";
                 # TODO: DO WE NEED A clock dynamics id here so we know what's running?
+                alg=Nothing
                 )
 
-            new(environment, clockDynamics, key)
+            algorithm = isnothing(alg) ? QNDF(autodiff=false) : alg
+
+            new(environment, clockDynamics, key, algorithm)
 
         end
 
@@ -140,7 +146,7 @@ module Clock
                              (0.0, 27.0),
                              envState)
 
-        solution = solve(problem, QNDF(autodiff=false), saveat=0.05)
+        solution = solve(problem, m.algorithm, saveat=0.05)
 
         # - output
 
@@ -194,7 +200,7 @@ module Clock
                              (0.0, (duration * 24.0)),
                              envState)
 
-        solution = solve(problem, QNDF(autodiff=false), saveat=0.1)
+        solution = solve(problem, m.algorithm, saveat=0.1)
 
         # - state
         #   NB: MATLAB code uses linear interpolation here however 

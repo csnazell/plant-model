@@ -296,17 +296,23 @@ end # end: module: Plant
         phenologyDynamics::Dynamics             # phenology model behaviour
         key::String                             # model identifier
         tracing::Bool                           # flag: tracing enabled
+        algorithm                               # ODE problem solver
+                                                # - Untyped due to SCIML not typing this 
+                                                #   parameter in its code
 
         function Model(
                 environment::Environment.Model,      
                 plant::Plant.Parameters,
                 dynamics::Dynamics,             
                 key::String="model.phenology";
-                tracing::Bool=false
                 # TODO: DO WE NEED A phenology dynamics id here so we know what's running?
+                tracing::Bool=false,
+                alg=nothing
                 )
 
-            new(environment, plant, dynamics, key, tracing)
+            algorithm = isnothing(alg) ? QNDF(autodiff=false) : alg
+
+            new(environment, plant, dynamics, key, tracing, algorithm)
 
         end
 
@@ -346,7 +352,7 @@ end # end: module: Plant
 
         end
 
-        solution = solve(problem, QNDF(autodiff=false))
+        solution = solve(problem, m.algorithm)
 
         # mptu calculation (Daily Phenology Thrm)
 
