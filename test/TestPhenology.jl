@@ -85,7 +85,7 @@ function plotClockInputs(pp, d, fpOutput, fnPrefix, dfTest, dfOutput)
 
         fn = replace(name, "." => "-")
 
-        fpParamOutput = mkpath(joinpath(fpOutput, fn, "$(pp)"))
+        fpParamOutput = mkpath(joinpath(fpOutput, fn))
 
         fpPlot = joinpath(fpParamOutput, "$(fnPrefix)-$(pp)-$(d)-$(fn).svg")
 
@@ -123,11 +123,13 @@ dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 for pp in photoPeriods
 
+    fpTestOutputPP = mkpath(joinpath(fpTestOutput, "PP-$(pp)"))
+
     dfTest_pp = filter(:PP => p -> (p == pp), dfTest)
 
     dfOutput_pp = filter(:PP => p -> (p == pp), dfOutput)
 
-    plotParameters(pp, fpTestOutput, "phenology-output", dfTest_pp, dfOutput_pp, "D")
+    plotParameters(pp, fpTestOutputPP, "phenology-output", dfTest_pp, dfOutput_pp, "D")
 
 end
 
@@ -136,8 +138,6 @@ end
 #
 # - output clock input values (mapped values from clock outputs)
 #
-
-fpTestOutputClockInputs = mkpath(joinpath(fpTestOutput, "clock-inputs"))
 
 # test data
 
@@ -160,6 +160,8 @@ for pp in photoPeriods
     dfTest_pp = filter(:PP => p -> (p == pp), dfTest)
 
     days = sort!( unique!( map(d -> floor(d), collect( dfTest_pp.D ) ) ) )
+
+    fpTestOutputClockInputs = mkpath(joinpath(fpTestOutput, "PP-$(pp)", "clock-inputs"))
 
     for day in days
 

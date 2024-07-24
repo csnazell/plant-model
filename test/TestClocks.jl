@@ -108,11 +108,13 @@ dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 for pp in photoPeriods
 
+    fpEntrainedOutput = mkpath(joinpath(fpTestOutput, "PP-$(pp)", "entrained"))
+
     dfTest_pp = filter(:PP => p -> (p == pp), dfTest)
 
     dfOutput_pp = filter(:PP => p -> (p == pp), dfOutput)
 
-    plotParameters(pp, fpTestOutput, "entrained-output", dfTest_pp, dfOutput_pp, "T")
+    plotParameters(pp, fpEntrainedOutput, "entrained", dfTest_pp, dfOutput_pp, "T")
 
 end
 
@@ -141,11 +143,13 @@ dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 for pp in photoPeriods
 
+    fpFinalOutput = mkpath(joinpath(fpTestOutput, "PP-$(pp)", "final"))
+
     dfTest_pp = filter(:PP => p -> (p == pp), dfTest)
 
     dfOutput_pp = filter(:PP => p -> (p == pp), dfOutput)
 
-    plotParameters(pp, fpTestOutput, "final-output", dfTest_pp, dfOutput_pp, "T")
+    plotParameters(pp, fpFinalOutput, "final-output", dfTest_pp, dfOutput_pp, "T")
 
 end
 
@@ -174,10 +178,12 @@ dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 for pp in photoPeriods
 
+    fpStateOutput = mkpath(joinpath(fpTestOutput, "PP-$(pp)", "state"))
+
     dfTest_pp = filter(:PP => p -> (p == pp), dfTest)
 
     dfOutput_pp = filter(:PP => p -> (p == pp), dfOutput)
 
-    plotParameters(pp, fpTestOutput, "state", dfTest_pp, dfOutput_pp, "D")
+    plotParameters(pp, fpStateOutput, "state", dfTest_pp, dfOutput_pp, "D")
 
 end

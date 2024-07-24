@@ -24,12 +24,6 @@ using Plots
 
 # implementation ---------------------------------------------------------------
 
-fpTest   = "./test/data/MATLAB/clock-COP1/phenology"
-
-fpTestOutput = mkpath("./test/output/JULIA/phenology-PIFCOFT/tracing")
-
-fpOutput = "./output/example/clock+phenology/data"
-
 #
 # argument parsing
 #
@@ -776,6 +770,16 @@ plotDispatch = Dict(# PIF model
                    )
 
 # main entry point -------------------------------------------------------------
+
+# ensure base directories exist
+
+fpTest   = "./test/data/MATLAB/clock-COP1/phenology"
+
+fpTestOutput = mkpath("./test/output/JULIA/phenology-PIFCOFT/tracing")
+
+fpOutput = "./output/example/clock+phenology/data"
+
+# command-line arguments
 
 args = parseArgs()
 
