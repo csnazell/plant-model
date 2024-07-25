@@ -150,7 +150,7 @@ module Clock
                              (0.0, 27.0),
                              envState)
 
-        solution = solve(problem, m.algorithm, saveat=0.05)
+        solution = solve(problem, m.algorithm, saveat=0.05, reltol=1e-6)
 
         # - output
 
@@ -204,7 +204,7 @@ module Clock
                              (0.0, (duration * 24.0)),
                              envState)
 
-        solution = solve(problem, m.algorithm, saveat=0.1)
+        solution = solve(problem, m.algorithm, saveat=0.1, reltol=1e-6)
 
         # - state
         #   NB: MATLAB code uses linear interpolation here however 

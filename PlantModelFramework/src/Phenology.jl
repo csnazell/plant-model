@@ -356,7 +356,7 @@ end # end: module: Plant
 
         end
 
-        solution = solve(problem, m.algorithm)
+        solution = solve(problem, m.algorithm, reltol=1e-6)
 
         # mptu calculation (Daily Phenology Thrm)
 
