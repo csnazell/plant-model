@@ -174,6 +174,12 @@ end # end: module: Plant
 
     using OrdinaryDiffEq
 
+    # - SciMLBase.jl
+    # -- SciMLBase.jl is the core interface definition of the SciML packages
+    # -- (https://github.com/SciML/SciMLBase.jl)
+
+    using SciMLBase: AbstractODEAlgorithm
+
     # = Trapz
     # -- Trapezoidal integration library
     # -- (https://github.com/francescoalemanno/Trapz.jl)
@@ -296,9 +302,7 @@ end # end: module: Plant
         phenologyDynamics::Dynamics             # phenology model behaviour
         key::String                             # model identifier
         tracing::Bool                           # flag: tracing enabled
-        algorithm                               # ODE problem solver
-                                                # - Untyped due to SCIML not typing this 
-                                                #   parameter in its code
+        algorithm::AbstractODEAlgorithm         # ODE problem solver
 
         function Model(
                 environment::Environment.Model,      
@@ -307,7 +311,7 @@ end # end: module: Plant
                 key::String="model.phenology";
                 # TODO: DO WE NEED A phenology dynamics id here so we know what's running?
                 tracing::Bool=false,
-                alg=nothing
+                alg::Union{Nothing,AbstractODEAlgorithm}=nothing
                 )
 
             algorithm = isnothing(alg) ? QNDF(autodiff=false) : alg

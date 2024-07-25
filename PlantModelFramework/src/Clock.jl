@@ -46,6 +46,12 @@ module Clock
 
     using OrdinaryDiffEq
 
+    # - SciMLBase.jl
+    # -- SciMLBase.jl is the core interface definition of the SciML packages
+    # -- (https://github.com/SciML/SciMLBase.jl)
+
+    using SciMLBase: AbstractODEAlgorithm
+
     # package
     
     import ..Simulation
@@ -104,16 +110,14 @@ module Clock
         environment::Environment.Model          # environment model
         clockDynamics::Dynamics                 # clock behaviour
         key::String                             # model identifier
-        algorithm                               # ODE problem solver
-                                                # - Untyped due to SCIML not typing this 
-                                                #   parameter in its code
+        algorithm::AbstractODEAlgorithm         # ODE problem solver
 
         function Model(
                 environment::Environment.Model,      
                 clockDynamics::Dynamics,             
                 key::String="model.clock";
                 # TODO: DO WE NEED A clock dynamics id here so we know what's running?
-                alg=Nothing
+                alg::Union{Nothing,AbstractODEAlgorithm}=nothing
                 )
 
             algorithm = isnothing(alg) ? QNDF(autodiff=false) : alg
