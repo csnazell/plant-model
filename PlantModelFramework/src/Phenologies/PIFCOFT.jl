@@ -224,7 +224,7 @@ module PIFCOFT
         # - g2
 
         rawParameters[:g2] = 
-            ("CDF1ox" in genotype) ? 100000.0 : rawParameters[:n1]
+            ("CDF1ox" in genotype) ? 100000.0 : rawParameters[:g2]
 
         # - g7
 
@@ -297,8 +297,8 @@ module PIFCOFT
             ("pif5" in genotype) ? 0.0 : rawParameters[:n9]
 
         # - p2
-        #   no CDF1 destabilisation by FKF1
-        
+        #   delta1: no CDF1 destabilisation by FKF1
+
         rawParameters[:p2] = 
             ("delta1" in genotype) ? 0.0 : rawParameters[:p2]
 
@@ -320,7 +320,7 @@ module PIFCOFT
         #   make michaelis constant very high to reduce FKF1 effect to negligible level
         
         rawParameters[:k2] = 
-            ("delta1" in genotype) ? 100000.0 : rawParameters[:k2]
+            ("delta2" in genotype) ? 100000.0 : rawParameters[:k2]
 
         # - YHB
         #   constitutively active PhyB, not light-dependent
@@ -469,7 +469,7 @@ module PIFCOFT
         # - differential equations
 
         # -- dCDF1mdt
-        du[9]= (P.n1 + P.n2*(LHY^P.a)/((P.g1^P.a)+(LHY^P.a)))*(P.g2^P.b)/((P.g2^P.b) + (PRR9+PRR7+PRR5+TOC1)^P.b) - P.m1*CDF1m
+        du[9]= (P.n1 + P.n2*(LHY^P.a)/((P.g1^P.a)+(LHY^P.a))) * (P.g2^P.b)/((P.g2^P.b) + (PRR9+PRR7+PRR5+TOC1)^P.b) - P.m1*CDF1m
 
         # -- dFKF1mdt
         du[10]= P.q1*L*cP + P.n3*((P.g3^P.c)/((P.g3^P.c)+(LHY^P.c)))*(P.g4/(P.g4+EC)) - P.m3*FKF1m
@@ -492,7 +492,7 @@ module PIFCOFT
         
         # -- dFTmdt
         du[15] = (P.n14 + P.n15*PIFtot/(P.g11 + PIFtot)) * 
-                    (P.n16 + P.n17*P.g12/(P.g12 + CDF1))*(CO^P.h)/((CO^P.h) + (P.g13^P.h)) - 
+                    (P.n16 + P.n17*P.g12/(P.g12 + CDF1)) * (CO^P.h)/((CO^P.h) + (P.g13^P.h)) - 
                         P.m17*FTm
 
         # Additional PIF targets
