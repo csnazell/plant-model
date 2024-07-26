@@ -1,10 +1,14 @@
 #                                                                              #
 # OnlyClockModel.jl                                                            #
 #                                                                              #
-# Simple simulation demonstrating PlantModelFramework.                         #
+# Simulation demonstrating PlantModelFramework utilising just a clock model.   #
 #                                                                              #
-# For a selection of photoperiods run the COP1 clock model & output the        #
-# interpolated result @ 24:00 from clock model output to dataframe & plot.     #
+# Simulation runs F2014 COP1 clock model.                                      #
+#                                                                              #
+# This simulation uses the default QNDF solver.                                #
+#                                                                              #
+# Use test/TestClocks.jl to further unpack data saved from this simulation &   #
+# compare with reference MATLAB data from test/data/MATLAB.                    # 
 #                                                                              #
 
 # dependencies ----------------------------------------------------------------
