@@ -1,10 +1,12 @@
 #                                                                              #
 # Hypocotyl.jl                                                                 #
 #                                                                              #
-# Simple simulation demonstrating PlantModelFramework.                         #
+# Simulation extending Clock+Phenology.jl to add a "feature" model that        #
+# calculates hypocotyl length based upon output from clock & phenology models. #
 #                                                                              #
-# Extends behaviour of Clock+PhenologyModels.jl to add a "feature" model that  #
-# calculates hypocotyl length based upon outputs from clock & phenology model. #
+# Simulation runs F2014 COP1 clock model + PIF_CO_FT phenology model.          #
+#                                                                              #
+# This simulation uses the default QNDF solver.                                #
 #                                                                              #
 
 # dependencies ----------------------------------------------------------------
