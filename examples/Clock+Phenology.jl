@@ -1,9 +1,15 @@
 #                                                                              #
-# Clock+PhenologyModel.jl                                                      #
+# Clock+Phenology+Tracing.jl                                                   #
 #                                                                              #
-# Simple simulation demonstrating PlantModelFramework.                         #
+# Simulation demonstrating PlantModelFramework utilising a clock model &       #
+# phenology model in conjunction.                                              #
 #                                                                              #
-# Simulation runs clock model + associated PIF_CO_FT phenology model.          #
+# Simulation runs F2014 COP1 clock model + PIF_CO_FT phenology model.          #
+#                                                                              #
+# This simulation overrides the default QNDF solver with Rodas5P.              #
+#                                                                              #
+# Use test/TestPhenology.jl to further unpack data saved from this simulation  #
+# & compare with reference MATLAB data from test/data/MATLAB.                  #
 #                                                                              #
 
 # dependencies ----------------------------------------------------------------
@@ -26,6 +32,13 @@ using CSV
 # -- (https://github.com/JuliaData/DataFrames.jl)
 
 using DataFrames
+
+# - OrdinaryDiffEq
+# -- Ordinary differential equation solvers + utilities
+#    standalone sub-package of SciML / DifferentialEquations
+# -- (https://github.com/SciML/OrdinaryDiffEq.jl)
+
+using OrdinaryDiffEq
 
 # - Plots.jl
 # -- plotting library
@@ -82,6 +95,10 @@ phenologyParameters   = Phenologies.PIFCOFT.parameters(clockGenotype)
 
 phenologyBehaviour    = Phenologies.PIFCOFT.dynamics(phenologyClockAdapter, phenologyParameters)
 
+# - ODE solver
+
+solver = Rodas5P(autodiff=false)
+
 #
 # run plant simulation with clock model for 40 days & output results for each 
 # photoperiod (pp)
@@ -102,7 +119,7 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     
     # clock model 
 
-    clock = Clock.Model(environment, clockBehaviour)
+    clock = Clock.Model(environment, clockBehaviour; alg=solver)
 
     # - entrain model
     # - starting conditions @ day 1 + hour 0 (prior to simulation start)
@@ -113,7 +130,7 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     # phenology model
 
-    phenology = Phenology.Model(environment, plantParameters, phenologyBehaviour; tracing=true)
+    phenology = Phenology.Model(environment, plantParameters, phenologyBehaviour; alg=solver, tracing=true)
 
     # - configure phenology initial state
 
@@ -217,43 +234,6 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     @info "- clock inputs written to \"$(fpClockInputs)\""
 
-    println("- flowering plots written to \"$(fpClockInputs)\"")
-
-    # model: phenology calculations
-    # - snapped tracing data & log
-    # - skip initial frame as it's @ D1 T0
-
-    if (Phenology.tracing(phenology))
-
-        tracingDFs = []
-
-        for (d, h, t) in Simulation.getTraces(simulation[2:end], phenology.key)
-
-            # coerce tracing data into expected form & create a dataframe 
-            # encapsulating data
-
-            behaviourTracing = t["PIFCOFT-Behaviour"]
-
-            tracing = convert(Array{Matrix{Any}}, behaviourTracing)
-
-            combinedMx = reduce(vcat, behaviourTracing)
-
-            push!(tracingDFs, DataFrame(combinedMx, :auto))
-
-        end
-
-        # combine each day's frames into a single frame for photperiod & save
-
-        tracingDF = reduce(vcat, tracingDFs)
-
-        fpPhenologyTracing = joinpath(fpData, "phenology-tracing-COP1-PIFCOFT-$(pp)-julia.csv")
-
-        CSV.write(fpPhenologyTracing, tracingDF; writeheader=false)
-
-        @info "- clock inputs written to \"$(fpClockInputs)\""
-
-        println("- flowering plots written to \"$(fpClockInputs)\"")
-
-    end
+    println("- clock inputs written to \"$(fpClockInputs)\"")
 
 end #end: for pp in [...]
