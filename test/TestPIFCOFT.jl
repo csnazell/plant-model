@@ -421,7 +421,7 @@ end
 
 # - CO Model
 
-function plotCDF1mdt(pp, day, parameter, fpPlotsRoot, dfTest_pp_d_p, dfOutput_pp_d_p)
+function plotCDF1mdt(pp, day, parameter, fpPlotsRoot, dfTest, dfOutput)
 
     # plots root
 
@@ -741,7 +741,7 @@ end
 
 # - unknown function
 
-function plotUnknown(pp, day, parameter, fpPlotsRoot, dfTest_pp_d_p, dfOutput_pp_d_p)
+function plotUnknown(pp, day, parameter, fpPlotsRoot, dfTest, dfOutput)
     println(" - unknown parameter: $(parameter)  @ day: $(day) in pp: $(pp)")
 end
 
