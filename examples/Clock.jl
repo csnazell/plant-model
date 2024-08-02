@@ -1,5 +1,5 @@
 #                                                                              #
-# OnlyClockModel.jl                                                            #
+# Clock.jl                                                                     #
 #                                                                              #
 # Simulation demonstrating PlantModelFramework utilising just a clock model.   #
 #                                                                              #

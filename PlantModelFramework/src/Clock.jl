@@ -131,7 +131,8 @@ module Clock
     # functions
 
     function (m::Model)(current::Simulation.Frame,
-                        history::Vector{Simulation.Frame})
+                        history::Vector{Simulation.Frame},
+                        envStateOrNothing::Union{Nothing,Environment.State}=nothing)
 
         # last times values
 
@@ -140,8 +141,26 @@ module Clock
         previousState = Simulation.getState(previousFrame, m.key)
 
         # environment
+        # - entrainment can use a different environmental set-up from 
+        #   the regular simulation (defaults to a 12 hour photoperiod)
+        #   it's therefore necessary to be able to override the environment
+        #   state when running the model during entrainment
 
-        envState = m.environment(Simulation.day(current), Simulation.hour(current))
+        if (isnothing(envStateOrNothing))
+
+            envState = m.environment(Simulation.day(current), Simulation.hour(current))
+
+        else
+
+            envState = envStateOrNothing
+
+            sr   = Environment.sunrise(envState)
+            ss   = Environment.sunset(envState)
+            temp = Environment.temperature(envState)
+
+            @info "clock model utilising environment (sr=$(sr) | ss=$(ss) | T=$(temp))"
+
+        end
 
         # dynamics
         
@@ -219,7 +238,7 @@ module Clock
 
         # - run for a day
 
-        run(m, initialFrame, [entrainedFrame])
+        m(initialFrame, [entrainedFrame], envState)
 	
     end
 
