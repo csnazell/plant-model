@@ -1,0 +1,40 @@
+#
+# configuration of Fit_Model_To_Hypocotyl_Data.m
+#
+# - clock output data in TSV format 
+# 
+# - T field        : clock-output-T-(photoperiod).tsv
+# - Y (aka U) field: clock-output-Y-(photoperiod).tsv
+
+# Clock: F2014.COP1
+clock_dynamics_model_i=4
+
+# Temperature
+22.0
+
+# Sunrise
+0
+
+# Sunset 
+(sunrise + photoperiod of [0,8,16])
+
+# Flowering Genotype
+# - unset defaults to 2
+
+# options
+# - clockGenotype
+# - temperature 
+options.entrain     = 12; % entrain model at 12/12
+options.genotype    = {'wt'}; % not mutant
+options.temperature = 22
+
+# - hypocotyl parameters: Hypocotyl_parameters_P2011
+# - paramHy
+options.hypocotyl_parameters.a1 = paramHy(1);
+options.hypocotyl_parameters.a2 = paramHy(2);
+options.hypocotyl_parameters.a3 = paramHy(3);
+
+# duration
+# run duration -> 90 days
+run_phenology_model = 1
+
