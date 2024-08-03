@@ -1,3 +1,10 @@
+#                                                                              #
+# TestTracing.jl                                                               #
+#                                                                              #
+# Compare phenology tracing output from examples/Clock+Phenology+Tracing.jl    #
+# with MATLAB baseline in data/clock-COP1/phenology/...                        #
+#                                                                              #
+
 # dependencies -----------------------------------------------------------------
 
 # standard library
@@ -824,6 +831,8 @@ else
 end
 
 # plots
+
+println("comparison data will be written to \"$(fpTestOutput)\" ")
 
 for pp in photoperiods
 
