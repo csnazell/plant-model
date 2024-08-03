@@ -99,6 +99,32 @@ function plotClockInputs(pp, d, fpOutput, fnPrefix, dfTest, dfOutput)
 
 end
 
+function plotOverview(pp, fpOutput, fnPrefix, dfTest, dfOutput, x, layout, size=(500,400), titleMap=Dict())
+
+    fpPlot = joinpath(fpOutput, "$(fnPrefix)-$(pp)-overview.svg")
+
+    colNames  = filter(n -> !(n in ["PP", x]), names(dfTest))
+
+    plots  = []
+
+    for n in colNames
+
+        title = get(titleMap, n, n)
+
+        plt = plot(dfTest[:, x], dfTest[:,n], label="MATLAB", linewidth=8, linestyle= :dash, title=title, titlefontsize=28,
+                   legend=false)
+        plot!(plt, dfOutput[:, x], dfOutput[:,n], label="JULIA", linewidth=4)
+
+        push!(plots, plt)
+
+    end
+
+    pltOverview = plot(plots..., layout=layout, size=size)
+
+    savefig(pltOverview, fpPlot)
+
+end
+
 #
 # phenology
 #
@@ -123,6 +149,15 @@ dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 println("comparison data will be written to \"$(fpTestOutput)\" ")
 
+dpi = 300.0
+
+# - A4
+
+width_px  = dpi * 8.27
+height_px =  dpi * 11.69 * 0.5 # half-height A4
+
+## - photoperiods
+
 for pp in photoPeriods
 
     fpTestOutputPP = mkpath(joinpath(fpTestOutput, "PP-$(pp)"))
@@ -132,6 +167,10 @@ for pp in photoPeriods
     dfOutput_pp = filter(:PP => p -> (p == pp), dfOutput)
 
     plotParameters(pp, fpTestOutputPP, "phenology-output", dfTest_pp, dfOutput_pp, "D")
+
+    titleMap = Dict("DayPhenThrm"=>"Photothermal Units (Day)", "CumPhenThrm"=>"Photothermal Units (Cumulative)")
+
+    plotOverview(pp, fpTestOutputPP, "phenology", dfTest_pp, dfOutput_pp, "D", (2,2), (width_px, height_px), titleMap)
 
 end
 
