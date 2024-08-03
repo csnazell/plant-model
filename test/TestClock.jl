@@ -103,12 +103,6 @@ function plotOverview(pp, fpOutput, fnPrefix, dfTest, dfOutput, x, layout, size=
 
     end
 
-    pltLegend = plot((1:2)',label=["  MATLAB" "  JULIA"], 
-                        linewidth=[8 4], linestyle=[:dash :solid], 
-                            legend=:right,legendfontsize=32, framestyle=:none)
-
-    push!(plots, pltLegend)
-
     pltOverview = plot(plots..., layout=layout, size=size)
 
     savefig(pltOverview, fpPlot)
