@@ -1,8 +1,8 @@
 #                                                                              #
 # TestClocks.jl                                                                #
 #                                                                              #
-# Compare clock state from examples/OnlyClockModel.jl with MATLAB baseline     #
-# output in data/clock-COP1/clock-only/...                                     #
+# Compare clock state from examples/Clock.jl with MATLAB baseline output in    #
+# data/clock-COP1/clock-only/...                                               #
 #                                                                              #
 
 # dependencies -----------------------------------------------------------------
@@ -83,6 +83,38 @@ function plotParameters(pp, fpOutput, fnPrefix, dfTest, dfOutput, x)
 
 end
 
+function plotOverview(pp, fpOutput, fnPrefix, dfTest, dfOutput, x, layout, size=(500,400))
+
+    fpPlot = joinpath(fpOutput, "$(fnPrefix)-$(pp)-overview.svg")
+
+    colNames  = filter(n -> !(n in ["PP", x]), names(dfTest))
+
+    plots  = []
+
+    for n in colNames
+
+        (_, _, title) = split(n, ".")
+
+        plt = plot(dfTest[:, x], dfTest[:,n], label="MATLAB", linewidth=8, linestyle= :dash, title=title, titlefontsize=28,
+                   legend=false)
+        plot!(plt, dfOutput[:, x], dfOutput[:,n], label="JULIA", linewidth=4)
+
+        push!(plots, plt)
+
+    end
+
+    pltLegend = plot((1:2)',label=["  MATLAB" "  JULIA"], 
+                        linewidth=[8 4], linestyle=[:dash :solid], 
+                            legend=:right,legendfontsize=32, framestyle=:none)
+
+    push!(plots, pltLegend)
+
+    pltOverview = plot(plots..., layout=layout, size=size)
+
+    savefig(pltOverview, fpPlot)
+
+end
+
 #
 # entrained output
 #
@@ -106,6 +138,15 @@ dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 # plots
 
+dpi = 300.0
+
+# - A4
+
+width_px  = dpi * 8.27
+height_px =  dpi * 11.69  
+
+# - plot
+
 for pp in photoPeriods
 
     fpEntrainedOutput = mkpath(joinpath(fpTestOutput, "PP-$(pp)", "entrained"))
@@ -115,6 +156,8 @@ for pp in photoPeriods
     dfOutput_pp = filter(:PP => p -> (p == pp), dfOutput)
 
     plotParameters(pp, fpEntrainedOutput, "entrained", dfTest_pp, dfOutput_pp, "T")
+
+    plotOverview(pp, fpEntrainedOutput, "entrained", dfTest_pp, dfOutput_pp, "T", (9,4), (width_px, height_px))
 
 end
 
@@ -151,6 +194,8 @@ for pp in photoPeriods
 
     plotParameters(pp, fpFinalOutput, "final-output", dfTest_pp, dfOutput_pp, "T")
 
+    plotOverview(pp, fpFinalOutput, "final-output", dfTest_pp, dfOutput_pp, "T", (9,4), (width_px, height_px))
+
 end
 
 #
@@ -176,6 +221,8 @@ dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 # plots
 
+println("comparison data will be written to \"$(fpTestOutput)\" ")
+
 for pp in photoPeriods
 
     fpStateOutput = mkpath(joinpath(fpTestOutput, "PP-$(pp)", "state"))
@@ -185,5 +232,7 @@ for pp in photoPeriods
     dfOutput_pp = filter(:PP => p -> (p == pp), dfOutput)
 
     plotParameters(pp, fpStateOutput, "state", dfTest_pp, dfOutput_pp, "D")
+
+    plotOverview(pp, fpStateOutput, "state", dfTest_pp, dfOutput_pp, "D", (9,4), (width_px, height_px))
 
 end
