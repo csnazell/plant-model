@@ -782,7 +782,7 @@ plotDispatch = Dict(# PIF model
 
 fpTest   = "./test/data/MATLAB/clock-COP1/phenology"
 
-fpTestOutput = mkpath("./test/output/JULIA/phenology-PIFCOFT/tracing")
+fpTestOutput = mkpath("./test/output/JULIA/phenology-PIFCOFT")
 
 fpOutput = "./output/example/clock+phenology/data"
 
