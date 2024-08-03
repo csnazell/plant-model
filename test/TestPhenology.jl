@@ -1,7 +1,7 @@
 #                                                                              #
 # TestPhenology.jl                                                             #
 #                                                                              #
-# Compare phenology output from examples/Clock+PhenologyModels.jl with MATLAB  #
+# Compare phenology output from examples/Clock+Phenology.jl with MATLAB        #
 # baseline in data/clock-COP1/phenology/...                                    #
 #                                                                              #
 
@@ -29,7 +29,7 @@ using Plots
 
 fpTest   = "./test/data/MATLAB/clock-COP1/phenology"
 
-fpTestOutput = mkpath("./test/output/JULIA/phenology-PIFCOFT")
+fpTestOutput = mkpath("./test/output/JULIA/phenology")
 
 fpOutput = "./output/example/clock+phenology/data"
 
@@ -120,6 +120,8 @@ fpJuliaOutputs = map(pp -> joinpath(fpOutput, "phenology-COP1-PIFCOFT-$(pp)-juli
 dfOutput = loadJuliaDF(fpJuliaOutputs)
 
 # plots
+
+println("comparison data will be written to \"$(fpTestOutput)\" ")
 
 for pp in photoPeriods
 
