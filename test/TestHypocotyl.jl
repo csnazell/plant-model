@@ -72,11 +72,11 @@ for pp in photoPeriods
     dfOutput_pp = filter(:photoperiod => p -> (p == pp), dfOutput)
 
     plt = plot(dfTest_pp.day, dfTest_pp.length, 
-                linewidth=4, linestyle=:dash, 
+                linewidth=8, linestyle=:dash, 
                     legend=false, 
                         title="$(pp) hr photoperiod", titlefontsize=28)
 
-    plot!(plt, dfOutput_pp.day, dfOutput_pp.length, linewidth=2)
+    plot!(plt, dfOutput_pp.day, dfOutput_pp.length, linewidth=4)
 
     push!(plots, plt)
 
