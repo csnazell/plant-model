@@ -107,7 +107,7 @@ for pp in [Integer(0), Integer(8), Integer(16)]
     # compose plant model
     #
     
-    plant = PlantModel(environment, clock)
+    plant = PlantModel(clock)
     
     #
     # run model

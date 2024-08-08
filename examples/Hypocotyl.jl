@@ -132,7 +132,7 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     # compose plant model
 
-    plant = PlantModel(environment, clock, phenology, hypocotylLength)
+    plant = PlantModel(clock, phenology, hypocotylLength)
 
     #
     # run model

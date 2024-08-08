@@ -5,6 +5,9 @@
 #                                                                              #
 # Package root module.                                                         #
 #                                                                              #
+# - provides plant simulation root model (PlantModel)                          #
+# - exposes sub-packages of framework                                          #
+#                                                                              #
                                                                               
 module PlantModelFramework
 
@@ -86,6 +89,8 @@ module PlantModelFramework
     # PlantModel
     #
     # Root model of plant system
+    #
+    # Construct model & run for a specified number of days
     # 
 
     # type
@@ -94,43 +99,50 @@ module PlantModelFramework
 
         # fields
 
-        environment::Environment.Model              # model : environment
         clock::Clock.Model                          # model : clock
         phenology::Union{Nothing, Phenology.Model}  # model : phenology
         features::Vector{Feature.Model}             # models: extensions 
 
         # constructor
 
-        function PlantModel(environment::Environment.Model, 
-                            clock::Clock.Model,
+        function PlantModel(clock::Clock.Model,
                             phenology::Union{Nothing, Phenology.Model},
-                            features::Vararg{Feature.Model}
-                           )
+                            features::Vararg{Feature.Model})
 
-            # construct
+            new(clock, phenology, [features...])
 
-            new(environment, clock, phenology, [features...])
         end
 
     end
 
     # additional constructors
 
-    function PlantModel(environment::Environment.Model, 
-                        clock::Clock.Model,
-                        features::Vararg{Feature.Model}
-                       )
+    function PlantModel(clock::Clock.Model, features::Vararg{Feature.Model})
 
-        PlantModel(environment, clock, nothing, features...)
+        PlantModel(clock, nothing, features...)
 
     end
 
-    # functions
+    #                                                                          #
+    # functions                                                                #
+    #                                                                          #
+    # functor functions                                                        #
+    #                                                                          #
+    # (days, initialFrame=nothing)                                             #
+    # - run plant model for specified number of days or until plant flowers    #
+    #   (as determined by a configured phenology model)                        #
+    #                                                                          #
+    # helper functions                                                         #
+    #                                                                          #
+    # run(model, days, initialFrame=nothing)                                   #
+    # - wrapper to function method                                             #
+    # - see functor method () for more information                             #
+    #                                                                          #
 
     function (m::PlantModel)(days::Integer, 
                              initialFrame::Union{Nothing, Simulation.Frame}=nothing)
 
-        @argcheck days > 0 "# days should be more than 1 (< 1 specified)"
+        @argcheck days > 1 "# days should be more than 1 (< 2 specified)"
 
 
         @info "running model for $(@sprintf("%u", days)) days"
@@ -207,7 +219,6 @@ module PlantModelFramework
         @info "model run completed ($(length(history)) frames)."
 
         # output
-        # FIXME: TURN OUTPUT & STATE HISTORIES INTO DATAFRAMES? OR NICE OUTPUT
 
         return history
 
@@ -223,7 +234,9 @@ module PlantModelFramework
 
     end
 
-    # exports
+    #                                                                          #
+    # exports                                                                  #
+    #                                                                          #
 
     export PlantModel
     
