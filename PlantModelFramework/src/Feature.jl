@@ -29,12 +29,25 @@ module Feature
     import ..Phenology
 
     # implementation ----------------------------------------------------------
-
-    abstract type Model <: Models.Dynamic end
     
     #
-    # Clock-dependent
+    # Features.Model
     #
+    # Abstract base type for plant "feature" simulation model
+    #
+
+    # type
+
+    abstract type Model <: Models.SimulationModel end
+    
+    #
+    # ClockFeature
+    #
+    # Abstract base type for plant "feature" simulation model that only 
+    # requires Clock model outputs.
+    #
+
+    # type
 
     abstract type ClockFeature <: Model end
 
@@ -49,8 +62,13 @@ module Feature
     end
     
     #
-    # Phenology-dependent
+    # PhenologyFeature
     #
+    # Abstract base type for plant "feature" simulation model that only 
+    # requires Phenology model outputs.
+    #
+
+    # type
 
     abstract type PhenologyFeature <: Model end
 
@@ -65,9 +83,14 @@ module Feature
     end
     
     #
-    # Clock+Phenology-dependent
+    # ClockPhenologyFeature
     #
-/
+    # Abstract base type for plant "feature" simulation model that only 
+    # requires Phenology model outputs.
+    #
+
+    # type
+
     abstract type ClockPhenologyFeature <: Model end
 
     # functions
@@ -99,7 +122,7 @@ module Feature
             error("attempting to run a feature ($(typeof(m))) requiring phenology model")
         end
 
-        # dispatch parameters to feature model
+        # dispatch parameters to feature model based on type of FeatureModel
 
         if isa(m, ClockFeature)
             m(clockOutput, current, history)

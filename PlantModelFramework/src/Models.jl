@@ -18,7 +18,7 @@ module Models
 
     #
     # Base 
-    # - base abstract model type
+    # - model base abstract type 
     #
 
     abstract type Base end
@@ -30,17 +30,17 @@ module Models
     end
 
     #
-    # Dynamic
-    # - dynamic abstract model type
+    # SimulationModel
+    # - base type for a model describing a simulation
     #
 
-    abstract type Dynamic <: Base end
+    abstract type SimulationModel <: Base end
 
     # functions
 
-    function (m::Dynamic)(current::Simulation.Frame,
+    function (m::SimulationModel)(current::Simulation.Frame,
                           history::Vector{Simulation.Frame})
-        error("Models.Dynamic() please implement this abstract functor for your subtype")
+        error("Models.SimulationModel() please implement this abstract functor for your subtype")
     end
     
 end

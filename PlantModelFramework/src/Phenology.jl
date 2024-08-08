@@ -293,9 +293,11 @@ end # end: module: Plant
 
     #
     # Model
+    #
+    # Concrete implementation of Models.SimulationModel for plant phenology behaviour
     # 
 
-    struct Model <: Models.Dynamic
+    struct Model <: Models.SimulationModel
 
         environment::Environment.Model          # environment model
         plant::Plant.Parameters                 # plant model parameters

@@ -103,9 +103,13 @@ module Clock
 
     #
     # Model
+    #
+    # Concrete implementation of Models.SimulationModel for plant clock behaviour
     # 
 
-    struct Model <: Models.Dynamic
+    # type
+
+    struct Model <: Models.SimulationModel
 
         environment::Environment.Model          # environment model
         clockDynamics::Dynamics                 # clock behaviour
