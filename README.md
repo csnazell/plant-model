@@ -69,7 +69,7 @@ The scripts run simulations with example data output & plotting. All have debug 
 
 40 day simulation utilising only a clock model (F2014_COP1).
 
-### [examples/Clock+Phenology.jl](https://github.com/csnazell/plant-model/blob/main/examples/Clock%2BPhenology.jl))
+### [examples/Clock+Phenology.jl](https://github.com/csnazell/plant-model/blob/main/examples/Clock%2BPhenology.jl)
 
 90 day simulation (or until flowering occurs) utilising clock (F2014_COP1) & phenology (PIF_CO_FT) models. Replaces default QNDF differential equation solver with a RODAS5P solver
 
