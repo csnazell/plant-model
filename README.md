@@ -26,11 +26,44 @@ Follow these steps to ensure the project environment & dependencies are fully sa
 7. install project space dependencies
 	- `instantiate`
 
+A simple simulation can be constructed & run as follows:
+
+```julia
+# dependencies
+
+using PlantModelFramework
+
+# simulation initial conditions
+# - conditions @ T0
+initialFrame = Simulation.Frame()
+
+# - environment model
+environment = Environment.ConstantModel(sunset=8)
+
+# circadian (clock) model
+# - configuration
+clockParameters = Clocks.F2014.COP1.parameters(Set(["wt"]))
+    
+clockBehaviour  = Clocks.F2014.COP1.dynamics(clockParameters)
+
+clock = Clock.Model(environment, clockBehaviour)
+
+# - prepare clock model (initial conditions -> initial T0 frame)
+Clock.entrain(clock, Clocks.F2014.COP1.initialState(), initialFrame)
+
+# construct plant simulation
+plant = PlantModel(clock)
+    
+# run simulation    
+simulationResults = PlantModelFramework.run(plant, 40, initialFrame)
+
+```
+
 ## Plant Simulations
 
 [examples/](https://github.com/csnazell/plant-model/tree/main/examples) directory contains a number of scripts constructing example plant simulations & plotting output.
 
-The models all have debug logging enabled and are relatively verbose in terms of output to aid understanding.
+The scripts run simulations with example data output & plotting. All have debug logging enabled and are relatively verbose in terms of output to aid understanding.
 
 ### [examples/Clock.jl](https://github.com/csnazell/plant-model/blob/main/examples/Clock.jl)
 
