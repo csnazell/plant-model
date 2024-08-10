@@ -48,3 +48,12 @@ Demonstrates tracing capabilities by recording phenology model data whilst simul
 
 Extends Clock+Phenology.jl with addition of a "Feature" model that simulates hypocotyl development based on outputs of phenology model.
 
+## Diagrams
+
+![Diagram illustrating hierarchy of components & how they are composed to build a plant simulation](/docs/simulation-structure.svg)
+
+Simulation is constructed by creating a set of sub-models describing the circadian (clock) behaviour, the plant phenology behaviour (optional) and an optional number of plant "features". These models are then brought together into a plant model instance that manages the simulation process & retuns a history of the simulation behaviour expressed as data captured in a list of simulation "frames".
+
+![Diagram illustrating hierarchy of types used by plant model](/docs/type-hierarchy.svg) 
+
+Julia types used to implement plant simulation framework.
