@@ -1,6 +1,6 @@
 # plant-model
 
-A re-implementation of some of the Arabidopsis Framework Model v2 ([Github](https://github.com/danielseaton/frameworkmodel)) utilising Julia with a focus on flexibility and extensibility. 
+A partial re-implementation of the Arabidopsis Framework Model v2 ([Github](https://github.com/danielseaton/frameworkmodel)) utilising Julia with a focus on flexibility and extensibility. 
 
 Expresses a simulation as a set of models describing the circadian (clock) behavivour, plant phenology (based on clock), and "features" which are models that utilise the outputs from the configured models for clock, phenology or both.
 
