@@ -3,25 +3,37 @@
 #                                                                              #
 # Clock.jl                                                                     #
 #                                                                              #
-# Clock gene modelling.                                                        #
+# Clock gene modelling boilerplate.                                            #
+#                                                                              #
+# Specific circadian (clock) behaviour modelling is provided by the            #
+# implementations found in Clocks.* (Clocks/).                                 #
 #                                                                              #
 # Notes:                                                                       #
 #                                                                              #
 # SciML solvers for ordinary differential equations:                           #
 # https://docs.sciml.ai/DiffEqDocs/dev/solvers/ode_solve/                      #
 #                                                                              #
-# ode15s mapping into Julia (from above):                                      #
-# "ode15s/vode –> QNDF() or FBDF(), though in many cases Rodas5P(), KenCarp4(),# 
-# TRBDF2(), or RadauIIA5() are more efficient.                                 #
+# Original MATLAB code used ode15s, default mapping into Julia uses QNDF but   #
+# can be overriden by configuring the 'alg' keyword parameter when             #
+# constructing the clock model.                                                #
 #                                                                              # 
 # Julia differential equations solvers use du / dt terminology rather than the #
 # dy / dt terminology seen in MATLAB.                                          #
 #                                                                              #
-# Queries:                                                                     #
+#    Copyright 2024 Christopher Snazell, Dr Rea L Antoniou-Kourounioti  and    #
+#                    The University of Glasgow                                 #
 #                                                                              #
-# Should we track solution from solver rather than Output(solution.t,          #
-# solution.u)?                                                                 #
+#  Licensed under the Apache License, Version 2.0 (the "License");             #
+#  you may not use this file except in compliance with the License.            #
+#  You may obtain a copy of the License at                                     #
 #                                                                              #
+#      http://www.apache.org/licenses/LICENSE-2.0                              #
+#                                                                              #
+#  Unless required by applicable law or agreed to in writing, software         #
+#  distributed under the License is distributed on an "AS IS" BASIS,           #
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.    #
+#  See the License for the specific language governing permissions and         #
+#  limitations under the License.                                              #
 #                                                                              #
 
 module Clock

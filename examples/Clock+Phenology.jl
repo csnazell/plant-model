@@ -11,6 +11,21 @@
 # Use test/TestPhenology.jl to further unpack data saved from this simulation  #
 # & compare with reference MATLAB data from test/data/MATLAB.                  #
 #                                                                              #
+#    Copyright 2024 Christopher Snazell, Dr Rea L Antoniou-Kourounioti  and    #
+#                    The University of Glasgow                                 #
+#                                                                              #
+#  Licensed under the Apache License, Version 2.0 (the "License");             #
+#  you may not use this file except in compliance with the License.            #
+#  You may obtain a copy of the License at                                     #
+#                                                                              #
+#      http://www.apache.org/licenses/LICENSE-2.0                              #
+#                                                                              #
+#  Unless required by applicable law or agreed to in writing, software         #
+#  distributed under the License is distributed on an "AS IS" BASIS,           #
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.    #
+#  See the License for the specific language governing permissions and         #
+#  limitations under the License.                                              #
+#                                                                              #
 
 # dependencies ----------------------------------------------------------------
 
@@ -49,6 +64,7 @@ using Plots
 # local package
 
 using PlantModelFramework
+using PlantModelFramework: Clocks as PMFClocks # avoid clash with OrdinaryDiffEq
 
 # project
 # -
@@ -81,9 +97,9 @@ floweringGenotype = 2
     
 # - clock model 
     
-clockParameters = Clocks.F2014.COP1.parameters(clockGenotype)
+clockParameters = PMFClocks.F2014.COP1.parameters(clockGenotype)
 
-clockBehaviour  = Clocks.F2014.COP1.dynamics(clockParameters)
+clockBehaviour  = PMFClocks.F2014.COP1.dynamics(clockParameters)
 
 # - phenology model
 
@@ -126,7 +142,9 @@ for pp in [Integer(0), Integer(8), Integer(16)]
 
     initialFrame = Simulation.Frame()
 
-    Clock.entrain(clock, Clocks.F2014.COP1.initialState(), initialFrame)
+    Clock.entrain(clock, 
+                  PMFClocks.F2014.COP1.initialState(), 
+                  initialFrame)
 
     # phenology model
 
