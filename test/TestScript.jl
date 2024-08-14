@@ -1,5 +1,5 @@
 #                                                                              #
-# TestSpeed.jl                                                                 #
+# TestScript.jl                                                                #
 #                                                                              #
 # Simulation for evaluating execution speed of hypocotyl simulation comparable #
 # to that in the MATLAB codebase.                                              #

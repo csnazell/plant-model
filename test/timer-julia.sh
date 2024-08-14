@@ -14,9 +14,9 @@ touch ${fpResults}
 
 # run
 
-for i in {1..100}
+for i in {1..2}
 do
-    duration=`/usr/bin/time --format=%E --output=${fpResults} --append julia --project=. test/TestSpeed.jl`
+    duration=`/usr/bin/time --format=%E --output=${fpResults} --append julia --project=. test/TestScript.jl`
 done
 
 echo "done"
