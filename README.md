@@ -26,7 +26,7 @@ Follow these steps to ensure the project environment & dependencies are fully sa
 7. install project space dependencies
 	- `instantiate`
 
-A simple simulation can be constructed & run as follows:
+A simple simulation can be constructed & run in the REPL as follows:
 
 ```julia
 # dependencies
@@ -64,6 +64,8 @@ simulationResults = PlantModelFramework.run(plant, 40, initialFrame)
 [examples/](https://github.com/csnazell/plant-model/tree/main/examples) directory contains a number of scripts constructing example plant simulations & plotting output.
 
 The scripts run simulations with example data output & plotting. All have debug logging enabled and are relatively verbose in terms of output to aid understanding.
+
+These scripts can be run either by pulling them into the REPL via `include()` or by running from the command line with `julia --project=. examples/<script>.jl`.
 
 ### [examples/Clock.jl](https://github.com/csnazell/plant-model/blob/main/examples/Clock.jl)
 
