@@ -22,7 +22,7 @@ Follow these steps to ensure the project environment & dependencies are fully sa
 5. activate project
    - `activate .` 
 6. install plant model framework & dependencies
-	- `dev PlantModelFramework`
+	- `dev PlantModelFramework/`
 7. install project space dependencies
 	- `instantiate`
 
