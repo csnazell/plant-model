@@ -43,7 +43,8 @@ module Common
     using CSV
     
     # package
-    # -
+    
+    import ....Environment
 
     # implementation ----------------------------------------------------------
 
@@ -130,8 +131,11 @@ module Common
                 BlueL,                          # .
                 BlueD,                          # .
                 RedL,                           # .
-                RedD,                           # -
-                parameters                      # dynamics (model) parameters
+                RedD,                           # .
+                parameters,                     # dynamics (model) parameters
+                time,                           # time
+                envState,                       # environment state (required for tracing)
+                traceOrNothing                  # tracing cache (or nothing)
                 )
 
         # map variables to supplied u vector
@@ -304,6 +308,63 @@ module Common
         
         # -- RVE8p
         du[35] = RVE8m - parameters.m47 * RVE8p
+
+        # tracing
+        
+        if (!(isnothing(traceOrNothing)))
+
+            day  = Environment.day(envState)
+            pp   = Environment.photoperiod(envState)
+
+            @info "tracing F2014 COP1 calculation @ $(day) - $(time)" 
+
+            # trace clock dynamics
+            
+            tracing = [ ("1",pp,day,time,du[1],LHYm,LC,parameters.r11,parameters.m1,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("2",pp,day,time,du[2],LHYp,L,D,LHYm,parameters.m4,parameters.m3,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("3",pp,day,time,du[3],CCA1m,LCcommon,parameters.m1,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("4",pp,day,time,du[4],CCA1p,L,D,CCA1m,parameters.m4,parameters.m3,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("5",pp,day,time,du[5],P,BlueD,BlueL,parameters.p7,parameters.m11,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("6",pp,day,time,du[6],PRR9m,P,L,RVE8p,LC,EC,TOC1n,PRR5n,parameters.q3,parameters.m12,parameters.a3,parameters.r33,parameters.r5,parameters.r6,parameters.r7,parameters.r40),
+                        ("7",pp,day,time,du[7],PRR9p,PRR9m,parameters.m13,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("8",pp,day,time,du[8],PRR7m,LC,EC,TOC1n,PRR5n,parameters.r8,parameters.r9,parameters.r10,parameters.r40,parameters.m14,missing,missing,missing,missing,missing,missing),
+                        ("9",pp,day,time,du[9],PRR7p,PRR7m,D,parameters.m15,parameters.m23,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("10",pp,day,time,du[10],PRR5m,RVE8p,LC,EC,TOC1n,parameters.a4,parameters.r34,parameters.r12,parameters.r13,parameters.r14,parameters.m16,missing,missing,missing,missing,missing),
+                        ("11",pp,day,time,du[11],PRR5c,PRR5m,ZTL,P5trans,parameters.m17,parameters.m24,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("12",pp,day,time,du[12],PRR5n,P5trans,parameters.m42,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("13",pp,day,time,du[13],TOC1m,RVE8p,LC,EC,TOC1n,parameters.a5,parameters.r35,parameters.r15,parameters.r16,parameters.r17,parameters.m5,missing,missing,missing,missing,missing),
+                        ("14",pp,day,time,du[14],TOC1n,Ttrans,PRR5n,parameters.m43,parameters.m38,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("15",pp,day,time,du[15],TOC1c,TOC1m,ZTL,Ttrans,parameters.m8,parameters.m6,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("16",pp,day,time,du[16],ELF4m,RVE8p,EC,LC,TOC1n,parameters.a6,parameters.r36,parameters.r18,parameters.r19,parameters.r20,parameters.m7,missing,missing,missing,missing,missing),
+                        ("17",pp,day,time,du[17],ELF4p,ELF4m,parameters.p23,parameters.m35,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("18",pp,day,time,du[18],ELF4d,ELF4p,E34prod,parameters.m36,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("19",pp,day,time,du[19],ELF3m,LC,parameters.r21,parameters.m26,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("20",pp,day,time,du[20],ELF3p,ELF3m,E34prod,E3deg,parameters.p16,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("21",pp,day,time,du[21],ELF34,E34prod,E3deg,parameters.m22,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("22",pp,day,time,du[22],LUXm,RVE8p,EC,LC,TOC1n,parameters.a7,parameters.r37,parameters.r22,parameters.r23,parameters.r24,parameters.m34,missing,missing,missing,missing,missing),
+                        ("23",pp,day,time,du[23],LUXp,LUXm,parameters.m39,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("24",pp,day,time,du[24],COP1c,RedL,parameters.n5,parameters.p6,parameters.m27,parameters.p15,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("25",pp,day,time,du[25],COP1n,COP1c,RedL,P,parameters.p6,parameters.n14,parameters.n6,parameters.m27,parameters.p15,missing,missing,missing,missing,missing,missing,missing),
+                        ("26",pp,day,time,du[26],COP1d,RedL,P,COP1n,RedD,parameters.n14,parameters.n6,parameters.m31,parameters.m33,missing,missing,missing,missing,missing,missing,missing),
+                        ("27",pp,day,time,du[27],ZTL,ZGprod,parameters.p14,parameters.m20,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("28",pp,day,time,du[28],ZG,ZGprod,parameters.m21,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("29",pp,day,time,du[29],GIm,RVE8p,EC,LC,TOC1n,parameters.a8,parameters.r38,parameters.r25,parameters.r26,parameters.r27,parameters.m18,missing,missing,missing,missing,missing),
+                        ("30",pp,day,time,du[30],GIc,GIm,ZGprod,Gtrans,parameters.p11,parameters.m19,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("31",pp,day,time,du[31],GIn,Gtrans,ELF3tot,COP1d,COP1n,parameters.m19,parameters.m25,parameters.m28,parameters.m32,missing,missing,missing,missing,missing,missing,missing),
+                        ("32",pp,day,time,du[32],NOXm,LC,PRR7p,parameters.r28,parameters.r29,parameters.m44,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("33",pp,day,time,du[33],NOXp,NOXm,parameters.m45,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("34",pp,day,time,du[34],RVE8m,PRR9p,PRR7p,PRR5n,parameters.r30,parameters.r31,parameters.r32,parameters.m46,missing,missing,missing,missing,missing,missing,missing,missing),
+                        ("35",pp,day,time,du[35],RVE8p,RVE8m,parameters.m47,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing,missing) ]
+
+            # cache tracing
+
+            tracingMx = stack(tracing; dims=1)
+
+            trace = get!(traceOrNothing, "F2014-Dynamics", [])
+
+            push!(trace, tracingMx)
+
+        end
     end
 
 end # end: module: common
@@ -528,7 +589,36 @@ module COP1
 
         # equations
 
-        F2014Dynamics(du, u, L, D, BlueL, BlueD, RedL, RedD, d.parameters)
+        F2014Dynamics(du, u, L, D, BlueL, BlueD, RedL, RedD, d.parameters, time, envState, nothing)
+
+    end
+
+    function (d::Clock.Dynamics{<: DynamicsParameters})(
+                du,                             # calculated matrix of next values
+                u,                              # vector  of values
+                parameters::Tuple{Environment.State, Dict{Any,Any}},    
+                                                # (environment state @ day + hour, tracing dict)
+                time                            # time 
+                )
+
+        # parameters
+        
+        (envState, trace) = parameters
+
+        # light calculations
+
+        BlueL = Environment.light_condition(envState, time)
+        BlueD = 1.0 - BlueL;
+
+        RedL  = (d.parameters.yhb + BlueL) / (d.parameters.yhb + 1)
+        RedD  = 1 - RedL;
+
+        L     = BlueL;
+        D     = BlueD;
+
+        # equations
+
+        F2014Dynamics(du, u, L, D, BlueL, BlueD, RedL, RedD, d.parameters, time, envState, trace)
 
     end
 
@@ -753,7 +843,32 @@ module Red
 
         # equations
 
-        F2014Dynamics(du, u, L, D, BlueL, BlueD, RedL, RedD, d.parameters)
+        F2014Dynamics(du, u, L, D, BlueL, BlueD, RedL, RedD, d.parameters, time, envState, nothing)
+
+    end
+
+    function (d::Clock.Dynamics{<: DynamicsParameters})(
+                du,                             # calculated matrix of next values
+                u,                              # vector  of values
+                parameters::Tuple{Environment.State, Dict{Any,Any}},    
+                                                # (environment state @ day + hour, tracing dict)
+                time                            # time 
+                )
+
+        # light calculations
+
+        BlueL = Environment.light_condition(envState, time)
+        BlueD = 1.0 - BlueL;
+
+        RedL  = (d.parameters.yhb + BlueL) / (d.parameters.yhb + 1)
+        RedD  = 1 - RedL;
+
+        L     = RedL;
+        D     = RedD;
+
+        # equations
+
+        F2014Dynamics(du, u, L, D, BlueL, BlueD, RedL, RedD, d.parameters, time, envState, trace)
 
     end
 

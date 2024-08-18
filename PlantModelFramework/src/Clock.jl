@@ -113,6 +113,17 @@ module Clock
         error("Clock.Dynamics() please implement this abstract functor for your subtype")
     end
 
+    function (m::Dynamics)(
+                du,                             # calculated matrix of next values
+                u,                              # vector  of values
+                parameters::Tuple{Environment.State, Dict{Any,Any}},    
+                                                # (environment state @ day + hour, tracing dict)
+                t                               # time 
+                )
+        error("Clock.Dynamics() please implement this abstract functor for your subtype")
+    end
+
+
     #
     # Model
     #
@@ -126,6 +137,7 @@ module Clock
         environment::Environment.Model          # environment model
         clockDynamics::Dynamics                 # clock behaviour
         key::String                             # model identifier
+        tracing::Bool                           # flag: tracing enabled
         algorithm::AbstractODEAlgorithm         # ODE problem solver
 
         function Model(
@@ -133,12 +145,13 @@ module Clock
                 clockDynamics::Dynamics,             
                 key::String="model.clock";
                 # TODO: DO WE NEED A clock dynamics id here so we know what's running?
+                tracing::Bool=false,
                 alg::Union{Nothing,AbstractODEAlgorithm}=nothing
                 )
 
             algorithm = isnothing(alg) ? QNDF(autodiff=false) : alg
 
-            new(environment, clockDynamics, key, algorithm)
+            new(environment, clockDynamics, key, tracing, algorithm)
 
         end
 
@@ -179,11 +192,22 @@ module Clock
         end
 
         # dynamics
+
+        if (tracing(m))
         
-        problem = ODEProblem(m.clockDynamics,
-                             previousState.U,
-                             (0.0, 27.0),
-                             envState)
+            problem = ODEProblem(m.clockDynamics,
+                                 previousState.U,
+                                 (0.0, 27.0),
+                                 (envState, Simulation.getTrace(current, m.key)))
+
+        else
+        
+            problem = ODEProblem(m.clockDynamics,
+                                 previousState.U,
+                                 (0.0, 27.0),
+                                 envState)
+
+        end
 
         solution = solve(problem, m.algorithm, saveat=0.05, reltol=1e-6)
 
@@ -265,6 +289,12 @@ module Clock
         m(current, history)
 
     end
+
+    #
+    # tracing
+    #
+
+    tracing(m::Model) = m.tracing 
 
     # exports
     
