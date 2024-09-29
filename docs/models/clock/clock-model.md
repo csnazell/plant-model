@@ -114,22 +114,17 @@ Import the elements of PlantModelFramework necessary for building a clock model:
 
 ```julia
 using PlantModelFramework
-
-import Simulation
-import Models
-import Environment
-import Clock
 ```
 
 #### \#4: Initial Conditions
-Create a function that returns an instance of Clock.State initialised with a vector of _n_ values suitably configured as the initial state of the differential equations.
+Create a function that returns an instance of Clock.State initialised with a vector of _n_ values suitably configured as the initial state of the differential equations. The initial state vector should provide an initial value for each of the differential equations in your set.
 
-In the example below there our model has 35 differential equations and we initialise all of them to 0.1.
+In the example below there our model has 2 differential equations and we initialise all of them to 0.1.
 
 ```
 function initialState()
 
-    Clock.State( ones(1,35) .* 0.1 )
+    Clock.State( ones(1,2) .* 0.1 )
 
 end
 ```
@@ -146,7 +141,7 @@ The example below is extremely simple and does not allow for the configuration o
 Clocks.F2014.COP1 in PlantModelFramework loads the parameter values from a look-up table and modifies the parameters based upon a set of expressed genes. The particular column and the expressed genes are passed to the parameters() function as arguments and used to select and modify the values loaded from a data file bundled within PlantModelFramework. If loading data from a file it's a good idea to consider tagging your struct with the @kwdef macro ([Julia Docs](https://docs.julialang.org/en/v1/base/base/#Base.@kwdef)) to simplify the initialisation of your struct. 
 
 ```julia
-struct Parameters <: Clock.DynamicParameters
+struct Parameters <: Clock.DynamicsParameters
     a
     b
     c
@@ -199,7 +194,7 @@ function (d::Clock.Dynamics{<: Parameters})(
         time
         )
 
-     behaviour(du, u, time, d.parameters, envState, trace)
+     behaviour(du, u, time, d.parameters, envState, nothing)
 
 end
 
@@ -227,10 +222,10 @@ function behaviour(du, u, time, parameters, envState, tracing)
 
     # your model implementation goes here, calculate the next differential 
     # equation value for each equation defining the model's behaviour
-    # - model parameters are available via d.parameters
-
+    # - replace these terms with your differential equation set
     # e.g.
-    du[1] = ( u[1] * parameters.a - parameters.b) / parameters.c 
+    du[1] = ( u[1] * parameters.b ) - parameters.a
+    du[2] = ( u[2] * parameters.c ) - parameters.a
 
     # tracing
 
@@ -242,7 +237,8 @@ function behaviour(du, u, time, parameters, envState, tracing)
         pp   = Environment.photoperiod(envState)
         
         tracingValues = [ 
-           ("1",pp,day,time,du[1],u[1],parameters.a,parameters.b, parameters.c)
+           ("1",pp,day,time,du[1],u[1],parameters.a,parameters.b),
+           ("2",pp,day,time,du[2],u[2].parameters.a, parameters.c)
         ]
 
         # cache tracing
@@ -266,7 +262,8 @@ using PlantModelFramework
 
 # - new clock model
 include("ExperimentalClock.jl")
-import ExperimentalClock
+
+import .ExperimentalClock
 
 # simulation initial conditions
 # - conditions @ T0
@@ -281,14 +278,67 @@ clockParameters = ExperimentalClock.parameters()
     
 clockBehaviour  = ExperimentalClock.dynamics(clockParameters)
 
-clock = Clock.Model(environment, clockBehaviour)
+clockModel = Clock.Model(environment, clockBehaviour)
 
 # - prepare clock model (initial conditions -> initial T0 frame)
-Clock.entrain(clock, ExperimentalClock.initialState(), initialFrame)
+Clock.entrain(clockModel, ExperimentalClock.initialState(), initialFrame)
 
 # construct plant simulation
-plant = PlantModel(clock)
+plantModel = PlantModel(clockModel)
     
 # run simulation    
-simulationResults = PlantModelFramework.run(plant, 40, initialFrame)
+simulationResults = PlantModelFramework.run(plantModel, 40, initialFrame)
+```
+
+We can then interrogate the simulation results. For example, the state recorded at midnight on each day of the simulation:
+```julia
+statesAtMidnight = 
+    map(frame -> ( Simulation.getState(frame, clockModel.key) ).U, simulationResults)
+```
+
+This will extract the interpolated state of the clock model's differential equations at midnight from each simulation frame including the initial T0 frame (initialFrame) which contains the entrained values.
+
+```
+41-element Vector{Matrix{Float64}}:
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
+ [-2.130103781772723e204 -2.863500505831363e306]
 ```
