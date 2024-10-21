@@ -12,12 +12,12 @@ Provides circadian rhythm model for plant being modelled.
 Instance of Clock.Model that brings components together and provides a standard mechanism for executing the model for a given simulation frame.
 
 #### Clock Parameters
-Concrete instance of Clock.DynamicParameters for a particular clock model (i.e. Clocks.F2014.COP1) that supplies a configured set of parameters used by the clock model behaviour to perform its calculations.
+Concrete instance of Clock.DynamicParameters for a particular clock model (i.e. Clocks.F2014.COP1 [(Battle et al., 2024)](https://doi.org/10.1016/j.molp.2024.07.007)) that supplies a configured set of parameters used by the clock model behaviour to perform its calculations.
 
 Default value: None (required parameter)
 
 #### Clock Behaviour
-Concrete instance of Clock.Dynamics for a particular clock model (i.e. Clocks.F2014.COP1) that encapsulates the behaviour of a the clock model typically as a set of Ordinary Differential Equations.
+Concrete instance of Clock.Dynamics for a particular clock model (i.e. Clocks.F2014.COP1) that encapsulates the behaviour of the clock model typically as a set of Ordinary Differential Equations.
 
 Default value: None (required parameter)
 
@@ -86,7 +86,7 @@ Before we get started, it should be noted that Julia's dependency management sys
 ### Creating Your Model
 
 #### \#1: Create A Module
-Create a module of your own, e.g. ExperimentalClock, which will most likely be in a similarly named Julia source code file `ExperimentClock.jl`.
+Create a module of your own, e.g. ExperimentalClock, which will most likely be in a similarly named Julia source code file `ExperimentalClock.jl`.
 
 #### \#2: Create The Boilerplate
 As discussed above, there are a number of components that are required for a clock model. We'll stub out these elements in line with the existing clock implementations and then fill in these placeholders one at a time to implement the model.
@@ -119,7 +119,7 @@ using PlantModelFramework
 #### \#4: Initial Conditions
 Create a function that returns an instance of Clock.State initialised with a vector of _n_ values suitably configured as the initial state of the differential equations. The initial state vector should provide an initial value for each of the differential equations in your set.
 
-In the example below there our model has 2 differential equations and we initialise all of them to 0.1.
+In the example below, our model has 2 differential equations and we initialise all of them to 0.1.
 
 ```
 function initialState()
@@ -138,7 +138,7 @@ Create a function that returns a correctly configured instance of the model para
 
 The example below is extremely simple and does not allow for the configuration of parameters in a dynamic fashion. 
 
-Clocks.F2014.COP1 in PlantModelFramework loads the parameter values from a look-up table and modifies the parameters based upon a set of expressed genes. The particular column and the expressed genes are passed to the parameters() function as arguments and used to select and modify the values loaded from a data file bundled within PlantModelFramework. If loading data from a file it's a good idea to consider tagging your struct with the @kwdef macro ([Julia Docs](https://docs.julialang.org/en/v1/base/base/#Base.@kwdef)) to simplify the initialisation of your struct. 
+Clocks.F2014.COP1 in PlantModelFramework loads the parameter values from a look-up table and modifies the parameters based on the genotype to be simulated (wildtype ("wt"), or one of the predefined mutants). The particular column of the look-up table (parameter sets from [(Fogelmark & Troein, 2014)](https://doi.org/10.1371/journal.pcbi.1003705)) and the genotype are passed to the parameters() function as arguments and used to select and modify the values loaded from a data file bundled within PlantModelFramework/src/Clocks/Data. If loading data from a file it's a good idea to consider tagging your struct with the @kwdef macro ([Julia Docs](https://docs.julialang.org/en/v1/base/base/#Base.@kwdef)) to simplify the initialisation of your struct. 
 
 ```julia
 struct Parameters <: Clock.DynamicsParameters
@@ -165,8 +165,7 @@ Next it's necessary to create two functions to handle the callbacks from SciML /
 
 ##### Model Behaviour
 
-Create a function that encapsulates the model behaviour. This function calculates the next iteration of the values for the set 
-of differential equations defining your model's behaviour. This method is called from the dispatch functions we created earlier and handles the calculation and any tracing behaviour we may desire if the tracing store is supplied. This function should accept the parameters passed via the solver dispatch methods.
+Create a function that encapsulates the model behaviour. This function calculates the set of values of the derivatives (du) based on the current values of the variables (u) from the set of differential equations defining your model's behaviour. This method is called from the dispatch functions we created earlier and handles the calculation and any tracing behaviour we may desire if the tracing store is supplied. This function should accept the parameters passed via the solver dispatch methods.
 
 ```julia
 
@@ -184,9 +183,9 @@ end
 
 # -- tracing: disabled
 function (d::Clock.Dynamics{<: Parameters})(
-		 # array of next values to be calculated
+		 # array of time derivatives to be calculated
         du,                          
-        # array of previously calculated values
+        # array of the current values of the state variables of the system
         u,                           
         # call parameters: Environment.State @ time point
         envState::Environment.State, 
