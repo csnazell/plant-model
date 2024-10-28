@@ -36,6 +36,58 @@ String parameter used to identify & access state, output & tracing elements with
 
 Default value: "model.clock"
 
+### Implementation
+The implementation of the clock model components are spread over a number of files within PlantModelFramework package. 
+```julia
+# PlantModelFramework package files relating to clock models
++ src / 
+| 
++-- Clock.jl
+| 
++-+ Clocks /
+| |
+| +-- Clocks.jl
+| |
+| +-- F2014.jl
+| |  
+| +-+ Data /
+| | |
+| | +-+ F2014 /
+| | | |
+| | | +-- Parameters.tsv
+```
+
+#### src/Clock.jl 
+
+Contains the implementation of the [Clock Model](#Clock Model) wrapper that provides the boilerplate code for clock models. 
+
+#### src/Clocks/  
+
+Contains specific clock model behaviour implementations. 
+
+#### src/Clocks/Clocks.jl 
+
+Defines the clocks sub-package namespacing. 
+
+#### src/Clocks/F2014.jl 
+
+Contains [Clock Parameters](#Clock Parameters) & [Clock Behaviour](#Clock Behaviour) implementation for `COP1` & `Red` models. ([(Battle et al., 2024)](https://doi.org/10.1016/j.molp.2024.07.007)).
+
+#### src/Clocks/Data/ 
+
+Root container for any data files required by model implementation.
+
+#### src/Clocks/Data/F2014/ 
+
+Implementation data container for F2014 models.
+
+#### src/Clocks/Data/F2014/Parameters.tsv
+
+Configuration data used by differential equations F2014 models. 
+
+
+For details on the clock models implemented by PlantModelFramework please [implemented-models.md](implemented-models.md).
+
 ### Example
 
 ```julia
@@ -52,7 +104,7 @@ clock = Clock.Model(environment, clockBehaviour)
 ```
 
 ## Using A Clock Model
-A clock model typically needs entraining to establish an initial state for the start of the simulation. 
+A clock model typically needs entraining to establish an a stable response to the environmental inputs that can then be used to obtain an initial state for the start of the simulation.
 
 The Clock.entrain() function provides this facility and updates the supplied initial (T0) simulation frame with the entrained start conditions for the simulation. 
 
@@ -77,7 +129,7 @@ simulationResults = PlantModelFramework.run(plant, 40, initialFrame)
 ```
 
 ## Creating A New Clock Model
-When creating a new clock model it's a good idea to review one of the existing implementations in PlantModelFramework.Clocks sub-package before building your own.
+When creating a new clock model it's a good idea to review one of the existing implementations in PlantModelFramework.Clocks sub-package before building your own. The clock model implementations can all be found in `src / Clocks /` within the PlantModelFramework package. `F2014.jl` contains implementations of clock behaviour for `COP1` & `Red` models. These models share a common core behaviour with their differences focussing on the response to blue and red light respectively.
 
 Given a set of _n_ differential equations describing a plant's circadian model the following steps will walk you through creating a clock model compatible with the PlantModelFramework.
 
@@ -95,16 +147,16 @@ As discussed above, there are a number of components that are required for a clo
 module ExperimentalClock
 
 # dependencies 
-# -
+# - your code will go here
 
 # initial conditions
-# -
+# - your code will go here
 
 # clock parameters
-# -
+# - your code will go here
 
 # clock behaviour
-# - 
+# - your code will go here
 
 end
 ```
@@ -113,6 +165,8 @@ end
 Import the elements of PlantModelFramework necessary for building a clock model:
 
 ```julia
+# dependencies
+
 using PlantModelFramework
 ```
 
@@ -121,7 +175,9 @@ Create a function that returns an instance of Clock.State initialised with a vec
 
 In the example below, our model has 2 differential equations and we initialise all of them to 0.1.
 
-```
+```julia
+# initial conditions
+
 function initialState()
 
     Clock.State( ones(1,2) .* 0.1 )
@@ -141,6 +197,8 @@ The example below is extremely simple and does not allow for the configuration o
 Clocks.F2014.COP1 in PlantModelFramework loads the parameter values from a look-up table and modifies the parameters based on the genotype to be simulated (wildtype ("wt"), or one of the predefined mutants). The particular column of the look-up table (parameter sets from [(Fogelmark & Troein, 2014)](https://doi.org/10.1371/journal.pcbi.1003705)) and the genotype are passed to the parameters() function as arguments and used to select and modify the values loaded from a data file bundled within PlantModelFramework/src/Clocks/Data. If loading data from a file it's a good idea to consider tagging your struct with the @kwdef macro ([Julia Docs](https://docs.julialang.org/en/v1/base/base/#Base.@kwdef)) to simplify the initialisation of your struct. 
 
 ```julia
+# clock parameters
+
 struct Parameters <: Clock.DynamicsParameters
     a
     b
@@ -168,6 +226,7 @@ Next it's necessary to create two functions to handle the callbacks from SciML /
 Create a function that encapsulates the model behaviour. This function calculates the set of values of the derivatives (du) based on the current values of the variables (u) from the set of differential equations defining your model's behaviour. This method is called from the dispatch functions we created earlier and handles the calculation and any tracing behaviour we may desire if the tracing store is supplied. This function should accept the parameters passed via the solver dispatch methods.
 
 ```julia
+# clock behaviour 
 
 # - 'factory' for wrapping model-specific behaviour within common 
 #   clock functionality
@@ -250,6 +309,8 @@ function behaviour(du, u, time, parameters, envState, tracing)
 end
 ```
 
+The differential equations defined in `behaviour()` are purely illustrative an do not represent any meaningful model of circadian behaviour.
+
 ### Using Your Model
 To use your new clock model, include the clock model file & import its module into the REPL or your script. You can then follow the same steps as per the example in the README but substituting your module `ExperimentalClock` for `Clocks.F2014.COP1.`. 
 
@@ -289,13 +350,13 @@ plantModel = PlantModel(clockModel)
 simulationResults = PlantModelFramework.run(plantModel, 40, initialFrame)
 ```
 
-We can then interrogate the simulation results. For example, the state recorded at midnight on each day of the simulation:
+We can then interrogate the simulation results. For example, the state recorded at 24h on each day of the simulation:
 ```julia
-statesAtMidnight = 
+statesAt24h = 
     map(frame -> ( Simulation.getState(frame, clockModel.key) ).U, simulationResults)
 ```
 
-This will extract the interpolated state of the clock model's differential equations at midnight from each simulation frame including the initial T0 frame (initialFrame) which contains the entrained values.
+This will extract the interpolated state of the clock model's differential equations at 24h from each simulation frame including the initial T0 frame (initialFrame) which contains the entrained values. 
 
 ```
 41-element Vector{Matrix{Float64}}:
@@ -341,3 +402,5 @@ This will extract the interpolated state of the clock model's differential equat
  [-2.130103781772723e204 -2.863500505831363e306]
  [-2.130103781772723e204 -2.863500505831363e306]
 ```
+
+As noted above, the differential equations representing the model's behaviour are merely illustrative. In a genuine implementation of a clock model these outputs would represent the levels of expression of various metabolites related to the organism's response to changes in the environment over time.  
