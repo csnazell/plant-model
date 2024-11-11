@@ -39,7 +39,7 @@ struct State
     hour::Int8              # timepoint hour : 1 - 24
     temperature::Float32    # temperature @ timepoint (ºC)
     sunrise::Int8           # hour of sunrise @ timepoint : 0 - 24
-    sunset::Int8            # hour of sunrise @ timepoint : 0 - 24
+    sunset::Int8            # hour of sunset @ timepoint : 0 - 24
     dayDuration::Int8       # duration of day (default: 24)
 end
 ```
@@ -171,7 +171,7 @@ function (m::ExperimentalEnv)(day::Integer, hour::Integer)
 end
 ```
 
-With this in place we can now implement our temperature profile logic. The min temperature will be aligned with sunrise, the max temperature with sunset, and the model will linearly interpolate between these points over the course of the day. If there's no photo period at all we'll default to the min temperature.
+With this in place we can now implement our temperature profile logic. The min temperature will be aligned with sunrise, the max temperature with sunset, and the model will linearly interpolate between these points over the course of the day. If there's no photoperiod at all we'll default to the min temperature.
 
 ```julia
 function _temperature(m, day, hour)
