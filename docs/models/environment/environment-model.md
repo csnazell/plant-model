@@ -73,11 +73,11 @@ pp   = photoperiod(state)           # 8
 temp_celcius = temperature(state)   # 22.0 ºC
 ```
 
-A number of utility functions also exist to support Circadian (Clock) & Phenology models. 
+A number of utility functions also exist to support [Circadian (Clock)](../clock/clock-model.md) & Phenology models. 
 
 __light_fraction(state)__ models light intensity as square wave returning a value between 0.0 & 1.0 based on the photoperiod & hour the state represents. Currently this is used by the Phenology model to calculate daily photothermal units.
 
-__light_condition(state, time)__ is a less simplistic model of light intensity returning a value between 0.0 & 1.0 based on the photoperiod & a time argument passed from the differential equation solver. Currently this is used in the F2014 clock models and the PIF_CO_FT phenology model.
+__light_condition(state, time)__ is a less simplistic model of light intensity returning a value between 0.0 & 1.0 based on the photoperiod & a time argument passed from the differential equation solver. Currently this is used in the [F2014](../clock/implemented-models.md) clock models and the PIF_CO_FT phenology model.
 
 ## Creating A New Environment Model
 
@@ -220,7 +220,7 @@ To test our new environment model, we can include the file into the REPL, genera
 
 Having constructed an instance of our model we use the `map()` function to iterate through the hours in a day and use the model to create a state description and then pull data concerning the state of the light and the temperature at each time point. We can stitch this data into a data frame and then plot the results. 
 
-With the behaviour confirmed we can now use __ExperimentalEnv__ in simulation runs using pre-existing circadian (clock) and phenology models.
+With the behaviour confirmed we can now use __ExperimentalEnv__ in simulation runs using pre-existing [circadian (clock)](../clock/clock-model.md) and phenology models.
 
 ```julia
 using DataFrame
