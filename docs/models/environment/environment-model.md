@@ -111,7 +111,7 @@ end
 #### \#4: Create New Model
 
 ##### Model Data
-Add fields to our a new struct to hold all the data the model needs to calculate the state of a given time point. We can copy a lot of this from the existing __Environment.ConstantModel__ and adjust to suit the needs of this model. Similarly we can draw heavily on the constructor that creates an instance of __Environment.ConstantModel__ for our own.
+For this custom model we will vary the temperature linearly from a configured minimum to a configured maximum during the light hours and then reduce the temperature to the minimum during the dark. To do this we need to add fields to our a new struct to hold all the data the model needs to calculate the state of a given time point. We can copy a lot of this from the existing __Environment.ConstantModel__. Similarly we can draw heavily on the constructor that creates an instance of __Environment.ConstantModel__ for our own.
 
 ```julia
 struct ExperimentalEnv <: Environment.Model
@@ -158,23 +158,11 @@ As you can see the _temperature_ field has been replaced with two new fields hol
 ##### Model Behaviour
 The purpose of an environment model is to create an instance of __Environment.State__ at a given time point so we need to implement a version of the function `function (m::Model)(day::Integer, hour::Integer)::State`. Since this function is essential for the model to do its job, the __Environment__ module provides a default implementation that raises an error to remind us that we need to implement our own. This function's primary purpose is to document the overall shape the __PlantModelFramework__ expects environment models to take.
 
-__Environment.ConstantModel__ simply copies the values of its configuration into the __State__ instance it creates. __ExperimentalEnv__ will need to calculate the temperature it returns. As a first pass at this we can implement the required function along with a stubbed out function to perform our temperature calculation.
+__Environment.ConstantModel__ simply copies the values of its configuration into the __State__ instance it creates. __ExperimentalEnv__ will need to calculate the temperature it returns. The min temperature will be aligned with sunrise, the max temperature with sunset, and the model will linearly interpolate between these points over the course of the day. If there's no photoperiod at all we'll default to the min temperature.
 
 ```julia
+# temperature model
 
-function _temperature(m, day, hour)
-	m.temperatureMin
-end
-
-function (m::ExperimentalEnv)(day::Integer, hour::Integer)
-    state = State(day, hour, _temperature(m), m.sunrise, m.sunset, m.dayDuration)
-
-end
-```
-
-With this in place we can now implement our temperature profile logic. The min temperature will be aligned with sunrise, the max temperature with sunset, and the model will linearly interpolate between these points over the course of the day. If there's no photoperiod at all we'll default to the min temperature.
-
-```julia
 function _temperature(m, day, hour)
 
     # determine parameters for calculation
@@ -211,6 +199,14 @@ function _temperature(m, day, hour)
 	return temperature
 
 end
+
+# environment state factory
+
+function (m::ExperimentalEnv)(day::Integer, hour::Integer)
+
+    state = State(day, hour, _temperature(m), m.sunrise, m.sunset, m.dayDuration)
+
+end
 ```
 
 This completes our build out of the new environment model.
@@ -231,7 +227,7 @@ using PlantModelFramework
 
 include("ExperimentalEnv.jl")
 
-env = ExperimentalEnv(sunrise=8, sunset=8)
+env = ExperimentalEnv(sunrise=8, sunset=16)
 
 hours = 0:24
 light = map(hr -> Environment.light_fraction((env(1,hr))), hours)
