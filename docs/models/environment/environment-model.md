@@ -20,8 +20,9 @@ Currently PlantModelFramework only contains a single, simple, environment model 
 # - constant environment model
 #   constructor arguments:
 #   > temperature=##.# (degrees Celcius) | default = 22.0
-#   > sunrise=#        (hour from 0000)     | default = 0
-#   > sunset=#         (hour from 0000)     | default = 0         
+#   > sunrise=#        (hour from 0000)  | default = 0
+#   > sunset=#         (hour from 0000)  | default = 0    
+#   > dayDuration=#	  (hours in a day)   | default = 24      
 
 environment = Environment.ConstantModel(sunset=8)
 
