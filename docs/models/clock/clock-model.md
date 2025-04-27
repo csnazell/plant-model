@@ -22,6 +22,7 @@ Concrete instance of Clock.Dynamics for a particular clock model (i.e. Clocks.F2
 Default value: None (required parameter)
 
 #### Environment Model
+
 Concrete instance of an [environment model](../environment/environment-model.md) (Environment.Model) which supplies a State  (Environment.State) instance describing the environment at a given time point.
 
 Default value: None (required parameter)
